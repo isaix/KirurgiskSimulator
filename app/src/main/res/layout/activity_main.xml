@@ -66,5 +66,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cames" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="107dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="355dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/burger" />
+
 
 </android.support.constraint.ConstraintLayout>
