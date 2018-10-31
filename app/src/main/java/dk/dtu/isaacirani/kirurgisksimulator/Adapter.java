@@ -34,7 +34,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.Name.setText(student.getName());
         viewHolder.Pressure.setText(String.valueOf(student.getPressure()));
         viewHolder.Rate.setText(String.valueOf(student.getRate()));
-        viewHolder.Volume.setText(student.getVolume().toString().substring(0, 2));
+        viewHolder.Volume.setText(student.getVolume().toString().substring(0, 3));
         if(student.isNozzle()){
             viewHolder.Nozzle.setText("In");
         } else {
