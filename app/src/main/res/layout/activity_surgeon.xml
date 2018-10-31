@@ -4,19 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SurgeonActivity">
+    tools:context=".SurgeonActivity"
+    tools:layout_editor_absoluteY="25dp">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="946dp"
-        android:layout_height="449dp"
-        android:layout_marginBottom="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/ID"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="#95bdf4"
+                android:gravity="clip_vertical"
+                android:text="ID"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="clip_vertical"
+                android:text="Name"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Rate"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="#95bdf4"
+                android:gravity="clip_vertical"
+                android:text="Rate"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Pressure"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="clip_vertical"
+                android:text="Pressure"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Volume"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="#95bdf4"
+                android:gravity="clip_vertical"
+                android:text="Volume"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Nozzle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="clip_vertical"
+                android:text="Nozzle"
+                android:textSize="22sp" />
+
+        </TableRow>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="88dp"
+            android:layout_marginEnd="88dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
