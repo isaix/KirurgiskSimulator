@@ -2,9 +2,12 @@ package dk.dtu.isaacirani.kirurgisksimulator;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableRow;
+import android.widget.Toast;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     Student[] data;
@@ -17,12 +20,14 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_data, viewGroup, false);
         ViewHolder vh = new ViewHolder(view);
+        vh.TableRow = view.findViewById(R.id.TableRow);
         vh.ID = view.findViewById(R.id.ID);
         vh.Name = view.findViewById(R.id.Name);
         vh.Rate = view.findViewById(R.id.Rate);
         vh.Pressure = view.findViewById(R.id.Pressure);
         vh.Volume = view.findViewById(R.id.Volume);
         vh.Nozzle = view.findViewById(R.id.Nozzle);
+
         return  vh;
     }
 
@@ -46,4 +51,5 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     public int getItemCount() {
         return data.length;
     }
+
 }

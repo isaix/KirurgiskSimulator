@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,8 +18,9 @@ public class SurgeonActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         Adapter adapter = new Adapter(new MockData().getStudents());
         recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
+
 }
