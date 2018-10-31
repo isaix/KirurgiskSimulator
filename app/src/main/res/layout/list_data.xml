@@ -9,44 +9,50 @@
 
     <TextView
         android:id="@+id/ID"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:text="TextView"
-        android:textSize="44dp"/>
+        android:textSize="44sp" />
 
     <TextView
         android:id="@+id/Name"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
+        android:background="light @android:color/holo_blue_light"
         android:text="TextView"
-        android:textSize="44dp"/>
+        android:textSize="44sp" />
 
     <TextView
         android:id="@+id/Pressure"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:text="TextView"
-        android:textSize="44dp"/>
+        android:textSize="4sp"/>
 
     <TextView
         android:id="@+id/Rate"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
+        android:background="light @android:color/holo_blue_light"
         android:text="TextView"
-        android:textSize="44dp"/>
+        android:textSize="44sp"/>
 
     <TextView
         android:id="@+id/Volume"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:text="TextView"
-        android:textSize="44dp"/>
+        android:textSize="44sp"/>
 
     <TextView
         android:id="@+id/Nozzle"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
+        android:background="light @android:color/holo_blue_light"
         android:text="TextView"
-        android:textSize="44dp"/>
+        android:textSize="44sp"/>
 
 </TableRow>
