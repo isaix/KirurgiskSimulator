@@ -11,28 +11,33 @@
     <ImageView
         android:id="@+id/barblank2"
         android:layout_width="90dp"
-        android:layout_height="246dp"
+        android:layout_height="244dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="576dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423"
-        app:srcCompat="@drawable/barblank1"
-        tools:layout_editor_absoluteX="248dp" />
+        app:layout_constraintVertical_bias="0.448"
+        app:srcCompat="@drawable/barblank1" />
 
     <ImageView
         android:id="@+id/barblank1"
-        android:layout_width="91dp"
+        android:layout_width="90dp"
         android:layout_height="244dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/barblank2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419"
-        app:srcCompat="@drawable/barblank1"
-        tools:layout_editor_absoluteX="294dp" />
+        app:layout_constraintVertical_bias="0.448"
+        app:srcCompat="@drawable/barblank1" />
 
     <TextView
         android:id="@+id/tevalue00"
@@ -49,7 +54,7 @@
         android:textSize="80sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.616"
         app:layout_constraintStart_toStartOf="@+id/barblank2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.334" />
@@ -136,7 +141,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="@+id/barblank3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.448"
@@ -160,7 +165,7 @@
         android:layout_width="129dp"
         android:layout_height="74dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/black"
         android:fontFamily="@font/digital7"
@@ -171,7 +176,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
+        app:layout_constraintVertical_bias="0.341" />
 
     <Switch
         android:id="@+id/switchbutton"
@@ -181,7 +186,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="On/Off"
+        android:text="Off/On"
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -190,5 +195,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.907" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="191dp"
+        android:layout_height="139dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412"
+        app:srcCompat="@drawable/bottlemark1" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="206dp"
+        android:layout_height="334dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="252dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nozzle" />
 
 </android.support.constraint.ConstraintLayout>
