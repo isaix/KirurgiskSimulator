@@ -1,4 +1,4 @@
-package dk.dtu.isaacirani.kirurgisksimulator;
+package dk.dtu.isaacirani.kirurgisksimulator.models;
 
 public class MockData {
     Student[] students;
