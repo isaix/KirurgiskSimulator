@@ -10,13 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
+import dk.dtu.isaacirani.kirurgisksimulator.StudentLoginActivity;
+import dk.dtu.isaacirani.kirurgisksimulator.SurgeonLoginActivity;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private DrawerLayout drawer;
-
+    Intent studentLogin, surgeonLogin;
+    Button student, surgeon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +40,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        studentLogin = new Intent(this, StudentLoginActivity.class);
+        surgeonLogin = new Intent(this, SurgeonLoginActivity.class);
 
+        student = findViewById(R.id.student);
+        surgeon = findViewById(R.id.surgeon);
 
+        student.setOnClickListener(this);
+        surgeon.setOnClickListener(this);
     }
 
 
@@ -72,5 +82,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == student){
+            startActivity(studentLogin);
+        } else if(v == surgeon){
+            startActivity(surgeonLogin);
+        }
     }
 }
