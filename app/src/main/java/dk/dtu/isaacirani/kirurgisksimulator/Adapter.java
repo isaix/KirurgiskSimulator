@@ -31,7 +31,6 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         return  vh;
     }
 
-    //TODO: Opdater metode så den indsætter elementer i tablerow. Sæt overskrift på table på en måde.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Student student = data[i];

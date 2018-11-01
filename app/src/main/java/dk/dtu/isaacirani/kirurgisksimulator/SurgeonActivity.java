@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 public class SurgeonActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    //TODO: Lav bedre mock data. Lav Javaklasse med data tilsvarende simulatoren.
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
