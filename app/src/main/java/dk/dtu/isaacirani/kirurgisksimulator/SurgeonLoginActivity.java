@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import dk.dtu.isaacirani.kirurgisksimulator.activities.SurgeonActivity;
 
-public class SurgeonLoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class  SurgeonLoginActivity extends AppCompatActivity implements View.OnClickListener {
     Button surgeonEnterLogin;
     Intent surgeon;
 
