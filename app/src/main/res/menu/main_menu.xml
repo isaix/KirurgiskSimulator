@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/about"
+        android:title="About Cames"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/scenarios"
+        android:title="Scenarios"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/scenario_data"
+        android:title="Saved data"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        app:showAsAction="ifRoom"/>
+</menu>

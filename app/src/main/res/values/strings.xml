@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Kirurgisk Simulator</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <!-- Settings en-GB strings -->
+
+
+    <string name="general_settings_title">General</string>
+    <string name="sound_title">Sound</string>
+    <string name="language_title">Language</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Dansk</item>
+    </string-array>
+
+    <string name="simulator_settings_title">Simulator</string>
+    <string name="unit_title">Units</string>
+    <string-array name="unit_array">
+        <item>Kg</item>
+        <item>Lb</item>
+    </string-array>
+    <string name="touch_title">Touch</string>
+
+
 </resources>
