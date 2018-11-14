@@ -30,10 +30,6 @@
             android:name=".activities.SurgeonActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".StudentLoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-            </intent-filter>
         </activity>
         <activity android:name=".SurgeonLoginActivity"></activity>
     </application>

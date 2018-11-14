@@ -11,26 +11,59 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
+import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenatioList;
 
-public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    RecyclerView recyclerView;
+public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    LinearLayout l;
+    RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
+    Adapter adapter;
+    public static MockData mockData;
+    MockScenatioList mockScenatioList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surgeon);
 
+        l = findViewById(R.id.lin);
+
+        mockData = new MockData();
+        mockScenatioList = new MockScenatioList();
+
         recyclerView = findViewById(R.id.recyclerView);
-        Adapter adapter = new Adapter(new MockData().getStudents());
+        adapter = new Adapter(mockData.getStudents());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setOnClickListener(this);
+
+        scenarioPicker = findViewById(R.id.scenarioPicker);
+        ScenarioPickerAdapter spAdapter = new ScenarioPickerAdapter(mockScenatioList.getScenarios());
+        scenarioPicker.setAdapter(spAdapter);
+        scenarioPicker.setHasFixedSize(true);
+        scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        scenarioPicker.setOnClickListener(this);
+
+        l.setOnClickListener(this);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,4 +105,11 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    @Override
+    public void onClick(View v) {
+            adapter.notifyItemChanged(ViewHolder.chosenStudent);
+    }
+
 }

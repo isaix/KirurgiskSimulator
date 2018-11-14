@@ -11,6 +11,8 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public TextView ID, Name, Pressure, Rate, Volume, Nozzle;
     public TableRow TableRow;
 
+    public static int chosenStudent;
+
     public ViewHolder(View itemView){
         super(itemView);
         itemView.setOnClickListener(this);
@@ -18,6 +20,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        Log.v("GØR NOGET","GØR NOGET" + (getAdapterPosition() + 1));
+        chosenStudent = getAdapterPosition();
     }
 }

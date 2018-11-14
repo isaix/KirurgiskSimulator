@@ -33,6 +33,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Student student = data[i];
+        viewHolder.TableRow.setId(i);
         viewHolder.ID.setText(String.valueOf(student.getID()));
         viewHolder.Name.setText(student.getName());
         viewHolder.Pressure.setText(String.valueOf(student.getPressure()));
@@ -49,5 +50,4 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     public int getItemCount() {
         return data.length;
     }
-
 }
