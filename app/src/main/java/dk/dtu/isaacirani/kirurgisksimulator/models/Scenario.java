@@ -1,16 +1,26 @@
 package dk.dtu.isaacirani.kirurgisksimulator.models;
 
 public class Scenario {
+    public String name;
     public int pressure, rate;
-    public double Volume;
+    public double volume;
     public boolean nozzle;
 
 
     public Scenario(int pressure, int rate, double volume, boolean nozzle) {
+        this.name = name;
         this.pressure = pressure;
         this.rate = rate;
-        Volume = volume;
+        this.volume = volume;
         this.nozzle = nozzle;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPressure() {
@@ -30,11 +40,11 @@ public class Scenario {
     }
 
     public double getVolume() {
-        return Volume;
+        return volume;
     }
 
     public void setVolume(double volume) {
-        Volume = volume;
+        this.volume = volume;
     }
 
     public boolean isNozzle() {

@@ -36,10 +36,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.TableRow.setId(i);
         viewHolder.ID.setText(String.valueOf(student.getID()));
         viewHolder.Name.setText(student.getName());
-        viewHolder.Pressure.setText(String.valueOf(student.getPressure()));
-        viewHolder.Rate.setText(String.valueOf(student.getRate()));
-        viewHolder.Volume.setText(student.getVolume().toString().substring(0, 3));
-        if(student.isNozzle()){
+        viewHolder.Pressure.setText(String.valueOf(student.getScenario().getPressure()));
+        viewHolder.Rate.setText(String.valueOf(student.getScenario().getRate()));
+        viewHolder.Volume.setText(Double.toString(student.getScenario().getVolume()).substring(0, 3));
+        if(student.getScenario().isNozzle()){
             viewHolder.Nozzle.setText("In");
         } else {
             viewHolder.Nozzle.setText("Not In");

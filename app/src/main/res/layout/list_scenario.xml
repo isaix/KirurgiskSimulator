@@ -1,47 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scenario_tablerow"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scenario_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:paddingLeft="10sp"
-    android:paddingRight="10sp">
+    android:background="#8bcff9"
+    android:padding="20sp">
 
-    <TextView
-        android:id="@+id/scenario_rate"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="#95bdf4"
-        android:gravity="clip_vertical"
-        android:text="TextView"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/scenario_pressure"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:gravity="clip_vertical"
-        android:text="TextView"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/scenario_volume"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="#95bdf4"
-        android:gravity="clip_vertical"
-        android:text="TextView"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/scenario_nozzle"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:gravity="clip_vertical"
-        android:text="TextView"
-        android:textSize="22sp" />
-
-</TableRow>
+</TextView>

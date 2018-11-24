@@ -22,11 +22,7 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
     public ScenarioPickerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i){
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_scenario, viewGroup, false);
         ScenarioPickerViewHolder vh = new ScenarioPickerViewHolder(view);
-        vh.TableRow = view.findViewById(R.id.scenario_tablerow);
-        vh.Rate = view.findViewById(R.id.scenario_rate);
-        vh.Pressure = view.findViewById(R.id.scenario_pressure);
-        vh.Volume = view.findViewById(R.id.scenario_volume);
-        vh.Nozzle = view.findViewById(R.id.scenario_nozzle);
+        vh.scenario_name = view.findViewById(R.id.scenario_name);
 
         return vh;
     }
@@ -35,14 +31,7 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
     public void onBindViewHolder(@NonNull ScenarioPickerViewHolder viewHolder, int i) {
         viewHolder.TableRow.setId(i);
         Scenario scenario = scenarios.get(i);
-        viewHolder.Rate.setText(String.valueOf(scenario.getRate()));
-        viewHolder.Pressure.setText(String.valueOf(scenario.getPressure()));
-        viewHolder.Volume.setText(String.valueOf(scenario.getVolume()));
-        if(scenario.isNozzle()){
-            viewHolder.Nozzle.setText("In");
-        } else {
-            viewHolder.Nozzle.setText("Not In");
-        }
+        viewHolder.scenario_name.setText(scenario.getName());
     }
 
     @Override
