@@ -32,6 +32,7 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
         viewHolder.TableRow.setId(i);
         Scenario scenario = scenarios.get(i);
         viewHolder.scenario_name.setText(scenario.getName());
+
     }
 
     @Override
