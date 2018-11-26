@@ -66,6 +66,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:text="Rigshospitalet, Afsnit 5404,  Teilumbygningen Blegdamsvej 9, 2100 Kbh Ø"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -78,6 +79,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="264dp"
         android:layout_marginBottom="25dp"
+        android:onClick="hide"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -88,24 +90,22 @@
         android:id="@+id/imageView7"
         android:layout_width="32dp"
         android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView8"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:srcCompat="@drawable/phone" />
+        android:onClick="hide"
+        app:srcCompat="@drawable/phone"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="320dp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_marginEnd="655dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="112dp"
         android:text=" 35 45 54 04 "
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7" />
 
     <ImageView
@@ -114,6 +114,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="51dp"
+        android:onClick="hide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
@@ -126,6 +127,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="52dp"
         android:text="cames.rigshospitalet@regionh.dk"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView8" />
 
