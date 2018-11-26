@@ -13,8 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
+import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
+import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
-public class SimulatorActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class SimulatorActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SimulatorPresenter.View {
+
+    SimulatorPresenter presenter;
 
     private boolean isOn;
     private int buttonvalue1 = 00;
@@ -36,6 +40,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator);
+
+        presenter = new SimulatorPresenter(this);
 
         //refererer til alle IV, IB og TV
         barblank1 = (ImageView) findViewById(R.id.barblank1);
@@ -72,30 +78,30 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
                 buttonvalue1++;
                 tevalue00.setText(String.valueOf(buttonvalue1));
                 update1stBar();
-                update2ndtBar();
+                update2ndBar();
             } else if (minusbutton1 == view && buttonvalue1 > 0) {
                 buttonvalue1--;
                 tevalue00.setText(String.valueOf(buttonvalue1));
                 update1stBar();
-                update2ndtBar();
+                update2ndBar();
             }
 
             if (plusbutton2 == view && buttonvalue2 < 12) {
                 buttonvalue2++;
                 tevalue.setText(String.valueOf(buttonvalue2));
                 update3rdBar();
-                update4thdBar();
+                update4thBar();
             } else if (minusbutton2 == view && buttonvalue2 > 0) {
                 buttonvalue2--;
                 tevalue.setText(String.valueOf(buttonvalue2));
                 update3rdBar();
-                update4thdBar();
+                update4thBar();
             }
         }
     }
 
-
-        public void update1stBar () {
+    @Override
+        public void update1stBar() {
             switch (buttonvalue1 / 2) {
                 case 1:
                     barblank1.setImageResource(R.drawable.bar1);
@@ -118,8 +124,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
                     break;
             }
         }
-
-        public void update2ndtBar () {
+    @Override
+        public void update2ndBar() {
             switch (buttonvalue1 / 2) {
                 case 1:
                     barblank2.setImageResource(R.drawable.bar1);
@@ -143,8 +149,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
             }
         }
 
-
-        public void update3rdBar () {
+    @Override
+        public void update3rdBar() {
             switch (buttonvalue2 / 2) {
                 case 1:
                     barblank3.setImageResource(R.drawable.bar1);
@@ -167,8 +173,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
                     break;
             }
         }
-
-        public void update4thdBar () {
+    @Override
+        public void update4thBar () {
             switch (buttonvalue2 / 2) {
                 case 1:
                     barblank4.setImageResource(R.drawable.bar1);
@@ -203,10 +209,23 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    @Override
     public void turnOnMachine(){
         update1stBar();
-        update2ndtBar();
+        update2ndBar();
         update3rdBar();
-        update4thdBar();
+        update4thBar();
+    }
+
+    @Override
+    public void changeDisplayValues(Scenario scenario) {
+        tevalue00.setText(String.valueOf(scenario.getRate()));
+        tevalue000.setText(String.valueOf(scenario.getVolume()));
+        tevalue.setText(String.valueOf(scenario.getPressure()));
+        update1stBar();
+        update2ndBar();
+        update3rdBar();
+        update4thBar();
+
     }
 }
