@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         surgeonLogin = new Intent(this, SurgeonLoginActivity.class);
 
         student = findViewById(R.id.student);
-        surgeon = findViewById(R.id.surgeon);
+        surgeon = findViewById(R.id.Intructor);
 
         student.setOnClickListener(this);
         surgeon.setOnClickListener(this);

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        tools:layout_editor_absoluteX="596dp"
+        tools:layout_editor_absoluteY="473dp" />
+
+    <EditText
+        android:id="@+id/pressure"
+        style="@android:style/Widget.Holo.Light.AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Pressure"
+        tools:layout_editor_absoluteX="532dp"
+        tools:layout_editor_absoluteY="106dp" />
+
+    <EditText
+        android:id="@+id/Inflation_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Inflation Rate"
+        tools:layout_editor_absoluteX="532dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <EditText
+        android:id="@+id/Total_air"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="Total Air"
+        tools:layout_editor_absoluteX="532dp"
+        tools:layout_editor_absoluteY="294dp" />
+
+    <CheckBox
+        android:id="@+id/Inflation_hose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inflation Hose On"
+        tools:layout_editor_absoluteX="570dp"
+        tools:layout_editor_absoluteY="378dp" />
+
+</android.support.constraint.ConstraintLayout>
