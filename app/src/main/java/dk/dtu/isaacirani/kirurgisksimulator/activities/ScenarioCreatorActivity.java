@@ -1,9 +1,12 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.TestLooperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -16,8 +19,10 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     TextView pressure;
     TextView inflation_rate;
     TextView total_air;
+    TextView name;
     CheckBox inflation_hose;
     MockScenarioList mockScenarioList = new MockScenarioList();
+    Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,10 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         inflation_rate = findViewById(R.id.Inflation_rate);
         total_air = findViewById(R.id.Total_air);
         inflation_hose = findViewById(R.id.Inflation_hose);
+        name = findViewById(R.id.NameScenario);
+
+        save = findViewById(R.id.Save);
+        save.setOnClickListener(this);
 
     }
 
@@ -40,16 +49,24 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         int finalInflation = Integer.parseInt(inflationString);
 
         String totalString = total_air.getText().toString();
-        double fintalTotal = Double.parseDouble(totalString);
+        double finalTotal = Double.parseDouble(totalString);
+
+        String finalName = name.getText().toString();
 
         if(inflation_hose.isChecked()){
-            Scenario scenario = new Scenario(finalPressure,finalInflation,fintalTotal,true);
+            Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,true);
             mockScenarioList.getScenarios().add(scenario);
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
         }
         else{
-            Scenario scenario = new Scenario(finalPressure,finalInflation,fintalTotal,false);
+            Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,false);
             mockScenarioList.getScenarios().add(scenario);
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
         }
-
     }
+
 }
