@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,47 +9,55 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="63dp"
         android:text="Save"
-        tools:layout_editor_absoluteX="596dp"
-        tools:layout_editor_absoluteY="473dp" />
+        app:layout_constraintStart_toStartOf="@+id/Inflation_hose"
+        app:layout_constraintTop_toBottomOf="@+id/Inflation_hose" />
 
     <EditText
         android:id="@+id/pressure"
         style="@android:style/Widget.Holo.Light.AutoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="number"
         android:text="Pressure"
-        tools:layout_editor_absoluteX="532dp"
-        tools:layout_editor_absoluteY="106dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Inflation_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="number"
         android:text="Inflation Rate"
-        tools:layout_editor_absoluteX="532dp"
-        tools:layout_editor_absoluteY="196dp" />
+        app:layout_constraintStart_toStartOf="@+id/pressure"
+        app:layout_constraintTop_toBottomOf="@+id/pressure" />
 
     <EditText
         android:id="@+id/Total_air"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:text="Total Air"
-        tools:layout_editor_absoluteX="532dp"
-        tools:layout_editor_absoluteY="294dp" />
+        app:layout_constraintBottom_toTopOf="@+id/Inflation_hose"
+        app:layout_constraintStart_toStartOf="@+id/Inflation_rate" />
 
     <CheckBox
         android:id="@+id/Inflation_hose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:layout_marginTop="136dp"
         android:text="Inflation Hose On"
-        tools:layout_editor_absoluteX="570dp"
-        tools:layout_editor_absoluteY="378dp" />
+        app:layout_constraintEnd_toEndOf="@+id/Total_air"
+        app:layout_constraintTop_toBottomOf="@+id/Inflation_rate" />
 
 </android.support.constraint.ConstraintLayout>

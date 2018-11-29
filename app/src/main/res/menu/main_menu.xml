@@ -20,4 +20,8 @@
         android:id="@+id/settings"
         android:title="Settings"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/scenario_creator"
+        android:title="Scenario Creator"
+        app:showAsAction="ifRoom"/>
 </menu>

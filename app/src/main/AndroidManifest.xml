@@ -32,6 +32,7 @@
         <activity android:name=".StudentLoginActivity" >
         </activity>
         <activity android:name=".SurgeonLoginActivity"></activity>
+        <activity android:name=".activities.ScenarioCreatorActivity"></activity>
     </application>
 
 </manifest>
