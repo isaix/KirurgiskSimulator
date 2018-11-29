@@ -14,14 +14,19 @@ import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
 import android.support.design.widget.NavigationView
 import android.view.View
-
+import dk.dtu.isaacirani.kirurgisksimulator.GroupAdapter
+import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
+import dk.dtu.isaacirani.kirurgisksimulator.models.MockData
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
+    var groupAdapter = GroupAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
 
         setSupportActionBar(toolbar)
 

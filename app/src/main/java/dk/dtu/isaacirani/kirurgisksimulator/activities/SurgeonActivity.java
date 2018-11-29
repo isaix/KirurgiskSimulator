@@ -28,7 +28,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenatioList;
+import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 
 public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     LinearLayout l;
@@ -36,7 +36,7 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
     private DrawerLayout drawer;
     Adapter adapter;
     public static MockData mockData;
-    MockScenatioList mockScenatioList;
+    MockScenarioList mockScenarioList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
         l = findViewById(R.id.lin);
 
         mockData = new MockData();
-        mockScenatioList = new MockScenatioList();
+        mockScenarioList = new MockScenarioList();
 
         recyclerView = findViewById(R.id.recyclerView);
         adapter = new Adapter(mockData.getStudents());
@@ -56,7 +56,7 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
         recyclerView.setOnClickListener(this);
 
         scenarioPicker = findViewById(R.id.scenarioPicker);
-        ScenarioPickerAdapter spAdapter = new ScenarioPickerAdapter(mockScenatioList.getScenarios());
+        ScenarioPickerAdapter spAdapter = new ScenarioPickerAdapter(mockScenarioList.getScenarios());
         scenarioPicker.setAdapter(spAdapter);
         scenarioPicker.setHasFixedSize(true);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));

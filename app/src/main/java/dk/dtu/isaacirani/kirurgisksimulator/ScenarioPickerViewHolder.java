@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import dk.dtu.isaacirani.kirurgisksimulator.activities.SurgeonActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenatioList;
+import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioPickerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    MockScenatioList scenatioList = new MockScenatioList();
+    MockScenarioList scenatioList = new MockScenarioList();
 
     public TextView scenario_name;
     public android.widget.TableRow TableRow;

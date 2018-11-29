@@ -5,11 +5,11 @@ public class MockData {
 
     public MockData() {
         Student[] students = new Student[5];
-        students[0] = new Student(1, 2, 3, "Mads", 2.1, true);
-        students[1] = new Student(2, 1, 4, "Frederik", 1.5, false);
-        students[2] = new Student(3, 2, 2, "Yoss", 1.7, true);
-        students[3] = new Student(4, 2, 4, "Isaac", 1.4, true);
-        students[4] = new Student(5, 1, 3, "Benjamin", 1.3, false);
+        students[0] = new Student(1, "Mads", new MockScenarioList().getScenario(0));
+        students[1] = new Student(2, "Yoss", new MockScenarioList().getScenario(1));
+        students[2] = new Student(3, "Frederik", new MockScenarioList().getScenario(2));
+        students[3] = new Student(4, "Benjamin", new MockScenarioList().getScenario(3));
+        students[4] = new Student(5, "Isaac", new MockScenarioList().getScenario(4));
         this.students = students;
     }
 

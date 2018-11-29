@@ -34,7 +34,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Student student = data[i];
         viewHolder.TableRow.setId(i);
-        viewHolder.ID.setText(String.valueOf(student.getID()));
+        viewHolder.ID.setText(String.valueOf(student.getId()));
         viewHolder.Name.setText(student.getName());
         viewHolder.Pressure.setText(String.valueOf(student.getScenario().getPressure()));
         viewHolder.Rate.setText(String.valueOf(student.getScenario().getRate()));
