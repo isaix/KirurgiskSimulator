@@ -1,15 +1,11 @@
 package dk.dtu.isaacirani.kirurgisksimulator;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import dk.dtu.isaacirani.kirurgisksimulator.activities.SurgeonActivity;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
-import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioPickerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
