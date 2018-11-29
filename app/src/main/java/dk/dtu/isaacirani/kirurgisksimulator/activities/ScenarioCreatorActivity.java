@@ -11,11 +11,15 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
+
+
 public class ScenarioCreatorActivity extends AppCompatActivity implements View.OnClickListener {
 
+    ScenarioAdapter scenarioAdapter = new ScenarioAdapter();
     TextView pressure;
     TextView inflation_rate;
     TextView total_air;
@@ -55,14 +59,14 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         if(inflation_hose.isChecked()){
             Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,true);
-            mockScenarioList.getScenarios().add(scenario);
+            scenarioAdapter.createScenario(scenario);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
         }
         else{
             Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,false);
-            mockScenarioList.getScenarios().add(scenario);
+            scenarioAdapter.createScenario(scenario);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();

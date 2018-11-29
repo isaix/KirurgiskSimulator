@@ -7,6 +7,8 @@ public class Scenario {
     public boolean nozzle;
 
 
+    public Scenario() {}
+
     public Scenario(String name, int pressure, int rate, double volume, boolean nozzle) {
         this.name = name;
         this.pressure = pressure;
@@ -26,7 +28,6 @@ public class Scenario {
     public int getPressure() {
         return pressure;
     }
-
 
     public void setPressure(int pressure) {
         this.pressure = pressure;
