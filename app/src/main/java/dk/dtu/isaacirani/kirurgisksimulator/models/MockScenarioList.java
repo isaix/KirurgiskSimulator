@@ -8,11 +8,11 @@ public class MockScenarioList {
 
     public MockScenarioList() {
         ArrayList<Scenario> scenarios = new ArrayList<Scenario>();
-        scenarios.add(new Scenario(4, 3, 2.0, false));
-        scenarios.add(new Scenario(5, 2, 3.0, true));
-        scenarios.add(new Scenario(2, 3, 4.0, true));
-        scenarios.add(new Scenario(4, 2, 3, true));
-        scenarios.add(new Scenario(1, 4, 2.5, false));
+        scenarios.add(new Scenario("Test",4, 3, 2.0, false));
+        scenarios.add(new Scenario("Test",5, 2, 3.0, true));
+        scenarios.add(new Scenario("Test",2, 3, 4.0, true));
+        scenarios.add(new Scenario("Test",4, 2, 3, true));
+        scenarios.add(new Scenario("Test",1, 4, 2.5, false));
         this.scenarios = scenarios;
 
     }

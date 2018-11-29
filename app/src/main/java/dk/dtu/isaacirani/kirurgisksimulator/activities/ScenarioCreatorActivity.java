@@ -43,11 +43,11 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         double fintalTotal = Double.parseDouble(totalString);
 
         if(inflation_hose.isChecked()){
-            Scenario scenario = new Scenario(finalPressure,finalInflation,fintalTotal,true);
+            Scenario scenario = new Scenario("TEST22",finalPressure,finalInflation,fintalTotal,true);
             mockScenarioList.getScenarios().add(scenario);
         }
         else{
-            Scenario scenario = new Scenario(finalPressure,finalInflation,fintalTotal,false);
+            Scenario scenario = new Scenario("TEST2",finalPressure,finalInflation,fintalTotal,false);
             mockScenarioList.getScenarios().add(scenario);
         }
 

@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,7 +30,10 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
 
     @Override
     public void onBindViewHolder(@NonNull ScenarioPickerViewHolder viewHolder, int i) {
-        viewHolder.TableRow.setId(i);
+        viewHolder.scenario_name.setId(i);
+        if(i % 2 == 0){
+            viewHolder.scenario_name.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
         Scenario scenario = scenarios.get(i);
         viewHolder.scenario_name.setText(scenario.getName());
 

@@ -7,7 +7,7 @@ public class Scenario {
     public boolean nozzle;
 
 
-    public Scenario(int pressure, int rate, double volume, boolean nozzle) {
+    public Scenario(String name, int pressure, int rate, double volume, boolean nozzle) {
         this.name = name;
         this.pressure = pressure;
         this.rate = rate;
