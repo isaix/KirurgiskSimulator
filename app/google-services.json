@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1075454558124",
+    "firebase_url": "https://kirurgisksimulator-127e1.firebaseio.com",
+    "project_id": "kirurgisksimulator-127e1",
+    "storage_bucket": "kirurgisksimulator-127e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075454558124:android:40162cc377642d64",
+        "android_client_info": {
+          "package_name": "dk.dtu.isaacirani.kirurgisksimulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075454558124-k33ecln0sd8jrd83m0sqen60bb4ivcki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dk.dtu.isaacirani.kirurgisksimulator",
+            "certificate_hash": "378cf615a301f7d1b1a299ce03cdcd59d65dbb25"
+          }
+        },
+        {
+          "client_id": "1075454558124-knmpkv0ggtmcd99ju20iuoeesadejk3b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN-RWQL76QYQvHGGwpqX-D8-TGcCjOP90"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075454558124-knmpkv0ggtmcd99ju20iuoeesadejk3b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

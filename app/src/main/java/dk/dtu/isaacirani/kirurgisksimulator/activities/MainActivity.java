@@ -77,7 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(this, SurgeonActivity.class);
                 startActivity(intent);
                 break;
-
+            case R.id.scenario_creator:
+                intent = new Intent(this,ScenarioCreatorActivity.class);
+                startActivity(intent);
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
