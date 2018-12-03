@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
                 break;
             case R.id.about:
-                intent = new Intent(this, SimulatorActivity.class);
+                intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
                 break;
             case R.id.scenarios:
@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.scenario_creator:
                 intent = new Intent(this,ScenarioCreatorActivity.class);
                 startActivity(intent);
-                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);

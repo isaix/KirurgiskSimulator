@@ -13,10 +13,13 @@ import android.support.annotation.NonNull
 import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
 import android.support.design.widget.NavigationView
+import android.util.Log
 import android.view.View
 import dk.dtu.isaacirani.kirurgisksimulator.GroupAdapter
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData
+import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
@@ -25,8 +28,12 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        var scenarioAdapter = ScenarioAdapter()
 
-        groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
+
+        //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
+        scenarioAdapter.createScenario(Scenario("name",1, 1, 2.0, true))
+        Log.e("scenarios", scenarioAdapter.scenarioList.toString())
 
         setSupportActionBar(toolbar)
 

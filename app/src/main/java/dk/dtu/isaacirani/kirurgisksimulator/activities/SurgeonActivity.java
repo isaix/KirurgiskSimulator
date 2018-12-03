@@ -11,9 +11,17 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
@@ -21,6 +29,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
+import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     LinearLayout l;
@@ -29,6 +38,8 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
     Adapter adapter;
     public static MockData mockData;
     MockScenarioList mockScenarioList;
+    ArrayList<Scenario> scenarioList = new ArrayList<>();
+    ScenarioPickerAdapter spAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +50,33 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
 
         mockData = new MockData();
         mockScenarioList = new MockScenarioList();
-
         recyclerView = findViewById(R.id.recyclerView);
         adapter = new Adapter(mockData.getStudents());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setOnClickListener(this);
+        FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
 
-        scenarioPicker = findViewById(R.id.scenarioPicker);
-        ScenarioPickerAdapter spAdapter = new ScenarioPickerAdapter(mockScenarioList.getScenarios());
-        scenarioPicker.setAdapter(spAdapter);
-        scenarioPicker.setHasFixedSize(true);
-        scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        scenarioPicker.setOnClickListener(this);
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot scenario : dataSnapshot.getChildren()){
+                    scenarioList.add(scenario.getValue(Scenario.class));
+
+                }
+                spAdapter = new ScenarioPickerAdapter(scenarioList);
+                loadRec();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         l.setOnClickListener(this);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,7 +90,6 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override
@@ -102,6 +122,14 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
     @Override
     public void onClick(View v) {
             adapter.notifyItemChanged(ViewHolder.chosenStudent);
+    }
+
+    public void loadRec(){
+        scenarioPicker = findViewById(R.id.scenarioPicker);
+        scenarioPicker.setAdapter(spAdapter);
+        scenarioPicker.setHasFixedSize(true);
+        scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        scenarioPicker.setOnClickListener(this);
     }
 
 }
