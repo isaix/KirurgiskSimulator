@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginStart="24dp"
-        android:text="Enter Rool ID"
+        android:text="Enter Room ID"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout"
