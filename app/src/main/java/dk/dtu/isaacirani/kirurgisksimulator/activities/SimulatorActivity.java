@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,9 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private ImageButton plusbutton_1;
     private ImageButton minusbutton_2;
     private ImageButton plusbutton_2;
+    //nyt
+    private ProgressBar progressbar1;
+    private ProgressBar progressicon;
 
 
     @Override
@@ -76,6 +80,20 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         value_2.setOnClickListener(this);
         totalvalue.setOnClickListener(this);
         switchbutton.setOnCheckedChangeListener(this);
+
+
+        progressbar1 = frame2.findViewById(R.id.progressbar1);
+        progressicon = frame1.findViewById(R.id.progressicon);
+
+        progressicon.setMax(50);
+        progressicon.setProgress(1);
+
+        progressbar1.setMax(60);
+        progressbar1.setProgress(1);
+
+        //tror det er den her i skal bruge for den røde, hilsen Yoss
+        //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
+
     }
 
 
