@@ -21,5 +21,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         chosenStudent = getAdapterPosition();
+        Log.e("Chosen student", String.valueOf(chosenStudent));
     }
 }

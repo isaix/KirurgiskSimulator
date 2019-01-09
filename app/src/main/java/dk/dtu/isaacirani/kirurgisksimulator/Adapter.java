@@ -2,6 +2,7 @@ package dk.dtu.isaacirani.kirurgisksimulator;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     Student[] data;
+    int chosenStudent = -1;
 
     public Adapter(Student[] data){
         this.data = data;
@@ -32,6 +34,14 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                data[i].setScenario(ScenarioPickerAdapter.chosenScenario);
+                Log.e("Tæst", ""+i);
+                notifyItemChanged(i);
+            }
+        });
         Student student = data[i];
         viewHolder.TableRow.setId(i);
         viewHolder.ID.setText(String.valueOf(student.getId()));
@@ -49,5 +59,9 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public int getItemCount() {
         return data.length;
+    }
+
+    public int getChosenStudent(){
+        return chosenStudent;
     }
 }
