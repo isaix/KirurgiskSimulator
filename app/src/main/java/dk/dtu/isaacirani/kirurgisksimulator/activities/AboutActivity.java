@@ -11,8 +11,6 @@ import dk.dtu.isaacirani.kirurgisksimulator.R;
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener{
 
-    MediaPlayer buttonPush;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,9 +19,6 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     public void hide(View view) {
 
         @SuppressLint("WrongViewCast") TextView txtView = (TextView) findViewById(R.id.textView3);
-
-        buttonPush = MediaPlayer.create(this, R.raw.monsterkill_f);
-        buttonPush.start();
 
 
 
