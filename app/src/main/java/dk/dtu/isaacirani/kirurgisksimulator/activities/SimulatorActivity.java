@@ -1,15 +1,11 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -26,21 +22,16 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private boolean isOn;
     private int buttonvalue_1 = 00;
     private int buttonvalue_2 = 00;
-    private ImageView barblank1_1;
-    private ImageView barblank1_2;
-    private ImageView barblank2_1;
-    private ImageView barblank2_2;
-    private TextView totalvalue;
-    private TextView value_1;
-    private TextView value_2;
+    private TextView volume;
+    private TextView pressure;
+    private TextView rate;
     private Switch switchbutton;
     private ImageButton minusbutton_1;
     private ImageButton plusbutton_1;
     private ImageButton minusbutton_2;
     private ImageButton plusbutton_2;
     //nyt
-    private ProgressBar progressbar1;
-    private ProgressBar progressicon;
+    private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
 
 
     @Override
@@ -59,38 +50,28 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
-        barblank1_1 = (ImageView) frame2.findViewById(R.id.barblank1);
-        barblank2_1 = (ImageView) frame2.findViewById(R.id.barblank2);
-        barblank1_2 = (ImageView) frame3.findViewById(R.id.barblank1);
-        barblank2_2 = (ImageView) frame3.findViewById(R.id.barblank2);
         minusbutton_1 = (ImageButton) frame2.findViewById(R.id.minusbutton);
         plusbutton_1 = (ImageButton) frame2.findViewById(R.id.plusbutton);
         minusbutton_2 = (ImageButton) frame3.findViewById(R.id.minusbutton);
         plusbutton_2 = (ImageButton) frame3.findViewById(R.id.plusbutton);
-        value_1 = (TextView) frame2.findViewById(R.id.value);
-        value_2 = (TextView) frame3.findViewById(R.id.value);
-        totalvalue = (TextView) frame4.findViewById(R.id.totalvalue);
+        pressure = (TextView) frame2.findViewById(R.id.value);
+        rate = (TextView) frame3.findViewById(R.id.value);
+        volume = (TextView) frame4.findViewById(R.id.totalvalue);
+        airBar = frame1.findViewById(R.id.airBar);
+        pressureBar1 = frame2.findViewById(R.id.progressbar1);
+        pressureBar2 = frame2.findViewById(R.id.progressbar2);
+        rateBar1 = frame3.findViewById(R.id.progressbar);
+        rateBar2 = frame3.findViewById(R.id.progressbar2);
 
         //setter onclick på knapperne
         plusbutton_1.setOnClickListener(this);
         minusbutton_1.setOnClickListener(this);
         plusbutton_2.setOnClickListener(this);
         minusbutton_2.setOnClickListener(this);
-        value_1.setOnClickListener(this);
-        value_2.setOnClickListener(this);
-        totalvalue.setOnClickListener(this);
+        pressure.setOnClickListener(this);
+        rate.setOnClickListener(this);
+        volume.setOnClickListener(this);
         switchbutton.setOnCheckedChangeListener(this);
-
-
-        progressbar1 = frame2.findViewById(R.id.progressbar1);
-        progressicon = frame1.findViewById(R.id.progressicon);
-
-        progressicon.setMax(50);
-        progressicon.setProgress(1);
-
-        progressbar1.setMax(60);
-        progressbar1.setProgress(1);
-
         //tror det er den her i skal bruge for den røde, hilsen Yoss
         //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
 
@@ -102,157 +83,76 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         if (isOn) {
             if (plusbutton_1 == view && buttonvalue_1 < 12) {
                 buttonvalue_1++;
-                value_1.setText(String.valueOf(buttonvalue_1));
-                update1stBar();
-                update2ndBar();
+                pressure.setText(String.valueOf(buttonvalue_1));
+
             } else if (minusbutton_1 == view && buttonvalue_1 > 0) {
                 buttonvalue_1--;
-                value_1.setText(String.valueOf(buttonvalue_1));
-                update1stBar();
-                update2ndBar();
+                pressure.setText(String.valueOf(buttonvalue_1));
             }
 
             if (plusbutton_2 == view && buttonvalue_2 < 12) {
                 Log.e(buttonvalue_1+"", "yeees");
                 buttonvalue_2++;
-                value_2.setText(String.valueOf(buttonvalue_2));
-                update3rdBar();
-                update4thBar();
+                rate.setText(String.valueOf(buttonvalue_2));
+
             } else if (minusbutton_2 == view && buttonvalue_2 > 0) {
                 buttonvalue_2--;
-                value_2.setText(String.valueOf(buttonvalue_2));
-                update3rdBar();
-                update4thBar();
+                rate.setText(String.valueOf(buttonvalue_2));
+
             }
         }
     }
 
-    @Override
-        public void update1stBar() {
-            switch (buttonvalue_1 / 2) {
-                case 1:
-                    barblank1_1.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank1_1.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank1_1.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank1_1.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank1_1.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank1_1.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
-    @Override
-        public void update2ndBar() {
-            switch (buttonvalue_1 / 2) {
-                case 1:
-                    barblank2_1.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank2_1.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank2_1.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank2_1.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank2_1.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank2_1.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
+    public void turnOnMachine(){
 
-    @Override
-        public void update3rdBar() {
-            switch (buttonvalue_2 / 2) {
-                case 1:
-                    barblank1_2.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank1_2.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank1_2.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank1_2.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank1_2.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank1_2.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
-    @Override
-        public void update4thBar () {
-            switch (buttonvalue_2 / 2) {
-                case 1:
-                    barblank2_2.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank2_2.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank2_2.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank2_2.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank2_2.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank2_2.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
+    }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Scenario scenario = new Scenario();
+        scenario.setAir(50);
+        scenario.setPressure(25);
+        scenario.setPressureBar1(10);
+        scenario.setPressureBar2(20);
+        scenario.setRate(10);
+        scenario.setRateBar1(25);
+        scenario.setRateBar2(60);
+
+
         isOn = isChecked;
         if (isChecked) {
+            changeDisplayValues(scenario);
+            /*
             Toast.makeText(getApplicationContext(), "ON", Toast.LENGTH_LONG).show();
-            turnOnMachine();
+            turnOnMachine();*/
         } else {
-            Toast.makeText(getApplicationContext(), "OFF", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "OFF", Toast.LENGTH_LONG).show();
         }
     }
 
-    @Override
-    public void turnOnMachine(){
-        update1stBar();
-        update2ndBar();
-        update3rdBar();
-        update4thBar();
-    }
 
     @Override
     public void changeDisplayValues(Scenario scenario) {
-        value_1.setText(String.valueOf(scenario.getRate()));
-        totalvalue.setText(String.valueOf(scenario.getVolume()));
-        value_2.setText(String.valueOf(scenario.getPressure()));
-        update1stBar();
-        update2ndBar();
-        update3rdBar();
-        update4thBar();
+        airBar.setProgress(scenario.getAir());
+
+        pressureBar1.setProgress(scenario.getPressureBar1());
+        pressureBar2.setProgress(scenario.getPressureBar2());
+        pressure.setText(String.valueOf(scenario.getPressure()));
+
+        rateBar1.setProgress(scenario.getRateBar1());
+        rateBar2.setProgress(scenario.getRateBar2());
+        rate.setText(String.valueOf(scenario.getRate()));
+        String newVolume = String.valueOf(scenario.getVolume());
+        if(newVolume.length() > 4){
+            newVolume = newVolume.substring(0 , 3);
+        }
+
+        volume.setText(newVolume);
+
+        pressure.setText(String.valueOf(scenario.getRate()));
+        volume.setText(String.valueOf(scenario.getVolume()));
+        rate.setText(String.valueOf(scenario.getPressure()));
+
 
     }
 }

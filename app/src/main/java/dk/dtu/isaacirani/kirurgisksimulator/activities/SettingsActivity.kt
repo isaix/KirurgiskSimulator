@@ -32,7 +32,6 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
 
         //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
-        scenarioAdapter.createScenario(Scenario("name",1, 1, 2.0, true))
         Log.e("scenarios", scenarioAdapter.scenarioList.toString())
 
         setSupportActionBar(toolbar)

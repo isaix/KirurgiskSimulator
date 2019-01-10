@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="246dp"
         android:layout_height="390dp"
         tools:layout_editor_absoluteX="0dp"
@@ -30,7 +30,7 @@
             app:layout_constraintVertical_bias="0.976" />
 
         <ProgressBar
-            android:id="@+id/progressicon"
+            android:id="@+id/airBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="191dp"
             android:layout_height="32dp"
@@ -38,7 +38,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:max="0"
+            android:max="100"
             android:progress="0"
             android:progressDrawable="@drawable/progress_iconframe"
             app:layout_constraintBottom_toTopOf="@+id/switchbutton"
