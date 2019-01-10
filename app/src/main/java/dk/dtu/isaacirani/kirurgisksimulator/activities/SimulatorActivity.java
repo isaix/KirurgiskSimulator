@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
@@ -20,8 +19,6 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     SimulatorPresenter presenter;
 
     private boolean isOn;
-    private int buttonvalue_1 = 00;
-    private int buttonvalue_2 = 00;
     private TextView volume;
     private TextView pressure;
     private TextView rate;
@@ -50,18 +47,24 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
+        airBar = frame1.findViewById(R.id.airBar);
+
         minusbutton_1 = (ImageButton) frame2.findViewById(R.id.minusbutton);
         plusbutton_1 = (ImageButton) frame2.findViewById(R.id.plusbutton);
-        minusbutton_2 = (ImageButton) frame3.findViewById(R.id.minusbutton);
-        plusbutton_2 = (ImageButton) frame3.findViewById(R.id.plusbutton);
-        pressure = (TextView) frame2.findViewById(R.id.value);
-        rate = (TextView) frame3.findViewById(R.id.value);
-        volume = (TextView) frame4.findViewById(R.id.totalvalue);
-        airBar = frame1.findViewById(R.id.airBar);
+        pressure = (TextView) frame2.findViewById(R.id.pressure);
         pressureBar1 = frame2.findViewById(R.id.progressbar1);
         pressureBar2 = frame2.findViewById(R.id.progressbar2);
-        rateBar1 = frame3.findViewById(R.id.progressbar);
+
+        minusbutton_2 = (ImageButton) frame3.findViewById(R.id.minusbutton);
+        plusbutton_2 = (ImageButton) frame3.findViewById(R.id.plusbutton);
+        rate = (TextView) frame3.findViewById(R.id.rate);
+        rateBar1 = frame3.findViewById(R.id.progressbar1);
         rateBar2 = frame3.findViewById(R.id.progressbar2);
+
+        volume = (TextView) frame4.findViewById(R.id.totalvalue);
+
+
+
 
         //setter onclick på knapperne
         plusbutton_1.setOnClickListener(this);
@@ -80,6 +83,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
+        /*
         if (isOn) {
             if (plusbutton_1 == view && buttonvalue_1 < 12) {
                 buttonvalue_1++;
@@ -101,6 +105,10 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
             }
         }
+        */
+        if(view == pressure){
+            Log.e("UNDER", "PRESSURE");
+        }
     }
 
     public void turnOnMachine(){
@@ -117,6 +125,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         scenario.setRate(10);
         scenario.setRateBar1(25);
         scenario.setRateBar2(60);
+        scenario.setVolume(20.6);
 
 
         isOn = isChecked;
@@ -138,6 +147,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         pressureBar1.setProgress(scenario.getPressureBar1());
         pressureBar2.setProgress(scenario.getPressureBar2());
         pressure.setText(String.valueOf(scenario.getPressure()));
+        Log.e("PRESSURE", String.valueOf(scenario.getPressure()));
 
         rateBar1.setProgress(scenario.getRateBar1());
         rateBar2.setProgress(scenario.getRateBar2());
@@ -148,11 +158,5 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         }
 
         volume.setText(newVolume);
-
-        pressure.setText(String.valueOf(scenario.getRate()));
-        volume.setText(String.valueOf(scenario.getVolume()));
-        rate.setText(String.valueOf(scenario.getPressure()));
-
-
     }
 }
