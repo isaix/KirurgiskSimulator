@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
-import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
@@ -46,7 +45,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_surgeon);
+        setContentView(R.layout.activity_instructor);
 
         ratePreview = findViewById(R.id.RatePreviewValue);
         pressurePreview = findViewById(R.id.PressurePreviewValue);

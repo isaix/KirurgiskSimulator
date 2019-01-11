@@ -32,7 +32,7 @@
         <activity android:name=".StudentLoginActivity" >
         </activity>
         <activity android:name=".InstructorLoginActivity"></activity>
-        <activity android:name=".activities.ScenarioCreatorActivity"></activity>
+        <activity android:name=".activities.CreateScenarioActivity"></activity>
         <activity android:name=".activities.AboutActivity"></activity>
     </application>
 

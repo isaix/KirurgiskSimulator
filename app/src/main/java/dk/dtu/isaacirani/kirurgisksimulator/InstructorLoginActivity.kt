@@ -15,7 +15,7 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_surgeon_login)
+        setContentView(R.layout.activity_instructor_login)
 
         surgeonEnterLogin = findViewById(R.id.enterSurgeonLogin)
         surgeonEnterLogin.setOnClickListener(this)
