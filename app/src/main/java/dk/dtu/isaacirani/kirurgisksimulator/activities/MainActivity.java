@@ -15,7 +15,7 @@ import android.widget.Button;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.StudentLoginActivity;
-import dk.dtu.isaacirani.kirurgisksimulator.SurgeonLoginActivity;
+import dk.dtu.isaacirani.kirurgisksimulator.InstructorLoginActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private DrawerLayout drawer;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         studentLogin = new Intent(this, StudentLoginActivity.class);
-        surgeonLogin = new Intent(this, SurgeonLoginActivity.class);
+        surgeonLogin = new Intent(this, InstructorLoginActivity.class);
 
         student = findViewById(R.id.student);
         surgeon = findViewById(R.id.Intructor);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
                 break;
             case R.id.scenarios:
-                intent = new Intent(this, SurgeonActivity.class);
+                intent = new Intent(this, InstructorActivity.class);
                 startActivity(intent);
                 break;
             case R.id.scenario_creator:

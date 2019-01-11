@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import dk.dtu.isaacirani.kirurgisksimulator.activities.SurgeonActivity;
+import dk.dtu.isaacirani.kirurgisksimulator.activities.InstructorActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 
 public class ScenarioPickerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -25,7 +25,7 @@ public class ScenarioPickerViewHolder extends RecyclerView.ViewHolder implements
     public void onClick(View v) {
         chosenScenario = getAdapterPosition();
 
-        SurgeonActivity.mockData.getStudents()[ViewHolder.chosenStudent].setScenario(scenatioList.getScenarios().get(getAdapterPosition()));
+        InstructorActivity.mockData.getStudents()[ViewHolder.chosenStudent].setScenario(scenatioList.getScenarios().get(getAdapterPosition()));
 
     }
 }

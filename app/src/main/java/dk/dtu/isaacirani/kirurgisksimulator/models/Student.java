@@ -11,6 +11,9 @@ public class Student {
         this.name = name;
         this.scenario = scenario;
     }
+    public Student() {
+
+    }
 
     public int getId() {
         return id_s;

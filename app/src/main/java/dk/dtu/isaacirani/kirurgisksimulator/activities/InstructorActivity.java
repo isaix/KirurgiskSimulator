@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,7 +30,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
-public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
@@ -107,7 +106,7 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
                 startActivity(intent);
                 break;
             case R.id.scenarios:
-                intent = new Intent(this, SurgeonActivity.class);
+                intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break;

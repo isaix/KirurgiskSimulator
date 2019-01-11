@@ -7,19 +7,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import kotlinx.android.synthetic.main.activity_settings.*
 import android.support.v4.view.GravityCompat
 import dk.dtu.isaacirani.kirurgisksimulator.R
-import dk.dtu.isaacirani.kirurgisksimulator.R.id.drawer
-import android.widget.Toast
-import android.support.annotation.NonNull
-import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
 import android.support.design.widget.NavigationView
-import android.util.Log
-import android.view.View
 import dk.dtu.isaacirani.kirurgisksimulator.GroupAdapter
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter
-import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockData
-import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
@@ -32,8 +23,9 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
 
         //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
-        scenarioAdapter.createScenario(Scenario("name",1, 1, 2.0, true))
-        Log.e("scenarios", scenarioAdapter.scenarioList.toString())
+        groupAdapter.loadGroup()
+        //scenarioAdapter.createScenario(Scenario("name",1, 1, 2.0, true))
+        //Log.e("scenarios", scenarioAdapter.scenarioList.toString())
 
         setSupportActionBar(toolbar)
 
@@ -72,7 +64,7 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 startActivity(intent)
             }
             R.id.scenarios -> {
-                intent = Intent(this, SurgeonActivity::class.java)
+                intent = Intent(this, InstructorActivity::class.java)
                 finish()
                 startActivity(intent)
             }
