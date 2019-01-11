@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,10 +41,17 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
 
+    public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surgeon);
+
+        ratePreview = findViewById(R.id.RatePreviewValue);
+        pressurePreview = findViewById(R.id.PressurePreviewValue);
+        volumePreview = findViewById(R.id.VolumePreviewValue);
+        nozzlePreview = findViewById(R.id.Nozzle);
 
         l = findViewById(R.id.lin);
 
@@ -60,6 +68,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                scenarioList.clear();
                 for (DataSnapshot scenario : dataSnapshot.getChildren()){
                     scenarioList.add(scenario.getValue(Scenario.class));
 
@@ -112,7 +121,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 break;
             
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -120,15 +128,20 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
     @Override
     public void onClick(View v) {
-            adapter.notifyItemChanged(ViewHolder.chosenStudent);
+        Scenario scenario = spAdapter.getChosenScenario();
+        int chosenStudent = adapter.getChosenStudent();
+        if(scenario != null && chosenStudent > 0) {
+            mockData.getStudents()[chosenStudent].setScenario(scenario);
+            adapter.notifyItemChanged(chosenStudent);
+        }
     }
 
     public void loadRec(){
         scenarioPicker = findViewById(R.id.scenarioPicker);
         scenarioPicker.setAdapter(spAdapter);
-        scenarioPicker.setHasFixedSize(true);
+        scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         scenarioPicker.setOnClickListener(this);
+        Log.e("tæst", scenarioList.size()+"");
     }
-
 }

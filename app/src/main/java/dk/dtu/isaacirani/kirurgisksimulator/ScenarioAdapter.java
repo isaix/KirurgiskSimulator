@@ -25,6 +25,7 @@ public class ScenarioAdapter {
 
 
     public ArrayList<Scenario> getScenarioList(){
+
         return scenarioList;
     }
 

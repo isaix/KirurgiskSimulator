@@ -58,15 +58,15 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         String finalName = name.getText().toString();
 
         if(inflation_hose.isChecked()){
-            Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,true);
-            scenarioAdapter.createScenario(scenario);
+           // Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,true);
+            //scenarioAdapter.createScenario(scenario);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
         }
         else{
-            Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,false);
-            scenarioAdapter.createScenario(scenario);
+            //Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,false);
+            //scenarioAdapter.createScenario(scenario);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
