@@ -40,17 +40,24 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
 
-    public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview;
+    public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
 
-        ratePreview = findViewById(R.id.RatePreviewValue);
-        pressurePreview = findViewById(R.id.PressurePreviewValue);
-        volumePreview = findViewById(R.id.VolumePreviewValue);
-        nozzlePreview = findViewById(R.id.Nozzle);
+
+
+        airPreview = findViewById(R.id.airPreview);
+        ratePreview = findViewById(R.id.ratePreview);
+        pressurePreview = findViewById(R.id.pressurePreview);
+        volumePreview = findViewById(R.id.volumePreview);
+        nozzlePreview = findViewById(R.id.nozzlePreview);
+        pressurePreview1 = findViewById(R.id.pressureBar1Preview);
+        pressurePreview2 = findViewById(R.id.pressureBar2Preview);
+        ratePreview1 = findViewById(R.id.rateBar1Preview);
+        ratePreview2 = findViewById(R.id.rateBar2Preview);
 
         l = findViewById(R.id.lin);
 
@@ -97,6 +104,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -141,6 +149,5 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         scenarioPicker.setOnClickListener(this);
-        Log.e("tæst", scenarioList.size()+"");
     }
 }
