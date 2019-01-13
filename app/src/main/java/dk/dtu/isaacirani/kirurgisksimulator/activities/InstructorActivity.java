@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
+import android.util.Log;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;

@@ -9,12 +9,14 @@ import android.support.v4.view.GravityCompat
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import android.view.MenuItem
 import android.support.design.widget.NavigationView
-import dk.dtu.isaacirani.kirurgisksimulator.GroupAdapter
+import android.util.Log
+import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter
+import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
-    var groupAdapter = GroupAdapter()
+    var groupAdapter = GroupRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +24,22 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         var scenarioAdapter = ScenarioAdapter()
 
 
+//        scenarioAdapter.createScenario(Scenario("Edmund",4, 5, 2, 1))
+//        scenarioAdapter.createScenario(Scenario("Lucy ",6, 8, 4, 1))
+//        scenarioAdapter.createScenario(Scenario("Peter",1, 4, 7, 1))
+//        scenarioAdapter.createScenario(Scenario("Susan",2, 7, 6, 1))
+//        scenarioAdapter.createScenario(Scenario("Mr.Robot",4, 6, 6, 1))
+//        scenarioAdapter.createScenario(Scenario("Stefan",4, 5, 2, 1))
+//        scenarioAdapter.createScenario(Scenario("Damon ",6, 8, 4, 1))
+//        scenarioAdapter.createScenario(Scenario("Alaric",1, 4, 7, 1))
+//        scenarioAdapter.createScenario(Scenario("John",2, 7, 6, 1))
+//        scenarioAdapter.createScenario(Scenario("Mr.Kitty",4, 6, 6, 1))
+
+
         //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
-        groupAdapter.loadGroup()
-        //scenarioAdapter.createScenario(Scenario("name",1, 1, 2.0, true))
-        //Log.e("scenarios", scenarioAdapter.scenarioList.toString())
+//        groupAdapter.loadGroup{ group -> testFun(group)}
+//        groupAdapter.addStudentToGroup(Student(0,"Brian", Scenario()))
+
 
         setSupportActionBar(toolbar)
 
@@ -47,6 +61,10 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         } else {
             super.onBackPressed()
         }
+    }
+
+    fun testFun(group: Group){
+        Log.e("TestFun", group.instructor.name + ", denne gang i callback")
     }
 
 
