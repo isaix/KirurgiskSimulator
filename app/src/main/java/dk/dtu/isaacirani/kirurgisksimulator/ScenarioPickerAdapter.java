@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import dk.dtu.isaacirani.kirurgisksimulator.activities.InstructorActivity;
-import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerViewHolder> {
@@ -42,14 +41,12 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
                 InstructorActivity.pressurePreview.setText(String.valueOf(scenarios.get(i).getPressure()));
                 InstructorActivity.volumePreview.setText(String.valueOf(scenarios.get(i).getVolume()));
                 InstructorActivity.nozzlePreview.setText(String.valueOf(scenarios.get(i).isNozzle()));
-                InstructorActivity.airPreview.setText(String.valueOf(scenarios.get(i).getAir()));
-                InstructorActivity.pressurePreview1.setText(String.valueOf(scenarios.get(i).getPressureBar1()));
-                InstructorActivity.pressurePreview2.setText(String.valueOf(scenarios.get(i).getPressureBar2()));
-                InstructorActivity.ratePreview1.setText(String.valueOf(scenarios.get(i).getRateBar1()));
-                InstructorActivity.ratePreview2.setText(String.valueOf(scenarios.get(i).getRateBar2()));
             }
         });
         viewHolder.scenario_name.setId(i);
+        if(i % 2 == 0){
+            viewHolder.scenario_name.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
         Scenario scenario = scenarios.get(i);
         viewHolder.scenario_name.setText(scenario.getName());
 
