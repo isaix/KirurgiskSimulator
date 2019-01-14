@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InstructorFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.InstructorActivity"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/ID"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="ID"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Name"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Name"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Air"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Air"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Pressure"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Pressure"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Pressurebar1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Pressure Bar 1"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Pressurebar2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="12"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Pressure Bar 2"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Rate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Rate"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Ratebar1"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Rate Bar 1"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Ratebar2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Rate Bar 2"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Volume"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Volume"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/Nozzle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:background="@drawable/recyclerviewtext"
+                    android:gravity="center"
+                    android:text="Nozzle"
+                    android:textSize="19sp" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                </FrameLayout>
+
+            </TableRow>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="315dp"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/scenarioPicker"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/air"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:text="Air"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/pressure2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Pressure"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/pressurebar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Pressure Bar 1"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/pressurebar2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="12"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Pressure Bar 2"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/rate2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Rate"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/ratebar"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Rate Bar 1"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/ratebar2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Rate Bar 2"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/volume"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Volume"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/nozzle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:text="Nozzle"
+                    android:textSize="19sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/airPreview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/pressurePreview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/pressureBar1Preview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/pressureBar2Preview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="12"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/ratePreview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/rateBar1Preview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/rateBar2Preview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/volumePreview"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/nozzlePreview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:background="@drawable/recyclerviewtextpreview"
+                    android:gravity="center"
+                    android:textSize="19sp" />
+            </TableRow>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

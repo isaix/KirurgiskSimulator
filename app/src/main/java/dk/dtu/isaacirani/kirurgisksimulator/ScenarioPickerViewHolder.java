@@ -5,7 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import dk.dtu.isaacirani.kirurgisksimulator.activities.SurgeonActivity;
+import dk.dtu.isaacirani.kirurgisksimulator.activities.InstructorActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 
 public class ScenarioPickerViewHolder extends RecyclerView.ViewHolder {

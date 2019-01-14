@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dk.dtu.isaacirani.kirurgisksimulator">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,13 +29,25 @@
             android:name=".activities.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.SurgeonActivity"
+            android:name=".activities.InstructorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".StudentLoginActivity" >
         </activity>
-        <activity android:name=".SurgeonLoginActivity"></activity>
-        <activity android:name=".activities.ScenarioCreatorActivity"></activity>
+
+        <receiver android:name=".NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+
+        <activity android:name=".InstructorLoginActivity"></activity>
         <activity android:name=".activities.AboutActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="5c184a0967c8a67a7694c1c4b91cf73194583ed4" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -1,20 +1,23 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
-import android.media.Image;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
@@ -24,23 +27,18 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     SimulatorPresenter presenter;
 
     private boolean isOn;
-    private int buttonvalue_1 = 00;
-    private int buttonvalue_2 = 00;
-    private ImageView barblank1_1;
-    private ImageView barblank1_2;
-    private ImageView barblank2_1;
-    private ImageView barblank2_2;
-    private TextView totalvalue;
-    private TextView value_1;
-    private TextView value_2;
+    private TextView volume;
+    private TextView pressure;
+    private TextView rate;
     private Switch switchbutton;
-    private ImageButton minusbutton_1;
-    private ImageButton plusbutton_1;
-    private ImageButton minusbutton_2;
-    private ImageButton plusbutton_2;
+
     //nyt
-    private ProgressBar progressbar1;
-    private ProgressBar progressicon;
+    private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
+    private FloatingActionButton floatingplus1, floatingminus1, floatingplus2, floatingminus2;
+
+    //nyt BR
+    View view;
+
 
 
     @Override
@@ -59,176 +57,95 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
-        barblank1_1 = (ImageView) frame2.findViewById(R.id.barblank1);
-        barblank2_1 = (ImageView) frame2.findViewById(R.id.barblank2);
-        barblank1_2 = (ImageView) frame3.findViewById(R.id.barblank1);
-        barblank2_2 = (ImageView) frame3.findViewById(R.id.barblank2);
-        minusbutton_1 = (ImageButton) frame2.findViewById(R.id.minusbutton);
-        plusbutton_1 = (ImageButton) frame2.findViewById(R.id.plusbutton);
-        minusbutton_2 = (ImageButton) frame3.findViewById(R.id.minusbutton);
-        plusbutton_2 = (ImageButton) frame3.findViewById(R.id.plusbutton);
-        value_1 = (TextView) frame2.findViewById(R.id.value);
-        value_2 = (TextView) frame3.findViewById(R.id.value);
-        totalvalue = (TextView) frame4.findViewById(R.id.totalvalue);
+        airBar = frame1.findViewById(R.id.airBar);
+
+        floatingplus1 = frame2.findViewById(R.id.floatingplus1);
+        floatingminus1 = frame2.findViewById(R.id.floatingminus1);
+        pressure = (TextView) frame2.findViewById(R.id.pressure);
+        pressureBar1 = frame2.findViewById(R.id.progressbar1);
+        pressureBar2 = frame2.findViewById(R.id.progressbar2);
+
+        floatingplus2 = frame3.findViewById(R.id.floatingplus2);
+        floatingminus2 = frame3.findViewById(R.id.floatingminus2);
+        rate = (TextView) frame3.findViewById(R.id.rate);
+        rateBar1 = frame3.findViewById(R.id.progressbar1);
+        rateBar2 = frame3.findViewById(R.id.progressbar2);
+
+        volume = (TextView) frame4.findViewById(R.id.totalvalue);
+
 
         //setter onclick på knapperne
-        plusbutton_1.setOnClickListener(this);
-        minusbutton_1.setOnClickListener(this);
-        plusbutton_2.setOnClickListener(this);
-        minusbutton_2.setOnClickListener(this);
-        value_1.setOnClickListener(this);
-        value_2.setOnClickListener(this);
-        totalvalue.setOnClickListener(this);
+        floatingplus1.setOnClickListener(this);
+        floatingminus1.setOnClickListener(this);
+        floatingminus2.setOnClickListener(this);
+        floatingplus2.setOnClickListener(this);
+
+        pressure.setOnClickListener(this);
+        rate.setOnClickListener(this);
+        volume.setOnClickListener(this);
         switchbutton.setOnCheckedChangeListener(this);
-
-
-        progressbar1 = frame2.findViewById(R.id.progressbar1);
-        progressicon = frame1.findViewById(R.id.progressicon);
-
-        progressicon.setMax(50);
-        progressicon.setProgress(1);
-
-        progressbar1.setMax(60);
-        progressbar1.setProgress(1);
-
         //tror det er den her i skal bruge for den røde, hilsen Yoss
         //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
 
+        //nyt BR
+        registerReceiver();
+
+        view = findViewById(android.R.id.content);
+
     }
 
+
+    private void animateFloatingButton(final FloatingActionButton floatingActionButton) {
+        floatingActionButton.animate().scaleX(0.9f).scaleY(0.9f).setDuration(10).withEndAction(new Runnable() {
+
+            @Override
+            public void run() {
+                floatingActionButton.animate().scaleX(1f).scaleY(1f);
+
+            }
+        });
+    }
 
     @Override
     public void onClick(View view) {
-        if (isOn) {
-            if (plusbutton_1 == view && buttonvalue_1 < 12) {
-                buttonvalue_1++;
-                value_1.setText(String.valueOf(buttonvalue_1));
-                update1stBar();
-                update2ndBar();
-            } else if (minusbutton_1 == view && buttonvalue_1 > 0) {
-                buttonvalue_1--;
-                value_1.setText(String.valueOf(buttonvalue_1));
-                update1stBar();
-                update2ndBar();
-            }
+        if (view == pressure) {
+            Log.e("UNDER", "PRESSURE");
 
-            if (plusbutton_2 == view && buttonvalue_2 < 12) {
-                Log.e(buttonvalue_1+"", "yeees");
-                buttonvalue_2++;
-                value_2.setText(String.valueOf(buttonvalue_2));
-                update3rdBar();
-                update4thBar();
-            } else if (minusbutton_2 == view && buttonvalue_2 > 0) {
-                buttonvalue_2--;
-                value_2.setText(String.valueOf(buttonvalue_2));
-                update3rdBar();
-                update4thBar();
-            }
+        }
+        if (view == floatingplus1) {
+            animateFloatingButton(floatingplus1);
+        }
+        if (view == floatingminus1) {
+            animateFloatingButton(floatingminus1);
+        }
+        if (view == floatingplus2) {
+            animateFloatingButton(floatingplus2);
+        }
+        if (view == floatingminus2) {
+            animateFloatingButton(floatingminus2);
         }
     }
 
-    @Override
-        public void update1stBar() {
-            switch (buttonvalue_1 / 2) {
-                case 1:
-                    barblank1_1.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank1_1.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank1_1.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank1_1.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank1_1.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank1_1.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
-    @Override
-        public void update2ndBar() {
-            switch (buttonvalue_1 / 2) {
-                case 1:
-                    barblank2_1.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank2_1.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank2_1.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank2_1.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank2_1.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank2_1.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
+    public void turnOnMachine() {
 
-    @Override
-        public void update3rdBar() {
-            switch (buttonvalue_2 / 2) {
-                case 1:
-                    barblank1_2.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank1_2.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank1_2.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank1_2.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank1_2.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank1_2.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
-    @Override
-        public void update4thBar () {
-            switch (buttonvalue_2 / 2) {
-                case 1:
-                    barblank2_2.setImageResource(R.drawable.bar1);
-                    break;
-                case 2:
-                    barblank2_2.setImageResource(R.drawable.bar2);
-                    break;
-                case 3:
-                    barblank2_2.setImageResource(R.drawable.bar3);
-                    break;
-                case 4:
-                    barblank2_2.setImageResource(R.drawable.bar4);
-                    break;
-                case 5:
-                    barblank2_2.setImageResource(R.drawable.bar5);
-                    break;
-                case 6:
-                    barblank2_2.setImageResource(R.drawable.bar6);
-                default:
-                    break;
-            }
-        }
+    }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Scenario scenario = new Scenario();
+        scenario.setAir(50);
+        scenario.setPressure(25);
+        scenario.setPressureBar1(10);
+        scenario.setPressureBar2(20);
+        scenario.setRate(10);
+        scenario.setRateBar1(25);
+        scenario.setRateBar2(60);
+        scenario.setVolume(20.6);
+
+
         isOn = isChecked;
         if (isChecked) {
+            changeDisplayValues(scenario);
             Toast.makeText(getApplicationContext(), "ON", Toast.LENGTH_LONG).show();
             turnOnMachine();
         } else {
@@ -236,23 +153,71 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    @Override
-    public void turnOnMachine(){
-        update1stBar();
-        update2ndBar();
-        update3rdBar();
-        update4thBar();
-    }
 
     @Override
     public void changeDisplayValues(Scenario scenario) {
-        value_1.setText(String.valueOf(scenario.getRate()));
-        totalvalue.setText(String.valueOf(scenario.getVolume()));
-        value_2.setText(String.valueOf(scenario.getPressure()));
-        update1stBar();
-        update2ndBar();
-        update3rdBar();
-        update4thBar();
+        airBar.setProgress(scenario.getAir());
 
+        pressureBar1.setProgress(scenario.getPressureBar1());
+        pressureBar2.setProgress(scenario.getPressureBar2());
+        pressure.setText(String.valueOf(scenario.getPressure()));
+        Log.e("PRESSURE", String.valueOf(scenario.getPressure()));
+
+        rateBar1.setProgress(scenario.getRateBar1());
+        rateBar2.setProgress(scenario.getRateBar2());
+        rate.setText(String.valueOf(scenario.getRate()));
+        String newVolume = String.valueOf(scenario.getVolume());
+        if (newVolume.length() > 4) {
+            newVolume = newVolume.substring(0, 3);
+        }
+
+        volume.setText(newVolume);
+    }
+
+
+    //nyt BR
+
+    private void registerReceiver() {
+
+        try {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(NetworkChangeReceiver.NETWORK_CHANGE_ACTION);
+            registerReceiver(networkChangeReceiver, filter);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        try {
+            unregisterReceiver(networkChangeReceiver);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } super.onDestroy();
+    }
+
+    InternalNetworkChangeReceiver networkChangeReceiver = new InternalNetworkChangeReceiver();
+    class InternalNetworkChangeReceiver extends BroadcastReceiver {
+
+
+        @Override
+        public void onReceive(Context c, Intent i) {
+
+            if (i.getBooleanExtra("networkstatus", false) == false) {
+                Snackbar.make(view, String.valueOf(i.getBooleanExtra("networkstatus", false)), Snackbar.LENGTH_LONG).show();
+
+                // det skal rettes og
+                //der skal sættes flere snackbars ind for andre statusser.
+
+            }
+        }
     }
 }
+
+
