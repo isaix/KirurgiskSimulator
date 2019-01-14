@@ -26,6 +26,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="75sp"
+            android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.06"
