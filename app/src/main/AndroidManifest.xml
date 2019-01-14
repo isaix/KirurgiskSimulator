@@ -44,6 +44,8 @@
 
         <activity android:name=".InstructorLoginActivity"></activity>
         <activity android:name=".activities.AboutActivity"></activity>
+        <activity android:name=".activities.ScenarioCreatorActivity" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="5c184a0967c8a67a7694c1c4b91cf73194583ed4" />
