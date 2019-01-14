@@ -44,7 +44,7 @@
             app:srcCompat="@drawable/minusbutton" />
 
         <TextView
-            android:id="@+id/value"
+            android:id="@+id/pressure"
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_marginStart="144dp"
@@ -105,8 +105,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:max="100"
-            android:progress="20"
+            android:max="50"
+            android:progress="0"
             android:progressDrawable="@drawable/progressbardetails"
             app:layout_constraintBottom_toTopOf="@+id/minusbutton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +125,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:max="100"
+            android:max="50"
             android:progress="10"
             android:progressDrawable="@drawable/progressbardetails"
             app:layout_constraintBottom_toTopOf="@+id/minusbutton"
@@ -164,7 +164,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.86"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/value"
+            app:layout_constraintTop_toBottomOf="@+id/pressure"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
@@ -175,7 +175,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/value"
+            app:layout_constraintBottom_toTopOf="@+id/pressure"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.956"
             app:layout_constraintStart_toStartOf="parent"
@@ -191,7 +191,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/value"
+            app:layout_constraintBottom_toTopOf="@+id/pressure"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.731"
             app:layout_constraintStart_toStartOf="parent"

@@ -16,10 +16,6 @@ public class SimulatorPresenter {
 
         void changeDisplayValues(Scenario scenario);
         void turnOnMachine();
-        void update1stBar();
-        void update2ndBar();
-        void update3rdBar();
-        void update4thBar();
 
     }
 }

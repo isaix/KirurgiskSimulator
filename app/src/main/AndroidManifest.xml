@@ -27,12 +27,12 @@
             android:name=".activities.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.SurgeonActivity"
+            android:name=".activities.InstructorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".StudentLoginActivity" >
         </activity>
-        <activity android:name=".SurgeonLoginActivity"></activity>
-        <activity android:name=".activities.ScenarioCreatorActivity"></activity>
+        <activity android:name=".InstructorLoginActivity"></activity>
+        <activity android:name=".activities.CreateScenarioActivity"></activity>
         <activity android:name=".activities.AboutActivity"></activity>
     </application>
 

@@ -3,7 +3,6 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.TestLooperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +12,9 @@ import android.widget.TextView;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
-import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 
-
-public class ScenarioCreatorActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateScenarioActivity extends AppCompatActivity implements View.OnClickListener {
 
     ScenarioAdapter scenarioAdapter = new ScenarioAdapter();
     TextView pressure;
@@ -31,7 +28,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.scenariocreate_activity);
+        setContentView(R.layout.create_scenario_activity);
 
         pressure = findViewById(R.id.pressure);
         inflation_rate = findViewById(R.id.Inflation_rate);
@@ -58,15 +55,15 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         String finalName = name.getText().toString();
 
         if(inflation_hose.isChecked()){
-            Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,true);
-            scenarioAdapter.createScenario(scenario);
+           // Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,true);
+            //scenarioAdapter.createScenario(scenario);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
         }
         else{
-            Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,false);
-            scenarioAdapter.createScenario(scenario);
+            //Scenario scenario = new Scenario(finalName,finalPressure,finalInflation,finalTotal,false);
+            //scenarioAdapter.createScenario(scenario);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
