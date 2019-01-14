@@ -46,7 +46,7 @@ public class GroupRepository {
     fun createGroupWithStudents(instructor: Instructor, studentList: MutableList<Student>) {
         instructorRef.setValue(instructor)
         for (student in studentList) {
-            studentsRef.child(studentsRef.key!!).setValue(student)
+            studentsRef.child(studentsRef.push().key!!).setValue(student)
         }
     }
 
@@ -55,7 +55,7 @@ public class GroupRepository {
     }
 
     fun addStudentToGroup(student: Student) {
-        studentsRef.child(studentsRef.key!!).setValue(student)
+        studentsRef.child(studentsRef.push().key!!).setValue(student)
     }
 
 
