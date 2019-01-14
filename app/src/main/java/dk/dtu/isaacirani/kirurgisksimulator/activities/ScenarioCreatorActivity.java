@@ -61,7 +61,6 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     //nyt
     private ProgressBar progressbar1;
     private ProgressBar progressicon;
-    public EditText pressureValue;
     Scenario scenario = new Scenario();
 
     @Override
@@ -150,6 +149,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                 alertDialogBuilder.setTitle("Set Inflation Rate");
                 final EditText input = new EditText(this);
                 input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                alertDialogBuilder.setView(input);
                 alertDialogBuilder.setButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
