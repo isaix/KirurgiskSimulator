@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
+import android.util.Log;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,7 +12,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -27,12 +27,11 @@ import java.util.ArrayList;
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
-import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
-public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
@@ -42,17 +41,24 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
 
-    public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview;
+    public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_surgeon);
+        setContentView(R.layout.activity_instructor);
 
-        ratePreview = findViewById(R.id.RatePreviewValue);
-        pressurePreview = findViewById(R.id.PressurePreviewValue);
-        volumePreview = findViewById(R.id.VolumePreviewValue);
-        nozzlePreview = findViewById(R.id.Nozzle);
+
+
+        airPreview = findViewById(R.id.airPreview);
+        ratePreview = findViewById(R.id.ratePreview);
+        pressurePreview = findViewById(R.id.pressurePreview);
+        volumePreview = findViewById(R.id.volumePreview);
+        nozzlePreview = findViewById(R.id.nozzlePreview);
+        pressurePreview1 = findViewById(R.id.pressureBar1Preview);
+        pressurePreview2 = findViewById(R.id.pressureBar2Preview);
+        ratePreview1 = findViewById(R.id.rateBar1Preview);
+        ratePreview2 = findViewById(R.id.rateBar2Preview);
 
         l = findViewById(R.id.lin);
 
@@ -99,6 +105,7 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -116,7 +123,7 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
                 startActivity(intent);
                 break;
             case R.id.scenarios:
-                intent = new Intent(this, SurgeonActivity.class);
+                intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
@@ -143,6 +150,5 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         scenarioPicker.setOnClickListener(this);
-        Log.e("tæst", scenarioList.size()+"");
     }
 }

@@ -3,7 +3,7 @@
     android:id="@+id/scenario_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#8bcff9"
+    android:background="@drawable/recyclerviewtextpreview"
     android:paddingRight="20sp"
     android:textSize="24sp">
 

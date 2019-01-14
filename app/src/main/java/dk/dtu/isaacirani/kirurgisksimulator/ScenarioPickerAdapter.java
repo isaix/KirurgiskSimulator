@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import dk.dtu.isaacirani.kirurgisksimulator.activities.SurgeonActivity;
+import dk.dtu.isaacirani.kirurgisksimulator.activities.InstructorActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerViewHolder> {
@@ -37,10 +37,10 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
             @Override
             public void onClick(View v) {
                 chosenScenario = scenarios.get(i);
-                SurgeonActivity.ratePreview.setText(String.valueOf(scenarios.get(i).getRate()));
-                SurgeonActivity.pressurePreview.setText(String.valueOf(scenarios.get(i).getPressure()));
-                SurgeonActivity.volumePreview.setText(String.valueOf(scenarios.get(i).getVolume()));
-                SurgeonActivity.nozzlePreview.setText(String.valueOf(scenarios.get(i).isNozzle()));
+                InstructorActivity.ratePreview.setText(String.valueOf(scenarios.get(i).getRate()));
+                InstructorActivity.pressurePreview.setText(String.valueOf(scenarios.get(i).getPressure()));
+                InstructorActivity.volumePreview.setText(String.valueOf(scenarios.get(i).getVolume()));
+                InstructorActivity.nozzlePreview.setText(String.valueOf(scenarios.get(i).isNozzle()));
             }
         });
         viewHolder.scenario_name.setId(i);
