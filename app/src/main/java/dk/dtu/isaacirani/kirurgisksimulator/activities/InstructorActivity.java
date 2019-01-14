@@ -40,7 +40,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
-public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
@@ -99,7 +99,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setOnClickListener(this);
         FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
 
 
@@ -121,7 +120,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         });
 
 
-        l.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -163,23 +161,11 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
-
-    @Override
-    public void onClick(View v) {
-        Scenario scenario = spAdapter.getChosenScenario();
-        int chosenStudent = adapter.getChosenStudent();
-        if(scenario != null && chosenStudent > 0) {
-            mockData.getStudents()[chosenStudent].setScenario(scenario);
-            adapter.notifyItemChanged(chosenStudent);
-        }
-    }
-
     public void loadRec(){
         scenarioPicker = findViewById(R.id.scenarioPicker);
         scenarioPicker.setAdapter(spAdapter);
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        scenarioPicker.setOnClickListener(this);
         Log.e("tæst", scenarioList.size() + "");
     }
 
@@ -217,7 +203,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setOnClickListener(this);
+
     }
 
     InternalNetworkChangeReceiver networkChangeReceiver = new InternalNetworkChangeReceiver();

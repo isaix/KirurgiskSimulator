@@ -1,12 +1,16 @@
 package dk.dtu.isaacirani.kirurgisksimulator;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -43,30 +47,32 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.TableRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
-                notifyItemChanged(i);
-                viewHolder.TableRow.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.ID.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.Name.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.Pressure.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.PressureBar1.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.PressureBar2.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.Rate.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.RateBar1.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.RateBar2.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.Air.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.Volume.setBackgroundResource(R.drawable.recyclerviewtextred);
-                viewHolder.Nozzle.setBackgroundResource(R.drawable.recyclerviewtextred);
+                if(ScenarioPickerAdapter.chosenScenario != null) {
+                    students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
+                   // notifyItemChanged(i);
+
+                    viewHolder.ID.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.Name.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.Pressure.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.PressureBar1.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.PressureBar2.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.Rate.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.RateBar1.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.RateBar2.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.Air.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.Volume.setBackgroundResource(R.drawable.redrecyclerviewtext);
+                    viewHolder.Nozzle.setBackgroundResource(R.drawable.redrecyclerviewtext);
+
+                }
             }
         });
         viewHolder.checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 notifyItemChanged(i);
-                viewHolder.TableRow.setBackgroundResource(R.drawable.recyclerviewtext);
                 viewHolder.ID.setBackgroundResource(R.drawable.recyclerviewtext);
                 viewHolder.Name.setBackgroundResource(R.drawable.recyclerviewtext);
                 viewHolder.Pressure.setBackgroundResource(R.drawable.recyclerviewtext);
@@ -78,13 +84,14 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 viewHolder.Air.setBackgroundResource(R.drawable.recyclerviewtext);
                 viewHolder.Volume.setBackgroundResource(R.drawable.recyclerviewtext);
                 viewHolder.Nozzle.setBackgroundResource(R.drawable.recyclerviewtext);
+
+                Log.e("Grøn", "Grøn");
             }
         });
 
         Student student = students.get(i);
         viewHolder.TableRow.setId(i);
         viewHolder.ID.setText(String.valueOf(i+1));
-//        viewHolder.ID.setText(String.valueOf(student.getId_s()));
         viewHolder.Name.setText(student.getName());
         viewHolder.Pressure.setText(String.valueOf(student.getScenario().getPressure()));
         viewHolder.PressureBar1.setText(String.valueOf(student.getScenario().getPressureBar1()));
@@ -109,7 +116,4 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         return students.size();
     }
 
-    public int getChosenStudent(){
-        return chosenStudent;
-    }
 }

@@ -40,7 +40,6 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
                 InstructorActivity.ratePreview.setText(String.valueOf(scenarios.get(i).getRate()));
                 InstructorActivity.pressurePreview.setText(String.valueOf(scenarios.get(i).getPressure()));
                 InstructorActivity.volumePreview.setText(String.valueOf(scenarios.get(i).getVolume()));
-
                 InstructorActivity.pressurePreview1.setText(String.valueOf(scenarios.get(i).getPressureBar1()));
                 InstructorActivity.pressurePreview2.setText(String.valueOf(scenarios.get(i).getPressureBar2()));
                 InstructorActivity.ratePreview1.setText(String.valueOf(scenarios.get(i).getRateBar1()));
