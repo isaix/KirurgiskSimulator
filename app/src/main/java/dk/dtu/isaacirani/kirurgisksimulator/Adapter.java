@@ -19,6 +19,8 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     ArrayList<Student> students;
     int chosenStudent = -1;
+    int backGround;
+
 
     public Adapter(ArrayList<Student> students){
         this.students = students;
@@ -52,20 +54,9 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             public void onClick(View v) {
                 if(ScenarioPickerAdapter.chosenScenario != null) {
                     students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
-                   // notifyItemChanged(i);
-
-                    viewHolder.ID.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.Name.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.Pressure.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.PressureBar1.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.PressureBar2.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.Rate.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.RateBar1.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.RateBar2.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.Air.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.Volume.setBackgroundResource(R.drawable.redrecyclerviewtext);
-                    viewHolder.Nozzle.setBackgroundResource(R.drawable.redrecyclerviewtext);
-
+                    notifyItemChanged(i);
+                    chosenStudent = i;
+                    backGround = R.drawable.redrecyclerviewtext;
                 }
             }
         });
@@ -73,21 +64,24 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 notifyItemChanged(i);
-                viewHolder.ID.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.Name.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.Pressure.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.PressureBar1.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.PressureBar2.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.Rate.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.RateBar1.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.RateBar2.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.Air.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.Volume.setBackgroundResource(R.drawable.recyclerviewtext);
-                viewHolder.Nozzle.setBackgroundResource(R.drawable.recyclerviewtext);
-
-                Log.e("Grøn", "Grøn");
+                backGround = R.drawable.recyclerviewtext;
+                chosenStudent = i;
             }
         });
+
+        if(chosenStudent == i){
+            viewHolder.ID.setBackgroundResource(backGround);
+            viewHolder.Name.setBackgroundResource(backGround);
+            viewHolder.Pressure.setBackgroundResource(backGround);
+            viewHolder.PressureBar1.setBackgroundResource(backGround);
+            viewHolder.PressureBar2.setBackgroundResource(backGround);
+            viewHolder.Rate.setBackgroundResource(backGround);
+            viewHolder.RateBar1.setBackgroundResource(backGround);
+            viewHolder.RateBar2.setBackgroundResource(backGround);
+            viewHolder.Air.setBackgroundResource(backGround);
+            viewHolder.Volume.setBackgroundResource(backGround);
+            viewHolder.Nozzle.setBackgroundResource(backGround);
+        }
 
         Student student = students.get(i);
         viewHolder.TableRow.setId(i);
