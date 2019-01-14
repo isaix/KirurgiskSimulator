@@ -10,10 +10,12 @@
 
     <Button
         android:id="@+id/enterSurgeonLogin"
-        android:layout_width="92dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="248dp"
+        android:layout_width="111dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="259dp"
+        android:background="@drawable/details_standard_buttons"
         android:text="Enter"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,10 +41,10 @@
         app:layout_constraintBottom_toTopOf="@+id/enterSurgeonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/address" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"

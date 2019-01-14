@@ -61,8 +61,18 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
+
+
+        /*
+        ratePreview = findViewById(R.id.RatePreviewValue);
+        pressurePreview = findViewById(R.id.PressurePreviewValue);
+        volumePreview = findViewById(R.id.VolumePreviewValue);
+        nozzlePreview = findViewById(R.id.Nozzle);
+        */
+
         GroupRepository groupRepository = new GroupRepository();
         groupRepository.loadGroup(group -> {createAdapter(group); return null;});
+
 
 
 
@@ -150,12 +160,14 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 finish();
                 startActivity(intent);
                 break;
+
             case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
             
+
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
