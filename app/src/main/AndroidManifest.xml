@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dk.dtu.isaacirani.kirurgisksimulator">
 
+<!-- nyt -->
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- nyt slut -->
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,6 +38,19 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".StudentLoginActivity" >
         </activity>
+
+        <!-- nyt -->
+
+        <receiver android:name=".NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- nyt slut -->
+
+        
         <activity android:name=".SurgeonLoginActivity"></activity>
         <activity android:name=".activities.ScenarioCreatorActivity"></activity>
         <activity android:name=".activities.AboutActivity"></activity>
