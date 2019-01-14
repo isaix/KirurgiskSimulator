@@ -43,7 +43,6 @@
 
 
         <activity android:name=".InstructorLoginActivity"></activity>
-        <activity android:name=".activities.CreateScenarioActivity"></activity>
         <activity android:name=".activities.AboutActivity"></activity>
         <meta-data
             android:name="io.fabric.ApiKey"
