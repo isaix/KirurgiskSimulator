@@ -14,38 +14,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/plusbutton"
-            android:layout_width="125dp"
-            android:layout_height="34dp"
-            android:layout_marginBottom="88dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/plusbutton" />
-
-        <ImageButton
-            android:id="@+id/minusbutton"
-            android:layout_width="125dp"
-            android:layout_height="34dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.907"
-            app:srcCompat="@drawable/minusbutton" />
-
         <TextView
             android:id="@+id/rate"
             android:layout_width="0dp"
-            android:layout_height="74dp"
+            android:layout_height="72dp"
             android:layout_marginStart="144dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/black"
@@ -71,9 +43,9 @@
             android:max="30"
             android:progress="25"
             android:progressDrawable="@drawable/progressbardetails"
-            app:layout_constraintBottom_toTopOf="@+id/minusbutton"
+            app:layout_constraintBottom_toTopOf="@+id/floatingminus2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.176"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.25" />
@@ -90,16 +62,16 @@
             android:max="30"
             android:progress="10"
             android:progressDrawable="@drawable/progressbardetails"
-            app:layout_constraintBottom_toTopOf="@+id/minusbutton"
+            app:layout_constraintBottom_toTopOf="@+id/floatingminus2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.373"
+            app:layout_constraintHorizontal_bias="0.33"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.25" />
 
         <TextView
             android:id="@+id/valuebar"
-            android:layout_width="22dp"
+            android:layout_width="36dp"
             android:layout_height="249dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="4dp"
@@ -124,10 +96,53 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.857"
+            app:layout_constraintHorizontal_bias="0.867"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pressure"
+            app:layout_constraintTop_toBottomOf="@+id/rate"
             app:layout_constraintVertical_bias="0.0" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingminus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="#9ebf97"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.646"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.996"
+            app:rippleColor="@null"
+            app:srcCompat="@drawable/minusbutton" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingplus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="#9ebf97"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.257"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.964"
+            app:rippleColor="@null"
+            app:srcCompat="@drawable/plusbutton" />
 
         <ImageView
             android:id="@+id/imageView12"
@@ -136,13 +151,12 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/pressure"
+            android:layout_marginTop="52dp"
+            app:layout_constraintBottom_toTopOf="@+id/rate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintHorizontal_bias="0.87"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9"
             app:srcCompat="@drawable/icon2" />
 
     </android.support.constraint.ConstraintLayout>

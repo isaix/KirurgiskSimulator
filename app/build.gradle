@@ -56,4 +56,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.5'
     implementation 'com.google.firebase:firebase-core:16.0.5'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+    implementation 'com.android.support:design:23.4.0'
 }
