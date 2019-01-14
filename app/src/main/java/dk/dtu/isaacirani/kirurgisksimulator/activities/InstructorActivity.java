@@ -38,7 +38,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
 import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
-public class SurgeonActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
@@ -58,12 +58,14 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_surgeon);
+        setContentView(R.layout.activity_instructor);
 
+        /*
         ratePreview = findViewById(R.id.RatePreviewValue);
         pressurePreview = findViewById(R.id.PressurePreviewValue);
         volumePreview = findViewById(R.id.VolumePreviewValue);
         nozzlePreview = findViewById(R.id.Nozzle);
+        */
 
         l = findViewById(R.id.lin);
 
@@ -142,11 +144,11 @@ public class SurgeonActivity extends AppCompatActivity implements NavigationView
                 finish();
                 startActivity(intent);
                 break;
-            case R.id.scenarios:
+           /* case R.id.scenarios:
                 intent = new Intent(this, SurgeonActivity.class);
                 finish();
                 startActivity(intent);
-                break;
+                break;*/
 
         }
         drawer.closeDrawer(GravityCompat.START);
