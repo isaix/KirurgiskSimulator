@@ -92,7 +92,6 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         value_1 = (TextView) frame2.findViewById(R.id.value);
         value_2 = (TextView) frame3.findViewById(R.id.value);
         totalvalue = (TextView) frame4.findViewById(R.id.totalvalue);
-        pressureValue = findViewById(R.id.valueOfPressure);
 
         //setter onclick på knapperne
         plusbutton_1.setOnClickListener(this);
@@ -319,28 +318,4 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     }
 
 
-    private void showPopup(final Activity context, int xml) {
-        int width = 400;
-        int height = 300;
-        LinearLayout viewGroup = context.findViewById(R.id.popup);
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View viewLayout = layoutInflater.inflate(xml, viewGroup);
-        final PopupWindow popup = new PopupWindow(context);
-        popup.setContentView(viewLayout);
-        popup.setWidth(width);
-        popup.setHeight(height);
-        popup.setFocusable(true);
-        popup.showAtLocation(viewLayout, Gravity.CENTER, 0, 0);
-        Button confirmPressure = viewLayout.findViewById(R.id.confirmPressure);
-        confirmPressure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v.getId()==confirmPressure.getId()){
-                    scenario.setPressure(Integer.parseInt(pressureValue.getText().toString()));
-                    popup.dismiss();
-                }
-
-            }
-        });
-    }
 }
