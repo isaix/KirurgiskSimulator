@@ -1,7 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.media.Image;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +38,9 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private ImageButton plusbutton_1;
     private ImageButton minusbutton_2;
     private ImageButton plusbutton_2;
-    MediaPlayer buttonPush;
+    //nyt
+    private ProgressBar progressbar1;
+    private ProgressBar progressicon;
 
 
     @Override
@@ -78,13 +80,25 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         value_2.setOnClickListener(this);
         totalvalue.setOnClickListener(this);
         switchbutton.setOnCheckedChangeListener(this);
+
+
+        progressbar1 = frame2.findViewById(R.id.progressbar1);
+        progressicon = frame1.findViewById(R.id.progressicon);
+
+        progressicon.setMax(50);
+        progressicon.setProgress(1);
+
+        progressbar1.setMax(60);
+        progressbar1.setProgress(1);
+
+        //tror det er den her i skal bruge for den røde, hilsen Yoss
+        //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
+
     }
 
 
     @Override
     public void onClick(View view) {
-        buttonPush = MediaPlayer.create(this, R.raw.blip1);
-        buttonPush.start();
         if (isOn) {
             if (plusbutton_1 == view && buttonvalue_1 < 12) {
                 buttonvalue_1++;
@@ -139,7 +153,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         }
     @Override
         public void update2ndBar() {
-        switch (buttonvalue_1 / 2) {
+            switch (buttonvalue_1 / 2) {
                 case 1:
                     barblank2_1.setImageResource(R.drawable.bar1);
                     break;
@@ -164,7 +178,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
         public void update3rdBar() {
-        switch (buttonvalue_2 / 2) {
+            switch (buttonvalue_2 / 2) {
                 case 1:
                     barblank1_2.setImageResource(R.drawable.bar1);
                     break;
@@ -188,7 +202,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         }
     @Override
         public void update4thBar () {
-        switch (buttonvalue_2 / 2) {
+            switch (buttonvalue_2 / 2) {
                 case 1:
                     barblank2_2.setImageResource(R.drawable.bar1);
                     break;
@@ -213,9 +227,6 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        buttonPush = MediaPlayer.create(this, R.raw.turnon);
-        buttonPush.start();
-
         isOn = isChecked;
         if (isChecked) {
             Toast.makeText(getApplicationContext(), "ON", Toast.LENGTH_LONG).show();
