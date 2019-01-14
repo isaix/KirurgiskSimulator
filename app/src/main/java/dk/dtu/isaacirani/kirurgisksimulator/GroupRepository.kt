@@ -21,7 +21,7 @@ public class GroupRepository {
         mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val instructor: Instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!
-                var students: MutableList<Student> = mutableListOf()
+                var students: ArrayList<Student> = arrayListOf()
 
                 Log.e("Instructor", instructor.name)
                 for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {

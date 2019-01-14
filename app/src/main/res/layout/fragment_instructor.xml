@@ -48,7 +48,7 @@
                     android:id="@+id/Name"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="10"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Name"
@@ -78,26 +78,26 @@
                     android:id="@+id/Pressurebar1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="12"
+                    android:layout_weight="8"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
-                    android:text="Pressure Bar 1"
+                    android:text="Pressure\nBar 1"
                     android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/Pressurebar2"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="12"
+                    android:layout_weight="8"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
-                    android:text="Pressure Bar 2"
+                    android:text="Pressure\nBar 2"
                     android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/Rate"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
@@ -108,20 +108,20 @@
                     android:id="@+id/Ratebar1"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="6"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
-                    android:text="Rate Bar 1"
+                    android:text="Rate\nBar 1"
                     android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/Ratebar2"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="6"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
-                    android:text="Rate Bar 2"
+                    android:text="Rate\nBar 2"
                     android:textSize="19sp" />
 
                 <TextView
@@ -137,7 +137,7 @@
                 <TextView
                     android:id="@+id/Nozzle"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"

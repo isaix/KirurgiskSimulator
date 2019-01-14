@@ -8,14 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
-    Student[] data;
+    ArrayList<Student> students;
     int chosenStudent = -1;
 
-    public Adapter(Student[] data){
-        this.data = data;
+    public Adapter(ArrayList<Student> students){
+        this.students = students;
     }
     @NonNull
     @Override
@@ -44,7 +46,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data[i].setScenario(ScenarioPickerAdapter.chosenScenario);
+                students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
                 notifyItemChanged(i);
                 viewHolder.TableRow.setBackgroundResource(R.drawable.recyclerviewtextred);
                 viewHolder.ID.setBackgroundResource(R.drawable.recyclerviewtextred);
@@ -79,8 +81,9 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             }
         });
 
-        Student student = data[i];
+        Student student = students.get(i);
         viewHolder.TableRow.setId(i);
+        viewHolder.ID.setText(String.valueOf(i+1));
 //        viewHolder.ID.setText(String.valueOf(student.getId_s()));
         viewHolder.Name.setText(student.getName());
         viewHolder.Pressure.setText(String.valueOf(student.getScenario().getPressure()));
@@ -103,7 +106,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return students.size();
     }
 
     public int getChosenStudent(){
