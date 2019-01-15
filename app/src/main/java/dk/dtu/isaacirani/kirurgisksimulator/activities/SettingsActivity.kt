@@ -73,7 +73,7 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }
 
     fun testFun(group: Group){
-        group.students.map { student: Student ->  Log.e("TestFun", "denne gang i callback") }
+       // group.students.map { student: Student ->  Log.e("TestFun", "denne gang i callback") }
     }
 
 
