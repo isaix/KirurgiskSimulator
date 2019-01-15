@@ -42,7 +42,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="ID"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Name"
@@ -52,7 +53,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Name"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Air"
@@ -62,7 +64,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Air"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Pressure"
@@ -72,7 +75,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Pressure"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Pressurebar1"
@@ -82,7 +86,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Pressure\nBar 1"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Pressurebar2"
@@ -92,7 +97,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Pressure\nBar 2"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Rate"
@@ -102,7 +108,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Rate"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Ratebar1"
@@ -112,7 +119,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Rate\nBar 1"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Ratebar2"
@@ -122,7 +130,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Rate\nBar 2"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Volume"
@@ -132,7 +141,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Volume"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Nozzle"
@@ -142,7 +152,8 @@
                     android:background="@drawable/recyclerviewtext"
                     android:gravity="center"
                     android:text="Nozzle"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <FrameLayout
                     android:layout_width="0dp"
