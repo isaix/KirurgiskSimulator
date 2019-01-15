@@ -20,14 +20,15 @@ public class GroupRepository {
     fun loadGroup(callback: (Group) -> Unit) {
         mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
                 val instructor: Instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!
-                var students: ArrayList<Student> = arrayListOf()
+                var students: HashMap<String, Student> = hashMapOf()
+                Log.e("what's in here?", dataSnapshot.key)
 
                 Log.e("Instructor", instructor.name)
                 for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {
-                    var student = itemSnapshot.getValue(Student::class.java)!!
-                    Log.e("Student", student.name)
-                    students.add(student)
+                    Log.e("what's in here part 2?", itemSnapshot.key)
+                    students[itemSnapshot.key!!] = itemSnapshot.getValue(Student::class.java)!!
                 }
                 val activeGroup = Group(instructor, students)
                 Log.e("Group", activeGroup.instructor.name)
