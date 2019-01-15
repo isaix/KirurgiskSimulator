@@ -32,7 +32,7 @@
             android:layout_height="match_parent">
 
             <fragment
-                android:name="dk.dtu.isaacirani.kirurgisksimulator.InstructorFragment"
+                android:name="dk.dtu.isaacirani.kirurgisksimulator.MainMenuFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

@@ -62,14 +62,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
 
-
-        /*
-        ratePreview = findViewById(R.id.RatePreviewValue);
-        pressurePreview = findViewById(R.id.PressurePreviewValue);
-        volumePreview = findViewById(R.id.VolumePreviewValue);
-        nozzlePreview = findViewById(R.id.Nozzle);
-        */
-
         GroupRepository groupRepository = new GroupRepository();
         groupRepository.loadGroup(group -> {createAdapter(group); return null;});
 
@@ -105,7 +97,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         mockData = new MockData();
         mockScenarioList = new MockScenarioList();
         recyclerView = findViewById(R.id.recyclerView);
-        //adapter = new Adapter(mockData.getStudents());
+       // adapter = new Adapter(mockData.getStudents());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -211,7 +203,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
 
     void createAdapter(Group group){
-       // adapter = new Adapter(group.getStudents());
+        adapter = new Adapter(group.getStudents());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

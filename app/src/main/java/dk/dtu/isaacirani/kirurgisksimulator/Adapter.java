@@ -13,16 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
-    ArrayList<Student> students;
+    HashMap<String, Student> students;
+    ArrayList<Map.Entry<String,Student>>  studentList;
     int chosenStudent = -1;
     int backGround;
 
 
-    public Adapter(ArrayList<Student> students){
+    public Adapter(HashMap<String, Student> students){
         this.students = students;
     }
     @NonNull
@@ -43,7 +46,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         vh.Nozzle = view.findViewById(R.id.Nozzle);
         vh.Air = view.findViewById(R.id.Air);
         vh.checkButton = view.findViewById(R.id.checkButton);
-
+        studentList = new ArrayList<>();
+        studentList.addAll(students.entrySet());
         return  vh;
     }
 
@@ -53,7 +57,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 if(ScenarioPickerAdapter.chosenScenario != null) {
-                    students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
+                    studentList.get(i).getValue().setScenario(ScenarioPickerAdapter.chosenScenario);
+                   // students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
                     notifyItemChanged(i);
                     chosenStudent = i;
                     backGround = R.drawable.redrecyclerviewtext;
@@ -83,7 +88,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             viewHolder.Nozzle.setBackgroundResource(backGround);
         }
 
-        Student student = students.get(i);
+        Student student = studentList.get(i).getValue();
         viewHolder.TableRow.setId(i);
         viewHolder.ID.setText(String.valueOf(i+1));
         viewHolder.Name.setText(student.getName());
