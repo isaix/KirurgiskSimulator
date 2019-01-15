@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,6 +32,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private TextView pressure;
     private TextView rate;
     private Switch switchbutton;
+    MediaPlayer button;
+    MediaPlayer turnOnButton;
 
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
@@ -108,6 +111,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
+        button = MediaPlayer.create(this, R.raw.blip1);
+        button.start();
         if (view == pressure) {
             Log.e("UNDER", "PRESSURE");
 
@@ -132,6 +137,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        turnOnButton = MediaPlayer.create(this, R.raw.turnon);
+        turnOnButton.start();
         Scenario scenario = new Scenario();
         scenario.setAir(50);
         scenario.setPressure(25);

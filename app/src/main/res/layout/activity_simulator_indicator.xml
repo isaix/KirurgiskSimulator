@@ -139,6 +139,7 @@
             app:srcCompat="@drawable/icon1" />
 
         <android.support.design.widget.FloatingActionButton
+            android:soundEffectsEnabled="false"
             android:id="@+id/floatingminus1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,6 +162,7 @@
 
 
         <android.support.design.widget.FloatingActionButton
+            android:soundEffectsEnabled="false"
             android:id="@+id/floatingplus1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
