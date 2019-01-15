@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dk.dtu.isaacirani.kirurgisksimulator">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -33,26 +33,26 @@
         <activity
             android:name=".activities.InstructorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".StudentLoginActivity" >
-        </activity>
+        <activity android:name=".StudentLoginActivity"></activity>
 
         <receiver android:name=".NetworkChangeReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <action android:name="android.net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
         </receiver>
 
-
-        <activity android:name=".InstructorLoginActivity"></activity>
-        <activity android:name=".activities.AboutActivity"></activity>
-        <activity android:name=".activities.ScenarioCreatorActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".InstructorLoginActivity" />
+        <activity android:name=".activities.AboutActivity" />
+        <activity
+            android:name=".activities.ScenarioCreatorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="5c184a0967c8a67a7694c1c4b91cf73194583ed4" />
+
+        <activity android:name=".activities.SplashScreenActivity"></activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
