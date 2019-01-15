@@ -4,7 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.MediaPlayer;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -32,8 +34,6 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private TextView pressure;
     private TextView rate;
     private Switch switchbutton;
-    MediaPlayer button;
-    MediaPlayer turnOnButton;
 
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
@@ -41,7 +41,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     //nyt BR
     View view;
+    Snackbar snackbarnotconnected;
+    Snackbar snackbarisconnected;
 
+
+    //nyt test animation
+    AnimationDrawable bottleanimation;
 
 
     @Override
@@ -65,13 +70,13 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
         pressure = (TextView) frame2.findViewById(R.id.pressure);
-        pressureBar1 = frame2.findViewById(R.id.progressbar1);
+        pressureBar1 = frame2.findViewById(R.id.progressBar1);
         pressureBar2 = frame2.findViewById(R.id.progressbar2);
 
         floatingplus2 = frame3.findViewById(R.id.floatingplus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
         rate = (TextView) frame3.findViewById(R.id.rate);
-        rateBar1 = frame3.findViewById(R.id.progressbar1);
+        rateBar1 = frame3.findViewById(R.id.progressBar1);
         rateBar2 = frame3.findViewById(R.id.progressbar2);
 
         volume = (TextView) frame4.findViewById(R.id.totalvalue);
@@ -95,8 +100,25 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         view = findViewById(android.R.id.content);
 
+        snackbarnotconnected = Snackbar.make(view, "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE);
+        snackbarisconnected = Snackbar.make(view, "Device is connected to internet", Snackbar.LENGTH_SHORT);
+
+        View snacknotconnectedview = snackbarnotconnected.getView();
+        TextView textView = snacknotconnectedview.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.RED);
+
+
+        //nyt animationstest
+        ImageView bottleanimated = frame1.findViewById(R.id.bottleanimated);
+        bottleanimated.setBackgroundResource(R.drawable.bottleanimation);
+        bottleanimation = (AnimationDrawable) bottleanimated.getBackground();
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        bottleanimation.start();
+    }
 
     private void animateFloatingButton(final FloatingActionButton floatingActionButton) {
         floatingActionButton.animate().scaleX(0.9f).scaleY(0.9f).setDuration(10).withEndAction(new Runnable() {
@@ -111,8 +133,6 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        button = MediaPlayer.create(this, R.raw.blip1);
-        button.start();
         if (view == pressure) {
             Log.e("UNDER", "PRESSURE");
 
@@ -137,8 +157,6 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        turnOnButton = MediaPlayer.create(this, R.raw.turnon);
-        turnOnButton.start();
         Scenario scenario = new Scenario();
         scenario.setAir(50);
         scenario.setPressure(25);
@@ -216,12 +234,16 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         @Override
         public void onReceive(Context c, Intent i) {
 
+
             if (i.getBooleanExtra("networkstatus", false) == false) {
-                Snackbar.make(view, String.valueOf(i.getBooleanExtra("networkstatus", false)), Snackbar.LENGTH_LONG).show();
+                snackbarnotconnected.show();
 
-                // det skal rettes og
-                //der skal sættes flere snackbars ind for andre statusser.
+            } else {
+                if (snackbarnotconnected.isShown()){
+                    snackbarnotconnected.dismiss();
+                    snackbarisconnected.show();
 
+                }
             }
         }
     }

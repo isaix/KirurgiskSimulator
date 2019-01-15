@@ -21,7 +21,7 @@ public class GroupRepository {
         mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val instructor: Instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!
-                var students: MutableList<Student> = mutableListOf()
+                var students: ArrayList<Student> = arrayListOf()
 
                 Log.e("Instructor", instructor.name)
                 for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {
@@ -46,7 +46,7 @@ public class GroupRepository {
     fun createGroupWithStudents(instructor: Instructor, studentList: MutableList<Student>) {
         instructorRef.setValue(instructor)
         for (student in studentList) {
-            studentsRef.child(studentsRef.key!!).setValue(student)
+            studentsRef.child(studentsRef.push().key!!).setValue(student)
         }
     }
 
@@ -55,7 +55,7 @@ public class GroupRepository {
     }
 
     fun addStudentToGroup(student: Student) {
-        studentsRef.child(studentsRef.key!!).setValue(student)
+        studentsRef.child(studentsRef.push().key!!).setValue(student)
     }
 
 

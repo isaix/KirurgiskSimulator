@@ -13,6 +13,8 @@ import android.util.Log
 import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
+import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
+import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
@@ -34,10 +36,17 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 //        scenarioAdapter.createScenario(Scenario("Alaric",1, 4, 7, 1))
 //        scenarioAdapter.createScenario(Scenario("John",2, 7, 6, 1))
 //        scenarioAdapter.createScenario(Scenario("Mr.Kitty",4, 6, 6, 1))
-
+//        groupAdapter.addStudentToGroup(Student("Edmund", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Lucy", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Peter", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Susan", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Dean", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Sam", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Bobby", Scenario()))
+//        groupAdapter.addStudentToGroup(Student("Castiel", Scenario()))
 
         //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
-//        groupAdapter.loadGroup{ group -> testFun(group)}
+        groupAdapter.loadGroup{ group -> testFun(group)}
 //        groupAdapter.addStudentToGroup(Student(0,"Brian", Scenario()))
 
 
