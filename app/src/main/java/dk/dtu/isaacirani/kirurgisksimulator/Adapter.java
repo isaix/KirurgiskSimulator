@@ -48,6 +48,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         vh.checkButton = view.findViewById(R.id.checkButton);
         studentList = new ArrayList<>();
         studentList.addAll(students.entrySet());
+        Log.e("test", studentList.size()+"");
         return  vh;
     }
 
