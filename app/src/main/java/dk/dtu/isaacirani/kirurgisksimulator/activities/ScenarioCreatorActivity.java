@@ -3,6 +3,7 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -42,11 +44,12 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     private TextView rate;
     private Switch switchbutton;
     private Button save;
-
+    private ImageView animationBottle;
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
     private FloatingActionButton floatingplus1, floatingminus1, floatingplus2, floatingminus2;
 
+    AnimationDrawable bottleanimation;
     //nyt BR
     View view;
 
@@ -80,6 +83,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         rate = (TextView) frame3.findViewById(R.id.rate);
         rateBar1 = frame3.findViewById(R.id.rateBar1);
         rateBar2 = frame3.findViewById(R.id.rateBar2);
+        ImageView bottleanimated = frame1.findViewById(R.id.bottleanimated);
+        bottleanimated.setBackgroundResource(R.drawable.bottleanimation);
+        bottleanimation = (AnimationDrawable) bottleanimated.getBackground();
 
         volume = (TextView) frame4.findViewById(R.id.totalvalue);
 
@@ -97,10 +103,12 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         rateBar2.setOnClickListener(this);
         volume.setOnClickListener(this);
         save.setOnClickListener(this);
+        airBar.setOnClickListener(this);
         //tror det er den her i skal bruge for den røde, hilsen Yoss
         //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
 
         view = findViewById(android.R.id.content);
+        bottleanimation.start();
 
     }
 
@@ -171,11 +179,10 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     }
                     if (Integer.parseInt(input.getText().toString()) <= 0 || Integer.parseInt(input.getText().toString()) > 51) {
                         Toast.makeText(getApplicationContext(), "Pressure not between 0 and 50", Toast.LENGTH_LONG).show();
-                    }
-                    else {
+                    } else {
                         pressureValue = Integer.parseInt(input.getText().toString());
-                        if(Integer.parseInt(input.getText().toString())<10){
-                            input.setText("0"+input.getText());
+                        if (Integer.parseInt(input.getText().toString()) < 10) {
+                            input.setText("0" + input.getText());
                         }
                         scenario.setPressure(pressureValue);
                         pressure.setText(input.getText());
@@ -306,7 +313,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             });
             alertDialogBuilder.show();
         }
-        if(view.getId()==save.getId()){
+        if (view.getId() == save.getId()) {
             AlertDialog alertDialogBuilder = new AlertDialog.Builder(this).create();
             alertDialogBuilder.setTitle("Type In Scenario Name");
             final EditText input = new EditText(this);
@@ -316,13 +323,32 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                 public void onClick(DialogInterface dialog, int which) {
                     if (input.getText() == null) {
                         input.setText("DefaultScenarioName");
-                    }
-                    else{
+                    } else {
                         name = input.getText().toString();
                         scenario.setName(name);
                         scenarioAdapter.createScenario(scenario);
-                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
+                    }
+                }
+            });
+            alertDialogBuilder.show();
+        }
+        if (view.getId() == airBar.getId()) {
+            AlertDialog alertDialogBuilder = new AlertDialog.Builder(this).create();
+            alertDialogBuilder.setTitle("Type in AirBar level");
+            final EditText input = new EditText(this);
+            alertDialogBuilder.setView(input);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            alertDialogBuilder.setButton("Confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (input.getText() == null) {
+                        input.setText("0");
+                    } else {
+                        air = Integer.parseInt(input.getText().toString());
+                        scenario.setAir(air);
+                        airBar.setProgress(air);
                     }
                 }
             });
