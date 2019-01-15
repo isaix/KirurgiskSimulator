@@ -45,7 +45,9 @@
 
 
         <activity android:name=".InstructorLoginActivity"></activity>
-        <activity android:name=".activities.AboutActivity"></activity>
+        <activity android:name=".activities.AboutActivity">
+            android:theme="@style/android:Theme.Black.NoTitleBar" >
+        </activity>
         <activity android:name=".activities.ScenarioCreatorActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 

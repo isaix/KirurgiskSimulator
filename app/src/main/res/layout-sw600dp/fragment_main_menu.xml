@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenuFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="89dp">
+
+        <Button
+            android:id="@+id/student"
+
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="80dp"
+
+            android:layout_marginEnd="280dp"
+            android:layout_marginStart="280dp"
+            android:background="@drawable/details_login_buttons"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="-1"
+            android:shadowDy="1"
+            android:shadowRadius="5"
+            android:text="Log In as student"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.679" />
+
+
+        <Button
+            android:id="@+id/Intructor"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="140dp"
+            android:layout_marginEnd="280dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/details_login_buttons"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="-1"
+            android:shadowDy="1"
+            android:shadowRadius="5"
+            android:text="Log In as Instructor"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/student" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="68dp"
+            android:layout_marginBottom="244dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.655"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.85"
+            app:srcCompat="@drawable/cames" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="128dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.148"
+            app:srcCompat="@drawable/logo" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
