@@ -50,7 +50,7 @@
         android:text="CAMES (Copenhagen Academy for Medical Education and Simulation) samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation. Målet med alle CAMES aktiviteter er at øge kvaliteten og sikkerheden i patientbehandlingen. CAMES er organisatorisk en del af Center for HR og var tidligere kendt som Dansk Institut for Medicinsk Simulation og Center for Klinisk Uddannelse. L​æs mere om CAMES, hvem vi er og hvordan du kan kontakte os herunder."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/simulationiregion" />
 
     <TextView
         android:id="@+id/textView2"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/simulationiregion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hvem er CAMES"
