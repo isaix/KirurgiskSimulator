@@ -211,7 +211,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
 
     void createAdapter(Group group){
-        adapter = new Adapter(group.getStudents());
+       // adapter = new Adapter(group.getStudents());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

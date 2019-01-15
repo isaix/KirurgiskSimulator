@@ -1,88 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/screentwo"
-    tools:context=".activities.SimulatorActivity">
+    tools:context=".activities.SimulatorActivity"
+    tools:layout_editor_absoluteY="25dp">
 
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="428dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="593dp"
+        android:layout_height="357dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        tools:layout_editor_absoluteY="1dp">
 
 
         <include
-            android:soundEffectsEnabled="false"
             android:id="@+id/frame1"
             layout="@layout/activity_simulator_icon"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:soundEffectsEnabled="false" />
 
         <include
-            android:soundEffectsEnabled="false"
             android:id="@+id/frame2"
             layout="@layout/activity_simulator_indicator"
             android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:soundEffectsEnabled="false" />
 
         <include
-            android:soundEffectsEnabled="false"
             android:id="@+id/frame3"
             layout="@layout/activity_simulator_flowmode"
             android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:soundEffectsEnabled="false" />
 
         <include
-            android:soundEffectsEnabled="false"
             android:id="@+id/frame4"
             layout="@layout/activity_simulator_totalvol"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:soundEffectsEnabled="false" />
 
 
     </LinearLayout>
 
     <TextView
-        android:soundEffectsEnabled="false"
         android:id="@+id/labelname"
-        android:layout_width="244dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:soundEffectsEnabled="false"
         android:text="Thermoflater"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#D5D5C3"
         android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Scenario"
-        tools:layout_editor_absoluteX="805dp"
+        tools:layout_editor_absoluteX="537dp"
         tools:layout_editor_absoluteY="16dp" />
 
 
