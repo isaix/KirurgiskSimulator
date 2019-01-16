@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
         android:layout_marginBottom="200dp"
-        android:text="6 students in room"
+        android:text="Press enter to start"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/enterSurgeonLogin"
         app:layout_constraintEnd_toEndOf="parent"
