@@ -192,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
                 android:layout_weight="1"
-                android:background="@drawable/recyclerview_details_noborder"
+                android:background="@drawable/recyclerview_details_avaliable"
                 android:gravity="center"
                 android:text="Scenarios avaliable"
                 android:textColor="#000"
