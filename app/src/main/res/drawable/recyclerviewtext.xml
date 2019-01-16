@@ -8,9 +8,9 @@
     -->
 
         <gradient
-            android:centerColor="#60b760"
-            android:endColor="#6ace6a"
-            android:startColor="#6ace6a"/>
+            android:centerColor="#d0d1d0"
+            android:endColor="#c7cac7"
+            android:startColor="#c7cac7"/>
 
         <stroke
             android:width="2dip"
