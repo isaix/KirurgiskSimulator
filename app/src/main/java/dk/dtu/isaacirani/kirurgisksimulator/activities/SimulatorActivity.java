@@ -59,11 +59,9 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         int currentOrientation = this.getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-        else{
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
+
 
         presenter = new SimulatorPresenter(this);
 
