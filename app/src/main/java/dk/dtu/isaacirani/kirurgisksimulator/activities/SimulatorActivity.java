@@ -20,6 +20,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
@@ -53,6 +56,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator_container);
+
+        int currentOrientation = this.getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        else{
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         presenter = new SimulatorPresenter(this);
 
