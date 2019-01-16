@@ -189,7 +189,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="315dp"
+                android:layout_height="269dp"
                 android:layout_gravity="center"
                 android:layout_weight="2"
                 android:gravity="center"
@@ -201,13 +201,13 @@
             <TextView
                 android:id="@+id/scenariosavaliable"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/recyclerview_details_noborder"
+                android:background="@drawable/recyclerview_details_avaliable"
                 android:gravity="center"
                 android:text="Scenarios avaliable"
                 android:textColor="#000"
-                android:textSize="19sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
@@ -235,7 +235,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_borderleft"
                     android:gravity="center"
                     android:text="Air"
                     android:textSize="19sp" />
@@ -245,7 +245,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Pressure"
                     android:textSize="19sp" />
@@ -255,7 +255,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Pressure Bar 1"
                     android:textSize="19sp" />
@@ -265,7 +265,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="12"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Pressure Bar 2"
                     android:textSize="19sp" />
@@ -275,7 +275,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Rate"
                     android:textSize="19sp" />
@@ -285,7 +285,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Rate Bar 1"
                     android:textSize="19sp" />
@@ -295,7 +295,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Rate Bar 2"
                     android:textSize="19sp" />
@@ -305,7 +305,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Volume"
                     android:textSize="19sp" />
@@ -315,7 +315,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Nozzle"
                     android:textSize="19sp" />
@@ -333,7 +333,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:textSize="19sp" />
 
                 <TextView
