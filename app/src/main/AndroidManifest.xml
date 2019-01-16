@@ -39,7 +39,10 @@
         </receiver>
 
         <activity android:name=".InstructorLoginActivity" />
-        <activity android:name=".activities.AboutActivity" />
+        <activity
+            android:name=".activities.AboutActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
         <activity
             android:name=".activities.ScenarioCreatorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
