@@ -5,16 +5,18 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:padding="4dp">
+    android:padding="0dp">
 
     <TextView
         android:id="@+id/ID"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -25,9 +27,11 @@
         android:layout_height="match_parent"
         android:layout_weight="10"
         android:autoSizeTextType="uniform"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -36,9 +40,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -47,9 +53,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -58,9 +66,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -69,9 +79,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -80,9 +92,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="4"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -91,9 +105,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="6"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -102,9 +118,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="6"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -113,9 +131,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -124,9 +144,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="6"
-        android:background="@drawable/recyclerviewtext"
+        android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
 
@@ -135,6 +157,7 @@
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="2"
-        android:text="\u2713" />
+        android:text="\u2713"
+        android:padding="4dp"/>
 
 </TableRow>

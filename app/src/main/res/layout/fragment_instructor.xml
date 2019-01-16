@@ -32,16 +32,17 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="4dp">
+                android:padding="0dp">
 
                 <TextView
                     android:id="@+id/ID"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="2"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_borderleft"
                     android:gravity="center"
                     android:text="ID"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -51,9 +52,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="10"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_borderright"
                     android:gravity="center"
                     android:text="Name"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -63,9 +65,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_borderleft"
                     android:gravity="center"
                     android:text="Air"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -75,9 +78,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Pressure"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -87,9 +91,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Pressure\nBar 1"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -99,9 +104,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Pressure\nBar 2"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -111,9 +117,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Rate"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -123,9 +130,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="6"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Rate\nBar 1"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -135,9 +143,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="6"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Rate\nBar 2"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -147,9 +156,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Volume"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -159,9 +169,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="6"
-                    android:background="@drawable/recyclerviewtext"
+                    android:background="@drawable/recyclerview_details_borderright"
                     android:gravity="center"
                     android:text="Nozzle"
+                    android:textAlignment="center"
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -186,6 +197,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/scenariosavaliable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/recyclerview_details_noborder"
+                android:gravity="top"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/scenarioPicker"
