@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     android:visibility="visible"
     tools:context=".activities.MainActivity"
+    android:background="#fff"
     >
 
     <LinearLayout
