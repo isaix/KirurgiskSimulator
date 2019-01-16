@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
@@ -25,6 +26,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     int backGroundNoBorder;
     int backGroundLeftBorder;
     int backGroundRightBorder;
+    Scenario defaultScenario;
 
 
     public Adapter(HashMap<String, Student> students){
@@ -50,7 +52,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         vh.checkButton = view.findViewById(R.id.checkButton);
         studentList = new ArrayList<>();
         studentList.addAll(students.entrySet());
-        Log.e("test", studentList.size()+"");
+
+        defaultScenario = new Scenario("standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false);
         return  vh;
     }
 
@@ -74,12 +77,14 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                studentList.get(i).getValue().setScenario(defaultScenario);
                 notifyItemChanged(i);
                 backGroundNoBorder = R.drawable.recyclerview_details_noborder;
                 backGroundLeftBorder = R.drawable.recyclerview_details_borderleft;
                 backGroundRightBorder = R.drawable.recyclerview_details_borderright;
 
                 chosenStudent = i;
+
             }
         });
 
