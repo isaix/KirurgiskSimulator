@@ -62,7 +62,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                    // students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
                     notifyItemChanged(i);
                     chosenStudent = i;
-                    backGround = R.drawable.redrecyclerviewtext;
+                    backGround = R.drawable.recyclerview_details_borderleft_red;
                 }
             }
         });
