@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -20,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -49,6 +52,8 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     MockScenarioList mockScenarioList;
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
+    TextView scenariosavaliable;
+    String scenariosavailableString;
 
     //nyt til BR
     View view;
@@ -77,6 +82,16 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         pressurePreview2 = findViewById(R.id.pressureBar2Preview);
         ratePreview1 = findViewById(R.id.rateBar1Preview);
         ratePreview2 = findViewById(R.id.rateBar2Preview);
+
+        scenariosavaliable = findViewById(R.id.scenariosavaliable);
+        scenariosavailableString = "⇦ Avaliable Scenarios ⇨";
+        SpannableString spannableString = new SpannableString(scenariosavailableString);
+        spannableString.setSpan(new RelativeSizeSpan(2f), 0, 1, 0);
+        spannableString.setSpan(new RelativeSizeSpan(2f), scenariosavailableString.length()-1, scenariosavailableString.length()-0, 0);
+        scenariosavaliable.setText(spannableString);
+
+
+
 
         l = findViewById(R.id.lin);
 
@@ -225,7 +240,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 if (snackbarnotconnected.isShown()){
                     snackbarnotconnected.dismiss();
                     snackbarisconnected.show();
-
                 }
             }
         }

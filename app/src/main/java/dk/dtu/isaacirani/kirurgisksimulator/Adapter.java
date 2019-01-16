@@ -22,7 +22,9 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     HashMap<String, Student> students;
     ArrayList<Map.Entry<String,Student>>  studentList;
     int chosenStudent = -1;
-    int backGround;
+    int backGroundNoBorder;
+    int backGroundLeftBorder;
+    int backGroundRightBorder;
 
 
     public Adapter(HashMap<String, Student> students){
@@ -62,7 +64,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                    // students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
                     notifyItemChanged(i);
                     chosenStudent = i;
-                    backGround = R.drawable.recyclerview_details_borderleft_red;
+                    backGroundNoBorder = R.drawable.recyclerview_details_noborder_red;
+                    backGroundLeftBorder = R.drawable.recyclerview_details_borderleft_red;
+                    backGroundRightBorder = R.drawable.recyclerview_details_borderright_red;
+
                 }
             }
         });
@@ -70,23 +75,26 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 notifyItemChanged(i);
-                backGround = R.drawable.recyclerviewtext;
+                backGroundNoBorder = R.drawable.recyclerview_details_noborder;
+                backGroundLeftBorder = R.drawable.recyclerview_details_borderleft;
+                backGroundRightBorder = R.drawable.recyclerview_details_borderright;
+
                 chosenStudent = i;
             }
         });
 
         if(chosenStudent == i){
-            viewHolder.ID.setBackgroundResource(backGround);
-            viewHolder.Name.setBackgroundResource(backGround);
-            viewHolder.Pressure.setBackgroundResource(backGround);
-            viewHolder.PressureBar1.setBackgroundResource(backGround);
-            viewHolder.PressureBar2.setBackgroundResource(backGround);
-            viewHolder.Rate.setBackgroundResource(backGround);
-            viewHolder.RateBar1.setBackgroundResource(backGround);
-            viewHolder.RateBar2.setBackgroundResource(backGround);
-            viewHolder.Air.setBackgroundResource(backGround);
-            viewHolder.Volume.setBackgroundResource(backGround);
-            viewHolder.Nozzle.setBackgroundResource(backGround);
+            viewHolder.ID.setBackgroundResource(backGroundLeftBorder);
+            viewHolder.Name.setBackgroundResource(backGroundRightBorder);
+            viewHolder.Pressure.setBackgroundResource(backGroundNoBorder);
+            viewHolder.PressureBar1.setBackgroundResource(backGroundNoBorder);
+            viewHolder.PressureBar2.setBackgroundResource(backGroundNoBorder);
+            viewHolder.Rate.setBackgroundResource(backGroundNoBorder);
+            viewHolder.RateBar1.setBackgroundResource(backGroundNoBorder);
+            viewHolder.RateBar2.setBackgroundResource(backGroundNoBorder);
+            viewHolder.Air.setBackgroundResource(backGroundLeftBorder);
+            viewHolder.Volume.setBackgroundResource(backGroundNoBorder);
+            viewHolder.Nozzle.setBackgroundResource(backGroundRightBorder);
         }
 
         Student student = studentList.get(i).getValue();

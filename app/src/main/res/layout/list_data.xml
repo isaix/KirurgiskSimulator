@@ -14,10 +14,11 @@
         android:layout_weight="2"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
 
     <TextView
@@ -28,10 +29,11 @@
         android:autoSizeTextType="uniform"
         android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Air"
@@ -40,10 +42,11 @@
         android:layout_weight="3"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Pressure"
@@ -52,10 +55,11 @@
         android:layout_weight="8"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Pressurebar1"
@@ -64,10 +68,11 @@
         android:layout_weight="8"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Pressurebar2"
@@ -76,10 +81,11 @@
         android:layout_weight="8"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Rate"
@@ -88,10 +94,11 @@
         android:layout_weight="4"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Ratebar1"
@@ -100,10 +107,11 @@
         android:layout_weight="6"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Ratebar2"
@@ -112,10 +120,11 @@
         android:layout_weight="6"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Volume"
@@ -124,10 +133,11 @@
         android:layout_weight="8"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/Nozzle"
@@ -136,10 +146,11 @@
         android:layout_weight="6"
         android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
+        android:padding="4dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="19sp"
-        android:padding="4dp"/>
+        android:textSize="19sp" />
 
     <CheckBox
         android:id="@+id/checkButton"
