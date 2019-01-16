@@ -1,6 +1,7 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -24,8 +25,15 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     TextView emailaddress;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //forsøg på at fejrne action bar
+       // android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        //actionBar.hide();
+
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_about);
