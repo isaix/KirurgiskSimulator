@@ -22,7 +22,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -68,7 +67,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         setContentView(R.layout.activity_instructor);
 
         GroupRepository groupRepository = new GroupRepository();
-        groupRepository.loadGroup(group -> {createAdapter(group); return null;});
+        //groupRepository.loadGroup(group -> {createAdapter(group); return null;});
 
 
 

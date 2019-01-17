@@ -19,14 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioCreatorActivity extends AppCompatActivity implements View.OnClickListener, SimulatorPresenter.View {
 
     SimulatorPresenter presenter;
-    ScenarioAdapter scenarioAdapter = new ScenarioAdapter();
+    ScenarioRepository scenarioAdapter = new ScenarioRepository();
     Scenario scenario = new Scenario();
     private int inflationRate = 0;
     private int pressureValue = 0;
@@ -52,6 +52,8 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     AnimationDrawable bottleanimation;
     //nyt BR
     View view;
+    private int i = 0;
+    private int j = 0;
 
 
     @Override
@@ -128,19 +130,30 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     public void onClick(View view) {
         if (view == pressure) {
             Log.e("UNDER", "PRESSURE");
-
         }
         if (view == floatingplus1) {
             animateFloatingButton(floatingplus1);
+            i++;
+            scenario.setPressure(i);
+            pressure.setText(String.valueOf(i));
         }
         if (view == floatingminus1) {
             animateFloatingButton(floatingminus1);
+            i--;
+            scenario.setPressure(i);
+            pressure.setText(String.valueOf(i));
         }
         if (view == floatingplus2) {
             animateFloatingButton(floatingplus2);
+            j++;
+            scenario.setRate(j);
+            rate.setText(String.valueOf(j));
         }
         if (view == floatingminus2) {
             animateFloatingButton(floatingminus2);
+            j--;
+            scenario.setRate(j);
+            rate.setText(String.valueOf(j));
         }
         if (view.getId() == rate.getId()) {
             AlertDialog alertDialogBuilder = new AlertDialog.Builder(this).create();
@@ -158,7 +171,11 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                         Toast.makeText(getApplicationContext(), "Inflation Rate not between 0 and 30", Toast.LENGTH_LONG).show();
                     } else {
                         inflationRate = Integer.parseInt(input.getText().toString());
+                        if(inflationRate<10){
+                            input.setText("0" + input.getText());
+                        }
                         scenario.setRate(inflationRate);
+                        j = inflationRate;
                         rate.setText(input.getText());
                     }
                 }
@@ -184,6 +201,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                         if (Integer.parseInt(input.getText().toString()) < 10) {
                             input.setText("0" + input.getText());
                         }
+                        i = pressureValue;
                         scenario.setPressure(pressureValue);
                         pressure.setText(input.getText());
                     }
@@ -303,7 +321,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                         input.setText("1");
                     }
                     if (Double.parseDouble(input.getText().toString()) <= 0.0 || Double.parseDouble(input.getText().toString()) > 100.0) {
-                        Toast.makeText(getApplicationContext(), "Pressure not between 0 and 30", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Volume not between 0 and 100", Toast.LENGTH_LONG).show();
                     } else {
                         volumeValue = Double.parseDouble(input.getText().toString());
                         scenario.setVolume(volumeValue);
@@ -345,7 +363,11 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                 public void onClick(DialogInterface dialog, int which) {
                     if (input.getText() == null) {
                         input.setText("0");
-                    } else {
+                    }
+                    if(Integer.parseInt(input.getText().toString())>100 || Integer.parseInt(input.getText().toString())<0){
+                        Toast.makeText(getApplicationContext(),"Air not between 0 and 100", Toast.LENGTH_LONG).show();
+                    }
+                    else {
                         air = Integer.parseInt(input.getText().toString());
                         scenario.setAir(air);
                         airBar.setProgress(air);
@@ -361,10 +383,6 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         }
 
-        @Override
-        public void turnOnMachine () {
-
-        }
 }
 
 
