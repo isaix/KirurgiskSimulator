@@ -43,6 +43,7 @@
             android:name=".activities.AboutActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             />
+        <activity android:name=".activities.LogDataActivity"/>
         <activity
             android:name=".activities.ScenarioCreatorActivity"
             android:theme="@style/AppTheme.NoActionBar" />

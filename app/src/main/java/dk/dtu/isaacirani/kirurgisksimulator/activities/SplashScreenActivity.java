@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 
 public class SplashScreenActivity extends AppCompatActivity implements Runnable{
@@ -17,7 +18,7 @@ public class SplashScreenActivity extends AppCompatActivity implements Runnable{
 
         if(savedInstanceState == null){
             handler = new Handler();
-            handler.postDelayed(this, 1500);
+            handler.postDelayed(this, 3000);
         }
     }
 

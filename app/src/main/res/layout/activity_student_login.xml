@@ -43,6 +43,8 @@
         tools:visibility="invisible">
 
         <android.support.design.widget.TextInputEditText
+            android:textColor="@color/apptheme"
+            android:textAppearance="@color/apptheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:visibility="invisible" />
