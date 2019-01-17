@@ -8,6 +8,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
+import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 
 
@@ -62,15 +63,14 @@ public class GroupRepository {
     }
 
     fun loadGroup(groupId: String, callback: (Group) -> Unit) {
-        mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
+        mDatabase.child("Groups").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                val instructor: Instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!
+                val instructor: Instructor = dataSnapshot.child(groupId).child("instructor").getValue(Instructor::class.java)!!
                 var students: HashMap<String, Student> = hashMapOf()
                 Log.e("what's in here?", dataSnapshot.key)
 
                 Log.e("Instructor", instructor.name)
-                for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {
+                for (itemSnapshot: DataSnapshot in dataSnapshot.child(groupId).child("Students").children) {
                     Log.e("what's in here part 2?", itemSnapshot.key)
                     students[itemSnapshot.key!!] = itemSnapshot.getValue(Student::class.java)!!
                 }

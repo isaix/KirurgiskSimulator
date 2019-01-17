@@ -58,7 +58,6 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             public void onClick(View v) {
                 if(ScenarioPickerAdapter.chosenScenario != null) {
                     studentList.get(i).getValue().setScenario(ScenarioPickerAdapter.chosenScenario);
-                   // students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
                     notifyItemChanged(i);
                     chosenStudent = i;
                     backGroundNoBorder = R.drawable.recyclerview_details_noborder_red;

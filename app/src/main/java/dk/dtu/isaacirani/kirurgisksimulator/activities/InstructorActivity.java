@@ -47,12 +47,11 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
     Adapter adapter;
-    public static MockData mockData;
-    MockScenarioList mockScenarioList;
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
     TextView scenariosavaliable;
     String scenariosavailableString;
+
 
     //nyt til BR
     View view;
@@ -67,7 +66,8 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         setContentView(R.layout.activity_instructor);
 
         GroupRepository groupRepository = new GroupRepository();
-        //groupRepository.loadGroup(group -> {createAdapter(group); return null;});
+
+        groupRepository.loadGroup(getIntent().getStringExtra("instructorID") ,group -> {createAdapter(group); return null;});
 
 
 
@@ -108,8 +108,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
         //nyt slut
 
-        mockData = new MockData();
-        mockScenarioList = new MockScenarioList();
         recyclerView = findViewById(R.id.recyclerView);
        // adapter = new Adapter(mockData.getStudents());
         recyclerView.setAdapter(adapter);
@@ -166,14 +164,11 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 finish();
                 startActivity(intent);
                 break;
-
             case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
-            
-
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -208,16 +203,15 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
         try {
             unregisterReceiver(networkChangeReceiver);
-
         } catch (Exception e) {
             e.printStackTrace();
-
         } super.onDestroy();
     }
 
 
     void createAdapter(Group group){
         adapter = new Adapter(group.getStudents());
+        Log.e("IDINTENT", getIntent().getStringExtra("instructorID"));
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
