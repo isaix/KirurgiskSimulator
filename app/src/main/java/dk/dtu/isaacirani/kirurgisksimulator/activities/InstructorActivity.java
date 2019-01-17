@@ -54,7 +54,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     TextView scenariosavaliable;
     String scenariosavailableString;
 
-    //nyt til BR
     View view;
     Snackbar snackbarnotconnected;
     Snackbar snackbarisconnected;
@@ -156,22 +155,22 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.settings:
+           /* case R.id.settings:
                 intent = new Intent(this, SettingsActivity.class);
                 finish();
                 startActivity(intent);
-                break;
+                break; */
             case R.id.about:
                 intent = new Intent(this, SimulatorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
 
-            case R.id.scenarios:
+           /* case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
-                break;
+                break; */
             
 
         }
@@ -188,7 +187,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     }
 
 
-    //nyt BR
 
     private void registerReceiver() {
 

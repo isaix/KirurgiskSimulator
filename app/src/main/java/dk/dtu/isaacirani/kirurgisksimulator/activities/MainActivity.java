@@ -69,18 +69,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.settings:
+            /*case R.id.settings:
                 intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
-                break;
+                break; */
             case R.id.about:
                 intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.scenarios:
+           /* case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 startActivity(intent);
                 break;
+                */
             case R.id.scenario_creator:
                 intent = new Intent(this,ScenarioCreatorActivity.class);
                 startActivity(intent);
