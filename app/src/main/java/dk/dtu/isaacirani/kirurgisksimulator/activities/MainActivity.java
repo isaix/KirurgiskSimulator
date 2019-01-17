@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.scenario_creator:
                 intent = new Intent(this,ScenarioCreatorActivity.class);
                 startActivity(intent);
+            case R.id.scenario_data:
+                intent = new Intent(this,LogDataActivity.class);
+                startActivity(intent);
         }
 
         drawer.closeDrawer(GravityCompat.START);
