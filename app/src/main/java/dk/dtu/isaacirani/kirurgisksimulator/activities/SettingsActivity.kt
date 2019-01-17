@@ -51,7 +51,7 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 //        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Elise", Scenario()))
 //        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Mahmoud", Scenario()))
 //        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Mikkel", Scenario()))
-        groupRepository.createGroupWithoutStudents(Instructor())
+//        groupRepository.createGroupWithoutStudents(Instructor())
 
 
 
