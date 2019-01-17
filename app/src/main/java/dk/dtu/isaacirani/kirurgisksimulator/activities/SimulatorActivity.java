@@ -79,8 +79,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
         pressure = (TextView) frame2.findViewById(R.id.pressure);
-        pressureBar1 = frame2.findViewById(R.id.pressurebar);
-        pressureBar2 = frame2.findViewById(R.id.pressurebar2);
+        pressureBar1 = frame2.findViewById(R.id.progressBar1);
+        pressureBar2 = frame2.findViewById(R.id.progressbar2);
 
         floatingplus2 = frame3.findViewById(R.id.floatingplus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
