@@ -37,7 +37,7 @@
         <include
             android:id="@+id/frame3"
             layout="@layout/activity_simulator_flowmode"
-            android:layout_width="0px"
+            android:layout_width="60dp"
             android:layout_height="310dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
