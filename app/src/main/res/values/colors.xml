@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#ff4081</color>
+    <color name="colorPrimary">#ec122764</color>
+    <color name="colorPrimaryDark">#ec122764</color>
+    <color name="colorAccent">#3a9417</color>
     <color name="white">#ffffff</color>
+    <color name="apptheme">#ec6574a1</color>
+
+
+    <!-- switch colors-->
+
+    <color name="foreground_off">#cccccc</color>
+    <color name="off">#aeaeae</color>
+    <color name="switch_on">#3c9414</color>
 </resources>

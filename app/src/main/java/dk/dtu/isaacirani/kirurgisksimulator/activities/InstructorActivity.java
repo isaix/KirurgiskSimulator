@@ -52,8 +52,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     TextView scenariosavaliable;
     String scenariosavailableString;
 
-
-    //nyt til BR
     View view;
     Snackbar snackbarnotconnected;
     Snackbar snackbarisconnected;
@@ -96,17 +94,14 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
         //nyt BR
         registerReceiver();
-
         view = findViewById(android.R.id.content);
-
         snackbarnotconnected = Snackbar.make(view, "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE);
         snackbarisconnected = Snackbar.make(view, "Device is connected to internet", Snackbar.LENGTH_SHORT);
-
         View snacknotconnectedview = snackbarnotconnected.getView();
         TextView textView = snacknotconnectedview.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(Color.RED);
 
-        //nyt slut
+
 
         recyclerView = findViewById(R.id.recyclerView);
        // adapter = new Adapter(mockData.getStudents());
@@ -154,21 +149,28 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.settings:
+           /* case R.id.settings:
                 intent = new Intent(this, SettingsActivity.class);
                 finish();
                 startActivity(intent);
-                break;
+                break; */
             case R.id.about:
                 intent = new Intent(this, SimulatorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
+           /* case R.id.scenarios:
+                intent = new Intent(this, InstructorActivity.class);
+                finish();
+                startActivity(intent);
+                break; */
+            
             case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
+
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -183,7 +185,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     }
 
 
-    //nyt BR
 
     private void registerReceiver() {
 

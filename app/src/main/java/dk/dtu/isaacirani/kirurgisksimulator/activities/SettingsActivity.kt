@@ -90,21 +90,21 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val intent: Intent
         when (item.itemId) {
-            R.id.settings -> {
-                intent = Intent(this, SettingsActivity::class.java)
-                finish()
-                startActivity(intent)
-            }
+           // R.id.settings -> {
+             //   intent = Intent(this, SettingsActivity::class.java)
+               // finish()
+              //  startActivity(intent)
+            //}
             R.id.about -> {
                 intent = Intent(this, SimulatorActivity::class.java)
                 finish()
                 startActivity(intent)
             }
-            R.id.scenarios -> {
-                intent = Intent(this, InstructorActivity::class.java)
-                finish()
-                startActivity(intent)
-            }
+           // R.id.scenarios -> {
+             //   intent = Intent(this, InstructorActivity::class.java)
+               // finish()
+               // startActivity(intent)
+            //}
 
         }
 
