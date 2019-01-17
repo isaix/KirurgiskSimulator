@@ -7,10 +7,11 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="251dp"
+        android:layout_width="wrap_content"
         android:layout_height="380dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp">
+        app:layout_constraintBottom_toTopOf="@+id/switchbutton"
+        app:layout_constraintTop_toTopOf="@+id/switchbutton"
+        tools:layout_editor_absoluteX="0dp">
 
         <Switch
             android:id="@+id/switchbutton"

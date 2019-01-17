@@ -12,43 +12,43 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="593dp"
-        android:layout_height="357dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="352dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp">
 
 
         <include
             android:id="@+id/frame1"
             layout="@layout/activity_simulator_icon"
-            android:layout_width="8dp"
+            android:layout_width="125dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:soundEffectsEnabled="false" />
 
         <include
             android:id="@+id/frame2"
             layout="@layout/activity_simulator_indicator"
-            android:layout_width="0px"
+            android:layout_width="135dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:soundEffectsEnabled="false" />
 
         <include
             android:id="@+id/frame3"
             layout="@layout/activity_simulator_flowmode"
-            android:layout_width="60dp"
-            android:layout_height="310dp"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:soundEffectsEnabled="false" />
 
         <include
             android:id="@+id/frame4"
             layout="@layout/activity_simulator_totalvol"
-            android:layout_width="6dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:soundEffectsEnabled="false" />
 
 
