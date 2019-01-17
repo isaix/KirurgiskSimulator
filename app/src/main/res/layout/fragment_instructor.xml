@@ -155,7 +155,7 @@
                     android:id="@+id/Volume"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:gravity="center"
                     android:text="Volume"
@@ -176,6 +176,13 @@
                     android:textColor="#585858"
                     android:textSize="19sp"
                     android:textStyle="bold" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="0dp"
@@ -227,7 +234,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="4dp"
+                android:paddingTop="4sp"
                 android:visibility="visible">
 
                 <TextView
@@ -235,9 +242,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
-                    android:background="@drawable/recyclerview_details_borderleft"
+                    android:background="@drawable/recyclerview_details_avaliable_borderleft"
                     android:gravity="center"
                     android:text="Air"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -245,9 +253,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Pressure"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -255,9 +264,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Pressure Bar 1"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -265,9 +275,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="12"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Pressure Bar 2"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -275,9 +286,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Rate"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -285,9 +297,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Rate Bar 1"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -295,9 +308,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Rate Bar 2"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -305,9 +319,10 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
                     android:text="Volume"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -315,9 +330,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_borderright"
                     android:gravity="center"
                     android:text="Nozzle"
+                    android:textColor="#000"
                     android:textSize="19sp" />
             </TableRow>
 
@@ -325,15 +341,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:padding="4dp">
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/airPreview"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
-                    android:background="@drawable/recyclerview_details_noborder"
+                    android:background="@drawable/recyclerview_details_avaliable_borderleft"
+                    android:textAlignment="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -341,8 +358,9 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -350,8 +368,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -359,8 +378,9 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="12"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -368,8 +388,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -377,8 +398,9 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -386,8 +408,9 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -395,8 +418,9 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
 
                 <TextView
@@ -404,8 +428,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:background="@drawable/recyclerviewtextpreview"
+                    android:background="@drawable/recyclerview_details_avaliable_borderright"
                     android:gravity="center"
+                    android:textColor="#000"
                     android:textSize="19sp" />
             </TableRow>
 

@@ -15,7 +15,6 @@ public class SimulatorPresenter {
     public interface View{
 
         void changeDisplayValues(Scenario scenario);
-        void turnOnMachine();
 
     }
 }
