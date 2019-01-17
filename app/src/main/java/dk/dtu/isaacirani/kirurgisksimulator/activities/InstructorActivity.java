@@ -47,8 +47,6 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
     Adapter adapter;
-    public static MockData mockData;
-    MockScenarioList mockScenarioList;
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
     TextView scenariosavaliable;
@@ -66,7 +64,8 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         setContentView(R.layout.activity_instructor);
 
         GroupRepository groupRepository = new GroupRepository();
-        //groupRepository.loadGroup(group -> {createAdapter(group); return null;});
+
+        groupRepository.loadGroup(getIntent().getStringExtra("instructorID") ,group -> {createAdapter(group); return null;});
 
 
 
@@ -95,20 +94,15 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
         //nyt BR
         registerReceiver();
-
         view = findViewById(android.R.id.content);
-
         snackbarnotconnected = Snackbar.make(view, "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE);
         snackbarisconnected = Snackbar.make(view, "Device is connected to internet", Snackbar.LENGTH_SHORT);
-
         View snacknotconnectedview = snackbarnotconnected.getView();
         TextView textView = snacknotconnectedview.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(Color.RED);
 
-        //nyt slut
 
-        mockData = new MockData();
-        mockScenarioList = new MockScenarioList();
+
         recyclerView = findViewById(R.id.recyclerView);
        // adapter = new Adapter(mockData.getStudents());
         recyclerView.setAdapter(adapter);
@@ -165,13 +159,17 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 finish();
                 startActivity(intent);
                 break;
-
            /* case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break; */
             
+            case R.id.scenarios:
+                intent = new Intent(this, InstructorActivity.class);
+                finish();
+                startActivity(intent);
+                break;
 
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -206,16 +204,15 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
         try {
             unregisterReceiver(networkChangeReceiver);
-
         } catch (Exception e) {
             e.printStackTrace();
-
         } super.onDestroy();
     }
 
 
     void createAdapter(Group group){
         adapter = new Adapter(group.getStudents());
+        Log.e("IDINTENT", getIntent().getStringExtra("instructorID"));
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
