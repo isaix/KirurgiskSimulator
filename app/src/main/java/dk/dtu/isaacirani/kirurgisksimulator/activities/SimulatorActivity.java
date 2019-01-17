@@ -92,10 +92,23 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
 
         //setter onclick på knapperne
+        /*
         floatingplus1.setOnClickListener(this);
         floatingminus1.setOnClickListener(this);
         floatingminus2.setOnClickListener(this);
         floatingplus2.setOnClickListener(this);
+        */
+
+        floatingplus1.setElevation(0);
+        floatingminus1.setElevation(0);
+        floatingplus1.setElevation(0);
+        floatingplus2.setElevation(0);
+
+        floatingplus1.setEnabled(false);
+        floatingminus1.setEnabled(false);
+        floatingplus2.setEnabled(false);
+        floatingminus2.setEnabled(false);
+
 
         pressure.setOnClickListener(this);
         rate.setOnClickListener(this);
@@ -146,23 +159,9 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
             Log.e("UNDER", "PRESSURE");
 
         }
-        if (view == floatingplus1) {
-            animateFloatingButton(floatingplus1);
-        }
-        if (view == floatingminus1) {
-            animateFloatingButton(floatingminus1);
-        }
-        if (view == floatingplus2) {
-            animateFloatingButton(floatingplus2);
-        }
-        if (view == floatingminus2) {
-            animateFloatingButton(floatingminus2);
-        }
-    }
-
-    public void turnOnMachine() {
 
     }
+
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -181,7 +180,6 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         if (isChecked) {
             changeDisplayValues(scenario);
             Toast.makeText(getApplicationContext(), "ON", Toast.LENGTH_LONG).show();
-            turnOnMachine();
         } else {
             Toast.makeText(getApplicationContext(), "OFF", Toast.LENGTH_LONG).show();
         }

@@ -361,10 +361,6 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         }
 
-        @Override
-        public void turnOnMachine () {
-
-        }
 }
 
 
