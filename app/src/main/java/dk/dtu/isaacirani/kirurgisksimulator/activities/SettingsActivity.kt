@@ -9,21 +9,21 @@ import android.support.v4.view.GravityCompat
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import android.view.MenuItem
 import android.support.design.widget.NavigationView
-import android.util.Log
 import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository
-import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioRepository
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
+import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
-    var groupAdapter = GroupRepository()
+    var groupRepository = GroupRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        var scenarioAdapter = ScenarioAdapter()
+        var scenarioAdapter = ScenarioRepository()
 
 
 //        scenarioAdapter.createScenario(Scenario("Edmund",4, 5, 2, 1))
@@ -44,9 +44,19 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 //        groupAdapter.addStudentToGroup(Student("Sam", Scenario()))
 //        groupAdapter.addStudentToGroup(Student("Bobby", Scenario()))
 //        groupAdapter.addStudentToGroup(Student("Castiel", Scenario()))
+//        groupRepository.createGroupWithStudents(Group())
+//        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Edmund", Scenario()))
+//        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Sam", Scenario()))
+//        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Bob", Scenario()))
+//        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Elise", Scenario()))
+//        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Mahmoud", Scenario()))
+//        groupRepository.addStudentToGroup("-LWQO2j41v1ZhlUOx-xq", Student("Mikkel", Scenario()))
+        groupRepository.createGroupWithoutStudents(Instructor())
+
+
 
         //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
-        groupAdapter.loadGroup{ group -> testFun(group)}
+        //groupRepository.loadGroups{ group -> testFun(group)}
 //        groupAdapter.addStudentToGroup(Student(0,"Brian", Scenario()))
 
 

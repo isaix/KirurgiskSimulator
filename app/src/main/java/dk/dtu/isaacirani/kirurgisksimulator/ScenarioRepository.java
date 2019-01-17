@@ -19,7 +19,7 @@ package dk.dtu.isaacirani.kirurgisksimulator;
 
         import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
-public class ScenarioAdapter {
+public class ScenarioRepository {
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     ArrayList<Scenario> scenarioList = new ArrayList<>();
 

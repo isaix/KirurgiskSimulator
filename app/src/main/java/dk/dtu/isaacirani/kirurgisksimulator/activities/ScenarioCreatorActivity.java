@@ -19,14 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.ScenarioAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioCreatorActivity extends AppCompatActivity implements View.OnClickListener, SimulatorPresenter.View {
 
     SimulatorPresenter presenter;
-    ScenarioAdapter scenarioAdapter = new ScenarioAdapter();
+    ScenarioRepository scenarioAdapter = new ScenarioRepository();
     Scenario scenario = new Scenario();
     private int inflationRate = 0;
     private int pressureValue = 0;

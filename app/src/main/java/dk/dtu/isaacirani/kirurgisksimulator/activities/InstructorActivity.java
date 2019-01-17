@@ -68,7 +68,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         setContentView(R.layout.activity_instructor);
 
         GroupRepository groupRepository = new GroupRepository();
-        groupRepository.loadGroup(group -> {createAdapter(group); return null;});
+        //groupRepository.loadGroup(group -> {createAdapter(group); return null;});
 
 
 
