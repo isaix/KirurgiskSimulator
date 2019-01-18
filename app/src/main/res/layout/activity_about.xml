@@ -107,8 +107,8 @@
 
         <ImageButton
             android:id="@+id/aboutus_pin"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="83dp"
@@ -125,8 +125,8 @@
 
         <ImageButton
             android:id="@+id/aboutus_mail"
-            android:layout_width="71dp"
-            android:layout_height="45dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginEnd="83dp"
             android:layout_marginBottom="1dp"
@@ -141,8 +141,8 @@
 
         <ImageButton
             android:id="@+id/aboutus_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginEnd="40dp"
             android:layout_weight="1"
