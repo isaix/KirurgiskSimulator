@@ -165,7 +165,8 @@
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="2"
-        android:background="#ff0000"
-        android:text="X" />
+        android:background="@drawable/buttondetails"
+        android:text="X"
+        android:textStyle="bold" />
 
 </TableRow>

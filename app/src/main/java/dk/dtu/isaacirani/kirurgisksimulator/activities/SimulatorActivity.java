@@ -249,11 +249,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
             if (i.getBooleanExtra("networkstatus", false) == false) {
                 snackbarnotconnected.show();
+                switchbutton.setEnabled(false);
+
 
             } else {
                 if (snackbarnotconnected.isShown()){
                     snackbarnotconnected.dismiss();
                     snackbarisconnected.show();
+                    switchbutton.setEnabled(true);
 
                 }
             }

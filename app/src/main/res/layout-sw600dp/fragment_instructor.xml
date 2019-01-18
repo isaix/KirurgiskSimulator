@@ -213,7 +213,7 @@
                 android:background="@drawable/recyclerview_details_avaliable"
                 android:gravity="center"
                 android:text="Scenarios avaliable"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
