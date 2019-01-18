@@ -64,13 +64,12 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
+        recyclerView = findViewById(R.id.recyclerView);
+
 
         GroupRepository groupRepository = new GroupRepository();
 
         groupRepository.loadGroup(getIntent().getStringExtra("instructorID") ,group -> {createAdapter(group); return null;});
-
-
-
 
         airPreview = findViewById(R.id.airPreview);
         ratePreview = findViewById(R.id.ratePreview);
@@ -107,12 +106,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
 
 
-        recyclerView = findViewById(R.id.recyclerView);
-       // adapter = new Adapter(mockData.getStudents());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHorizontalScrollBarEnabled(true);
+
         FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
 
 

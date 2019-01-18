@@ -101,6 +101,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chosenStudent = i;
                 if(logEntries.get(i) != null) {
                     finishTimes.put(i, System.currentTimeMillis());
                     logEntries.get(i).setTime((int) ((finishTimes.get(i) - startTimes.get(i)) / 1000));
@@ -112,7 +113,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 backGroundNoBorder = R.drawable.recyclerview_details_noborder;
                 backGroundLeftBorder = R.drawable.recyclerview_details_borderleft;
                 backGroundRightBorder = R.drawable.recyclerview_details_borderright;
-                chosenStudent = i;
+
                 visibility = View.INVISIBLE;
             }
         });
