@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
-
+<!--
     <TextView
         android:id="@+id/dataInstructor"
         android:layout_width="0dp"
@@ -31,6 +31,7 @@
         android:textColor="#585858"
         android:textSize="19sp"
         android:textStyle="bold" />
+        -->
 
     <TextView
         android:id="@+id/dataScenarioName"
