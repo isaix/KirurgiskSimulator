@@ -30,6 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.InstructorActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".StudentLoginActivity" />

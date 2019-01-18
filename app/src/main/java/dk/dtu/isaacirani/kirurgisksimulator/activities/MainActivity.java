@@ -108,9 +108,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View v) {
         if(v == student){
-            startActivity(studentLogin);
+            startActivity(new Intent(this, StudentLoginActivity.class));
         } else if(v == surgeon){
-            startActivity(surgeonLogin);
+            startActivity(new Intent(this, InstructorActivity.class).putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq"));
         }
     }
 
