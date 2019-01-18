@@ -31,10 +31,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.LogDataAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.LogRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
@@ -48,6 +50,8 @@ public class LogDataActivity extends AppCompatActivity  {
     private DrawerLayout drawer;
     LogDataAdapter logDataAdapter;
     LogList logList = new LogList();
+    ArrayList<LogEntry> logs = new ArrayList<LogEntry>();
+    LogRepository logRepo;
 
     //nyt til BR
     View view;
@@ -57,6 +61,8 @@ public class LogDataActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
+        logRepo = new LogRepository();
+        logRepo.loadLogs(logs -> {loadLogs(logs); return null;});
 
 
         logName = findViewById(R.id.logName);
@@ -65,17 +71,22 @@ public class LogDataActivity extends AppCompatActivity  {
         logTime = findViewById(R.id.logTime);
         logFailures = findViewById(R.id.logFailures);
 
-        logDataAdapter = new LogDataAdapter(logList.getLogData());
+
         view = findViewById(android.R.id.content);
 
         linearLayoutLog = findViewById(R.id.linearLayoutLog);
         //nyt slut
         recyclerViewLogData = findViewById(R.id.recyclerViewLogData);
+
+
+
+    }
+
+    public void loadLogs(ArrayList<LogEntry> logs){
+        logDataAdapter = new LogDataAdapter(logs);
         recyclerViewLogData.setAdapter(logDataAdapter);
         recyclerViewLogData.setHasFixedSize(false);
         recyclerViewLogData.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 
 

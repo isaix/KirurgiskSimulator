@@ -7,20 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     HashMap<String, Student> students;
     ArrayList<Map.Entry<String,Student>>  studentList;
+    LogRepository logs;
+    Date date;
     int chosenStudent = -1;
     int backGroundNoBorder;
     int backGroundLeftBorder;
     int backGroundRightBorder;
     Scenario defaultScenario;
+    LogEntry logEntry;
+    Long startTime, finishTime;
+
+    int visibility = View.INVISIBLE;
 
 
     public Adapter(HashMap<String, Student> students){
@@ -44,6 +52,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         vh.Nozzle = view.findViewById(R.id.Nozzle);
         vh.Air = view.findViewById(R.id.Air);
         vh.checkButton = view.findViewById(R.id.checkButton);
+        vh.crossButton = view.findViewById(R.id.crossButton);
+        logs = new LogRepository();
         studentList = new ArrayList<>();
         studentList.addAll(students.entrySet());
 
@@ -63,6 +73,17 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                     backGroundNoBorder = R.drawable.recyclerview_details_noborder_red;
                     backGroundLeftBorder = R.drawable.recyclerview_details_borderleft_red;
                     backGroundRightBorder = R.drawable.recyclerview_details_borderright_red;
+                    if(logEntry != null){
+                        logEntry.setTime(-1);
+                        logs.addLog(logEntry);
+                    }
+                    logEntry = new LogEntry();
+                    logEntry.setName(studentList.get(i).getValue().getName());
+                    logEntry.setScenarioName(studentList.get(i).getValue().getScenario().getName());
+                    logEntry.setFailures(0);
+                    logEntry.setDate(new Date(System.currentTimeMillis()));
+                    startTime = System.currentTimeMillis();
+                    visibility = View.VISIBLE;
 
                 }
             }
@@ -70,14 +91,30 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(logEntry != null) {
+                    finishTime = System.currentTimeMillis();
+                    logEntry.setTime((int) ((finishTime - startTime) / 1000));
+                    logs.addLog(logEntry);
+                }
+                logEntry = null;
                 studentList.get(i).getValue().setScenario(defaultScenario);
                 notifyItemChanged(i);
                 backGroundNoBorder = R.drawable.recyclerview_details_noborder;
                 backGroundLeftBorder = R.drawable.recyclerview_details_borderleft;
                 backGroundRightBorder = R.drawable.recyclerview_details_borderright;
-
                 chosenStudent = i;
+                visibility = View.INVISIBLE;
+            }
+        });
 
+        viewHolder.crossButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if(logEntry != null) {
+                    logEntry.setFailures(logEntry.getFailures() + 1);
+                    Log.e(studentList.get(i).getValue().getName(), logEntry.getFailures() + "");
+                }
             }
         });
 
@@ -112,8 +149,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             viewHolder.Nozzle.setText("Not In");
         }
-
-
+        viewHolder.crossButton.setVisibility(visibility);
+        viewHolder.checkButton.setVisibility(visibility);
 
     }
 

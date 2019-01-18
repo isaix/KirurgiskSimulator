@@ -22,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +56,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     View view;
     Snackbar snackbarnotconnected;
     Snackbar snackbarisconnected;
+    ProgressBar loadingIcon;
 
     public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
 
@@ -79,6 +81,8 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         pressurePreview2 = findViewById(R.id.pressureBar2Preview);
         ratePreview1 = findViewById(R.id.rateBar1Preview);
         ratePreview2 = findViewById(R.id.rateBar2Preview);
+
+        loadingIcon = findViewById(R.id.instructorLoadingIcon);
 
         scenariosavaliable = findViewById(R.id.scenariosavaliable);
         scenariosavailableString = "⇦ Avaliable Scenarios ⇨";
@@ -108,6 +112,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHorizontalScrollBarEnabled(true);
         FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
 
 
@@ -164,12 +169,13 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 finish();
                 startActivity(intent);
                 break; */
-            
-            case R.id.scenario_data:
+            /*
+            case R.id.scenarios:
                 intent = new Intent(this, InstructorActivity.class);
                 finish();
                 startActivity(intent);
                 break;
+                */
 
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -181,6 +187,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         scenarioPicker.setAdapter(spAdapter);
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        loadingIcon.setVisibility(View.GONE);
         Log.e("tæst", scenarioList.size() + "");
     }
 
