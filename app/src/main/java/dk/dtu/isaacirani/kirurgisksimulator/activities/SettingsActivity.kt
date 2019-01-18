@@ -3,18 +3,21 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.DrawableRes
 import android.support.v7.app.ActionBarDrawerToggle
 import kotlinx.android.synthetic.main.activity_settings.*
 import android.support.v4.view.GravityCompat
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import android.view.MenuItem
 import android.support.design.widget.NavigationView
+import android.util.Log
 import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository
 import dk.dtu.isaacirani.kirurgisksimulator.ScenarioRepository
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
+import kotlinx.android.synthetic.main.activity_simulator_container.view.*
 
 class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var nv: NavigationView
@@ -23,6 +26,10 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+
+
+
         var scenarioAdapter = ScenarioRepository()
 
 
@@ -58,18 +65,19 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         //groupAdapter.createGroup(Instructor(12, "bølle Bob"), MockData().students.toMutableList())
         //groupRepository.loadGroups{ group -> testFun(group)}
 //        groupAdapter.addStudentToGroup(Student(0,"Brian", Scenario()))
-
+        groupRepository.loadGroup("-LWQO2j41v1ZhlUOx-xq"){ group: Group -> testFun(group)}
 
         setSupportActionBar(toolbar)
 
-        val toggle = ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()
-
-
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
+//
+//        val toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+//                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+//        drawer.addDrawerListener(toggle)
+//        toggle.syncState()
+//
+//
+//        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+//        navigationView.setNavigationItemSelectedListener(this)
 
     }
 
@@ -83,6 +91,7 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }
 
     fun testFun(group: Group){
+        Log.e("SUCCESS", "this time in a callback")
        // group.students.map { student: Student ->  Log.e("TestFun", "denne gang i callback") }
     }
 
@@ -90,21 +99,11 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val intent: Intent
         when (item.itemId) {
-           // R.id.settings -> {
-             //   intent = Intent(this, SettingsActivity::class.java)
-               // finish()
-              //  startActivity(intent)
-            //}
             R.id.about -> {
                 intent = Intent(this, SimulatorActivity::class.java)
                 finish()
                 startActivity(intent)
             }
-           // R.id.scenarios -> {
-             //   intent = Intent(this, InstructorActivity::class.java)
-               // finish()
-               // startActivity(intent)
-            //}
 
         }
 

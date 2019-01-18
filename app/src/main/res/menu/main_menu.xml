@@ -6,19 +6,24 @@
     <item
         android:id="@+id/about"
         android:title="About Cames"
-        android:icon="@drawable/iccon_aboutus"
+        android:icon="@drawable/info_icon"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/scenario_data"
-        android:icon="@drawable/icon_savedscenarios"
+        android:icon="@drawable/storage_icon"
         android:title="Saved data"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/scenario_creator"
-        android:icon="@drawable/icon_sceanriocreator"
+        android:icon="@drawable/create_icon"
         android:title="Scenario Creator"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="Settings"
         app:showAsAction="ifRoom"/>
 
 </menu>

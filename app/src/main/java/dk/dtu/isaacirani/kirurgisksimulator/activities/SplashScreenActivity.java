@@ -18,7 +18,7 @@ public class SplashScreenActivity extends AppCompatActivity implements Runnable{
 
         if(savedInstanceState == null){
             handler = new Handler();
-            handler.postDelayed(this, 3000);
+            handler.postDelayed(this, 2000);
         }
     }
 
