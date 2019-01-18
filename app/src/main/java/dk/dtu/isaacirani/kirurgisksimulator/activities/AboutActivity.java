@@ -17,10 +17,6 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     ImageButton aboutus_phone;
     ImageButton aboutus_pin;
     ImageButton aboutus_mail;
-    TextView phonenumber;
-    TextView address;
-    TextView emailaddress;
-
 
 
     @Override
@@ -37,24 +33,16 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         aboutus_mail.setOnClickListener(this);
         aboutus_pin.setOnClickListener(this);
         aboutus_phone.setOnClickListener(this);
-        try {
-            emailaddress.setOnClickListener(this);
-            address.setOnClickListener(this);
-            phonenumber.setOnClickListener(this);
-        } catch(Exception e){
-            Log.e("Issa", "Phone");
 
-        }
     }
-
 
     @Override
     public void onClick(View view) {
 
-        if(view == aboutus_mail){
+        if (view == aboutus_mail) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("plain/text");
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "cames.rigshospital@regionh.dk" });
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"cames.rigshospital@regionh.dk"});
             intent.putExtra(Intent.EXTRA_SUBJECT, "");
             intent.putExtra(Intent.EXTRA_TEXT, "");
             startActivity(Intent.createChooser(intent, ""));
@@ -64,7 +52,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             startActivity(intent);
 
-        }else if (view == aboutus_phone){
+        } else if (view == aboutus_phone) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:+45 35 45 54 04"));
             startActivity(intent);
