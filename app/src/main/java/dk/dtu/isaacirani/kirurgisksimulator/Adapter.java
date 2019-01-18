@@ -2,6 +2,7 @@ package dk.dtu.isaacirani.kirurgisksimulator;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     int backGroundLeftBorder;
     int backGroundRightBorder;
     Scenario defaultScenario;
-    LogEntry logEntry;
-    Long startTime, finishTime;
+
+    SparseArray<LogEntry> logEntries;
+    SparseArray<Long> startTimes;
+    SparseArray<Long> finishTimes;
 
     int visibility = View.INVISIBLE;
 
@@ -57,6 +60,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         studentList = new ArrayList<>();
         studentList.addAll(students.entrySet());
 
+        logEntries = new SparseArray<>();
+        startTimes = new SparseArray<>();
+        finishTimes = new SparseArray<>();
+
         defaultScenario = new Scenario("standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false);
         return  vh;
     }
@@ -73,16 +80,19 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                     backGroundNoBorder = R.drawable.recyclerview_details_noborder_red;
                     backGroundLeftBorder = R.drawable.recyclerview_details_borderleft_red;
                     backGroundRightBorder = R.drawable.recyclerview_details_borderright_red;
-                    if(logEntry != null){
-                        logEntry.setTime(-1);
-                        logs.addLog(logEntry);
+
+                    if(logEntries.get(i) != null) {
+                        logEntries.get(i).setTime(-1);
+                        logs.addLog(logEntries.get(i));
                     }
-                    logEntry = new LogEntry();
-                    logEntry.setName(studentList.get(i).getValue().getName());
-                    logEntry.setScenarioName(studentList.get(i).getValue().getScenario().getName());
-                    logEntry.setFailures(0);
-                    logEntry.setDate(new Date(System.currentTimeMillis()));
-                    startTime = System.currentTimeMillis();
+                    logEntries.put(i, new LogEntry());
+
+                    logEntries.get(i).setName(studentList.get(i).getValue().getName());
+                    logEntries.get(i).setScenarioName(studentList.get(i).getValue().getScenario().getName());
+                    logEntries.get(i).setFailures(0);
+                    logEntries.get(i).setDate(new Date(System.currentTimeMillis()));
+                    Log.e("HAJJ", logEntries.get(i).getName() + "  " +  i);
+                    startTimes.put(i, System.currentTimeMillis());
                     visibility = View.VISIBLE;
 
                 }
@@ -91,12 +101,12 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(logEntry != null) {
-                    finishTime = System.currentTimeMillis();
-                    logEntry.setTime((int) ((finishTime - startTime) / 1000));
-                    logs.addLog(logEntry);
+                if(logEntries.get(i) != null) {
+                    finishTimes.put(i, System.currentTimeMillis());
+                    logEntries.get(i).setTime((int) ((finishTimes.get(i) - startTimes.get(i)) / 1000));
+                    logs.addLog(logEntries.get(i));
                 }
-                logEntry = null;
+                logEntries.put(i, null);
                 studentList.get(i).getValue().setScenario(defaultScenario);
                 notifyItemChanged(i);
                 backGroundNoBorder = R.drawable.recyclerview_details_noborder;
@@ -111,9 +121,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
             @Override
             public void onClick(View v) {
-                if(logEntry != null) {
-                    logEntry.setFailures(logEntry.getFailures() + 1);
-                    Log.e(studentList.get(i).getValue().getName(), logEntry.getFailures() + "");
+                Log.e(studentList.get(i).getValue().getName(), logEntries.get(i).getFailures() + "");
+                if(logEntries.get(i) != null) {
+                    logEntries.get(i).setFailures(logEntries.get(i).getFailures() + 1);
+
                 }
             }
         });

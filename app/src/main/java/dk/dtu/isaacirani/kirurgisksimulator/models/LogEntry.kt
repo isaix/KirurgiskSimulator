@@ -9,5 +9,4 @@ data class LogEntry constructor(
     var date: Date = Date(0L),
     var time: Int = 0,
     var failures: Int = 0
-
 )

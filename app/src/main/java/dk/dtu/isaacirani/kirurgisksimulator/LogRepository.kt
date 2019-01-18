@@ -21,7 +21,6 @@ public class LogRepository {
                 for (itemSnapShot: DataSnapshot in dataSnapshot.children) {
                     var entry: LogEntry = itemSnapShot.getValue(LogEntry::class.java)!!
                     logs.add(entry)
-                    Log.e("tester", entry.name)
                 }
 
                 Collections.reverse(logs)
@@ -38,6 +37,7 @@ public class LogRepository {
     fun addLog(entry: LogEntry) : String{
         val id = logRef.push().key!!
         logRef.child(id).setValue(entry)
+        Log.e("Name:", entry.name)
         return id
     }
 }
