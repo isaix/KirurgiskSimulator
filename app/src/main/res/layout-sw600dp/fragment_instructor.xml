@@ -44,7 +44,7 @@
                     android:text="ID"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -57,7 +57,7 @@
                     android:text="Name"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -70,7 +70,7 @@
                     android:text="Air"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -83,7 +83,7 @@
                     android:text="Pressure"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -96,7 +96,7 @@
                     android:text="Pressure\nBar 1"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:text="Pressure\nBar 2"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:text="Rate"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -135,7 +135,7 @@
                     android:text="Rate\nBar 1"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -148,7 +148,7 @@
                     android:text="Rate\nBar 2"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -161,7 +161,7 @@
                     android:text="Volume"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -174,7 +174,7 @@
                     android:text="Nozzle"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -208,7 +208,7 @@
             <TextView
                 android:id="@+id/scenariosavaliable"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/recyclerview_details_avaliable"
                 android:gravity="center"
@@ -246,7 +246,7 @@
                     android:gravity="center"
                     android:text="Air"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/pressure2"
@@ -257,7 +257,7 @@
                     android:gravity="center"
                     android:text="Pressure"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/pressurebar"
@@ -268,7 +268,7 @@
                     android:gravity="center"
                     android:text="Pressure Bar 1"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/pressurebar2"
@@ -279,7 +279,7 @@
                     android:gravity="center"
                     android:text="Pressure Bar 2"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/rate2"
@@ -290,7 +290,7 @@
                     android:gravity="center"
                     android:text="Rate"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/ratebar"
@@ -301,7 +301,7 @@
                     android:gravity="center"
                     android:text="Rate Bar 1"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/ratebar2"
@@ -312,7 +312,7 @@
                     android:gravity="center"
                     android:text="Rate Bar 2"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/volume"
@@ -323,7 +323,7 @@
                     android:gravity="center"
                     android:text="Volume"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:id="@+id/nozzle"
@@ -334,7 +334,7 @@
                     android:gravity="center"
                     android:text="Nozzle"
                     android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textSize="19sp" />
             </TableRow>
 
             <TableRow

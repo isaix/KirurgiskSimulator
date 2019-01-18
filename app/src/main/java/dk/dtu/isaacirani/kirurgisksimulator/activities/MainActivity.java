@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import com.crashlytics.android.Crashlytics;
 import dk.dtu.isaacirani.kirurgisksimulator.InstructorLoginActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.StudentLoginActivity;
+import dk.dtu.isaacirani.kirurgisksimulator.activities.SettingsActivity;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -60,7 +63,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Closing Application")
+                    .setMessage("Are you sure you want to close the app?")
+                    .setPositiveButton("Yes", (dialog, which) -> finish())
+                    .setNegativeButton("No", null)
+                    .show();
         }
     }
 
@@ -69,10 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            /*case R.id.settings:
-                intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
-                break; */
             case R.id.about:
                 intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
@@ -84,6 +90,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 */
             case R.id.scenario_creator:
                 intent = new Intent(this,ScenarioCreatorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.settings:
+                intent = new Intent(this,SettingsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.scenario_data:
+                intent = new Intent(this,LogDataActivity.class);
                 startActivity(intent);
         }
 
@@ -99,4 +113,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(surgeonLogin);
         }
     }
+
+
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private TextView pressure;
     private TextView rate;
     private Switch switchbutton;
+    MediaPlayer turnOn;
 
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
@@ -51,6 +53,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator_container);
 
@@ -89,12 +92,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
 
         //setter onclick på knapperne
-        /*
+
         floatingplus1.setOnClickListener(this);
         floatingminus1.setOnClickListener(this);
         floatingminus2.setOnClickListener(this);
         floatingplus2.setOnClickListener(this);
-        */
+
 
         floatingplus1.setElevation(0);
         floatingminus1.setElevation(0);
@@ -107,10 +110,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         floatingminus2.setEnabled(false);
 
 
+        /*
         pressure.setOnClickListener(this);
         rate.setOnClickListener(this);
         volume.setOnClickListener(this);
         switchbutton.setOnCheckedChangeListener(this);
+        */
         //tror det er den her i skal bruge for den røde, hilsen Yoss
         //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
 
@@ -162,6 +167,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        turnOn = MediaPlayer.create(this, R.raw.turnon);
+        turnOn.start();
         Scenario scenario = new Scenario();
         scenario.setAir(50);
         scenario.setPressure(25);
@@ -174,6 +181,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
 
         isOn = isChecked;
+
         if (isChecked) {
             changeDisplayValues(scenario);
             Toast.makeText(getApplicationContext(), "ON", Toast.LENGTH_LONG).show();
