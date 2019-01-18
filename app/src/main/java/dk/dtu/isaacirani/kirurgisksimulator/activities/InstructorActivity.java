@@ -13,12 +13,10 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -33,15 +31,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
-import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
-import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout l;
@@ -65,6 +60,8 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
         recyclerView = findViewById(R.id.recyclerView);
+        setSupportActionBar(findViewById(R.id.toolbar));
+
 
 
         GroupRepository groupRepository = new GroupRepository();

@@ -1,4 +1,4 @@
-package dk.dtu.isaacirani.kirurgisksimulator;
+package dk.dtu.isaacirani.kirurgisksimulator.fragments;
 
 
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+
+import dk.dtu.isaacirani.kirurgisksimulator.R;
 
 public class Logfragment extends Fragment {
 

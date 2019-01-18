@@ -1,4 +1,4 @@
-package dk.dtu.isaacirani.kirurgisksimulator;
+package dk.dtu.isaacirani.kirurgisksimulator.adapters;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -10,12 +10,14 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import dk.dtu.isaacirani.kirurgisksimulator.R;
+import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.activities.InstructorActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 
 public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerViewHolder> {
     ArrayList<Scenario> scenarios;
-    static Scenario chosenScenario;
+    public static Scenario chosenScenario;
 
     public ScenarioPickerAdapter(ArrayList<Scenario> scenarios){
         this.scenarios = scenarios;

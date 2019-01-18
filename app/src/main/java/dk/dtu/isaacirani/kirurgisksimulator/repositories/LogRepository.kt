@@ -1,4 +1,4 @@
-package dk.dtu.isaacirani.kirurgisksimulator
+package dk.dtu.isaacirani.kirurgisksimulator.repositories
 
 import android.util.Log
 import com.google.firebase.database.DataSnapshot

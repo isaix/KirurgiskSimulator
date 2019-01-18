@@ -12,9 +12,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     HashMap<String, Student> students;

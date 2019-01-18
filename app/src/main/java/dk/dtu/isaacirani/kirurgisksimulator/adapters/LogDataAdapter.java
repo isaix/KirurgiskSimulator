@@ -1,4 +1,4 @@
-package dk.dtu.isaacirani.kirurgisksimulator;
+package dk.dtu.isaacirani.kirurgisksimulator.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import dk.dtu.isaacirani.kirurgisksimulator.LogDataViewHolder;
+import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;

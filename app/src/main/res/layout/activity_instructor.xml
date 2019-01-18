@@ -35,7 +35,7 @@
             android:layout_height="fill_parent">
 
             <fragment
-                android:name="dk.dtu.isaacirani.kirurgisksimulator.InstructorFragment"
+                android:name="dk.dtu.isaacirani.kirurgisksimulator.fragments.InstructorFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

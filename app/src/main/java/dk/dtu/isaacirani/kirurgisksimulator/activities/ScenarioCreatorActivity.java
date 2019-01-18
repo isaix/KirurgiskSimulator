@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.ScenarioRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 

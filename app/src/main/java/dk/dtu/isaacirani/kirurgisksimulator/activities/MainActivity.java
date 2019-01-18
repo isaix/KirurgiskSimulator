@@ -1,6 +1,5 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,10 +16,7 @@ import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
 
-import dk.dtu.isaacirani.kirurgisksimulator.InstructorLoginActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.StudentLoginActivity;
-import dk.dtu.isaacirani.kirurgisksimulator.activities.SettingsActivity;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -96,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(this,SettingsActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.scenario_data:
+            case R.id.saved_data:
                 intent = new Intent(this,LogDataActivity.class);
                 startActivity(intent);
         }
@@ -110,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(v == student){
             startActivity(new Intent(this, StudentLoginActivity.class));
         } else if(v == surgeon){
-            startActivity(new Intent(this, InstructorActivity.class).putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq"));
+            startActivity(new Intent(this, InstructorLoginActivity.class));
         }
     }
 

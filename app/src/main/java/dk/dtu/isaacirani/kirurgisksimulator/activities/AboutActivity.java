@@ -25,6 +25,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_about);
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         aboutus_phone = (ImageButton) findViewById(R.id.aboutus_phone);
         aboutus_pin = (ImageButton) findViewById(R.id.aboutus_pin);
