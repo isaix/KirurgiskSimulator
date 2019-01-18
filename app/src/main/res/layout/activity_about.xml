@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.71000004">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/cames"
             android:layout_width="316dp"
             android:layout_height="111dp"
             android:layout_marginBottom="8dp"
@@ -91,9 +91,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapregular"
-                    android:text="Hvem er CAMES"
+                    android:text="Simulation i Region Hovedstaden"
                     android:textColor="#091B5E"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="10dp"
                     tools:layout_editor_absoluteY="190dp" />
@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapregular"
-                    android:text="CAMES ​samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation.​  Simulation i Region Hovedstaden ​CAMES arbejder for et endnu tættere og styrket samarbejde med alle de enheder og afdelinger i Region Hovedstaden, som arbejder professionelt med at udvikle og bruge med simulationsbaseret træning."
+                    android:text="​CAMES arbejder for et endnu tættere og styrket samarbejde med alle de enheder og afdelinger i Region Hovedstaden, som arbejder professionelt med at udvikle og bruge med simulationsbaseret træning. Få overblik over samtlige simulationsenheder i Region Hovedstaden ​på kortet herunder. \n De seneste 20 år har flere tusinde sundhedsprofessionelle medarbejdere, forskere og udviklere særligt fra Region Hovedstaden, men også fra ind- og udland, haft stor glæde af den simulationsbaserede uddannelse, udvikling og forskning, som har været varetaget fra CEKU og DIMS på henholdsvis Rigshospitalet og Herlev Hospital."
                     android:textColor="#000000"
                     android:textSize="18sp"
                     tools:layout_editor_absoluteX="8dp"
