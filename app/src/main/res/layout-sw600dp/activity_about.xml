@@ -10,18 +10,19 @@
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
-        android:layout_height="357dp"
+        android:layout_height="309dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.891">
 
         <LinearLayout
             android:id="@+id/linearLayout5"
-            android:layout_width="match_parent"
+            android:layout_width="543dp"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_weight="4"
@@ -31,40 +32,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.983">
 
-            <TextView
-                android:id="@+id/contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/asapregular"
-                android:text="Kontaktoplysninger"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="#091B5E"
-                android:textSize="20sp"
-                tools:layout_editor_absoluteY="171dp" />
-
             <ImageButton
                 android:id="@+id/aboutus_phone"
                 android:layout_width="92dp"
                 android:layout_height="66dp"
+                android:layout_gravity=""
                 android:layout_weight="1"
                 android:background="@null"
                 app:srcCompat="@drawable/aboutus_phone"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="212dp" />
-
-            <TextView
-                android:id="@+id/phonenumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/asapregular"
-                android:text="+45 35 45 54 04 "
-                android:textColor="#000"
-                android:visibility="visible"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="280dp" />
 
             <ImageButton
                 android:id="@+id/aboutus_mail"
@@ -76,18 +53,6 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="311dp" />
 
-            <TextView
-                android:id="@+id/emailaddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/asapregular"
-                android:text="cames.rigshospitalet@regionh.dk"
-                android:textColor="#000"
-                android:visibility="visible"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="381dp" />
-
             <ImageButton
                 android:id="@+id/aboutus_pin"
                 android:layout_width="100dp"
@@ -98,17 +63,6 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="413dp" />
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/asapregular"
-                android:text="Rigshospitalet, Afsnit 5404,  Teilumbygningen Blegdamsvej 9, 2100 Kbh Ø"
-                android:textColor="#000"
-                android:visibility="visible"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="475dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -145,9 +99,9 @@
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="742dp"
-                android:layout_height="106dp"
+                android:layout_height="78dp"
                 android:fontFamily="@font/asapregular"
-                android:text="CAMES - Copenhagen Academy for Medical Education and Simulation - samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation. Målet med alle CAMES aktiviteter er at øge kvaliteten og sikkerheden i patientbehandlingen. CAMES er organisatorisk en del af Center for HR og var tidligere kendt som Dansk Institut for Medicinsk Simulation og Center for Klinisk Uddannelse. L​æs mere om CAMES, hvem vi er og hvordan du kan kontakte os herunder."
+                android:text="CAMES - Copenhagen Academy for Medical Education and Simulation - samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation. Målet med alle CAMES aktiviteter er at øge kvaliteten og sikkerheden i patientbehandlingen. CAMES er organisatorisk en del af Center for HR og var tidligere kendt som Dansk Institut for Medicinsk Simulation og Center for Klinisk Uddannelse."
                 android:textColor="#000"
                 tools:layout_editor_absoluteX="423dp"
                 tools:layout_editor_absoluteY="211dp" />
@@ -189,29 +143,29 @@
 
     <ImageView
         android:id="@+id/cames"
-        android:layout_width="440dp"
+        android:layout_width="413dp"
         android:layout_height="132dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077"
+        app:layout_constraintVertical_bias="0.118"
         app:srcCompat="@drawable/aboutus_cames" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="696dp"
-        android:layout_height="437dp"
+        android:layout_width="687dp"
+        android:layout_height="400dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="148dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lines" />
+        app:srcCompat="@drawable/aboutus_lines" />
 
 </android.support.constraint.ConstraintLayout>

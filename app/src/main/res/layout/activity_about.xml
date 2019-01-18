@@ -5,114 +5,130 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:layout_editor_absoluteY="25dp">
+    tools:layout_editor_absoluteY="81dp">
+
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="64dp"
-            android:layout_height="66dp"
-            android:layout_marginBottom="38dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toTopOf="@+id/textView9"
-            app:layout_constraintEnd_toStartOf="@+id/imageView6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="322dp"
-            android:layout_height="50sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="38dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toTopOf="@+id/textView9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cames" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="360dp"
+        android:layout_height="600dp"
         android:layout_marginEnd="10dp"
-        android:scrollbars="vertical"
-        android:text="CAMES (Copenhagen Academy for Medical Education and Simulation) samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation. Målet med alle CAMES aktiviteter er at øge kvaliteten og sikkerheden i patientbehandlingen. CAMES er organisatorisk en del af Center for HR og var tidligere kendt som Dansk Institut for Medicinsk Simulation og Center for Klinisk Uddannelse. L​æs mere om CAMES, hvem vi er og hvordan du kan kontakte os herunder."
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simulationiregion" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="CAMES ​samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation.​  Simulation i Region Hovedstaden ​CAMES arbejder for et endnu tættere og styrket samarbejde med alle de enheder og afdelinger i Region Hovedstaden, som arbejder professionelt med at udvikle og bruge med simulationsbaseret træning. Få overblik over samtlige simulationsenheder i Region Hovedstaden ​på kortet herunder."
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Om CAMES"
-        android:textAllCaps="true"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
-
-    <TextView
-        android:id="@+id/simulationiregion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Hvem er CAMES"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginStart="11dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71000004">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="316dp"
+            android:layout_height="111dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.131"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cameslogo_collected" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/aboutus_line" />
+
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="wrap_content"
+            android:layout_height="361dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.837">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/asapregular"
+                    android:text="Om CAMES"
+                    android:textAllCaps="false"
+                    android:textColor="#091B5E"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="14dp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="268dp"
+                    android:fontFamily="@font/asapregular"
+                    android:scrollbars="vertical"
+                    android:text="CAMES (Copenhagen Academy for Medical Education and Simulation) samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation. Målet med alle CAMES aktiviteter er at øge kvaliteten og sikkerheden i patientbehandlingen. CAMES er organisatorisk en del af Center for HR og var tidligere kendt som Dansk Institut for Medicinsk Simulation og Center for Klinisk Uddannelse. \n \n \n \n \n \n \n \n   "
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="221dp" />
+
+                <TextView
+                    android:id="@+id/simulationiregion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/asapregular"
+                    android:text="Hvem er CAMES"
+                    android:textColor="#091B5E"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="190dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/asapregular"
+                    android:text="CAMES ​samler Region Hovedstadens forsknings-, udviklings- og undervisningsaktiviteter inden for medicinsk og kirurgisk simulation.​  Simulation i Region Hovedstaden ​CAMES arbejder for et endnu tættere og styrket samarbejde med alle de enheder og afdelinger i Region Hovedstaden, som arbejder professionelt med at udvikle og bruge med simulationsbaseret træning."
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="288dp" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!--
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="465dp">
 
         <ImageButton
             android:id="@+id/aboutus_pin"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="83dp"
             android:layout_marginBottom="3dp"
+            android:layout_marginEnd="83dp"
+            android:layout_marginStart="40dp"
             android:layout_weight="1"
             android:background="@null"
             android:scaleType="fitXY"
@@ -128,8 +144,8 @@
             android:layout_width="71dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="83dp"
             android:layout_marginBottom="1dp"
+            android:layout_marginEnd="83dp"
             android:layout_weight="1"
             android:background="@null"
             android:scaleType="fitXY"
@@ -138,6 +154,7 @@
             app:layout_constraintStart_toEndOf="@+id/aboutus_pin"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:srcCompat="@drawable/aboutus_mail" />
+
 
         <ImageButton
             android:id="@+id/aboutus_phone"
@@ -153,6 +170,76 @@
             app:layout_constraintStart_toEndOf="@+id/aboutus_mail"
             app:layout_constraintTop_toBottomOf="@+id/imageView6"
             app:srcCompat="@drawable/aboutus_phone" />
+
     </LinearLayout>
+    -->
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="366dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#fff"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="402dp"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageButton
+                android:id="@+id/aboutus_phone"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/aboutus_phone" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider" />
+
+            <ImageButton
+                android:id="@+id/aboutus_pin"
+                android:layout_width="94dp"
+                android:layout_height="88dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/aboutus_pin" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider" />
+
+            <ImageButton
+                android:id="@+id/aboutus_mail"
+                android:layout_width="87dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/aboutus_mail" />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
