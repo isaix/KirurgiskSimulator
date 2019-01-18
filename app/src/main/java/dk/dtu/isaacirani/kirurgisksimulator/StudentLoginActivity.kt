@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
+import android.hardware.input.InputManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -13,6 +14,7 @@ import android.widget.Button
 import android.widget.TextView
 
 import dk.dtu.isaacirani.kirurgisksimulator.activities.SimulatorActivity
+import kotlinx.android.synthetic.main.activity_student_login.*
 
 class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var simulator: Intent
@@ -22,6 +24,7 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var snackbarisconnected: Snackbar
     lateinit var snackbarnotconnected: Snackbar
     lateinit var textView: TextView
+    lateinit var textInputLayout: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
