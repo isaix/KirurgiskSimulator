@@ -42,8 +42,6 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-        surgeon = Intent(this, InstructorActivity::class.java)
-
 
 
         registerReceiver()
@@ -60,13 +58,12 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         //Log.e("IDINTENT", instructor.id_i)
         //surgeon.putExtra("instructorID", instructor.id_i)
         //surgeon.putExtra("instructorID", "-LWQO2j41v1ZhIUOx-xq")
-        surgeon.putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq")
 
 
     }
 
     override fun onClick(v: View) {
-        startActivity(surgeon)
+        startActivity(Intent(this, InstructorActivity::class.java).putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq"))
     }
 
 

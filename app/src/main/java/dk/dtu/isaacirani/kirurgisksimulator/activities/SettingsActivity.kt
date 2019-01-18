@@ -19,7 +19,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 import kotlinx.android.synthetic.main.activity_simulator_container.view.*
 
-class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class SettingsActivity : AppCompatActivity(){
     private lateinit var nv: NavigationView
     var groupRepository = GroupRepository()
 
@@ -96,20 +96,20 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }
 
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val intent: Intent
-        when (item.itemId) {
-            R.id.about -> {
-                intent = Intent(this, SimulatorActivity::class.java)
-                finish()
-                startActivity(intent)
-            }
-
-        }
-
-        drawer.closeDrawer(GravityCompat.START)
-        return true
-    }
+//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+//        val intent: Intent
+//        when (item.itemId) {
+//            R.id.about -> {
+//                intent = Intent(this, SimulatorActivity::class.java)
+//                finish()
+//                startActivity(intent)
+//            }
+//
+//        }
+//
+//        drawer.closeDrawer(GravityCompat.START)
+//        return true
+//    }
 
 
 
