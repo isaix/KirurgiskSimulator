@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,11 +19,15 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 
 public class LogDataAdapter extends RecyclerView.Adapter<LogDataViewHolder> {
     ArrayList<LogEntry> logEntries;
+    SimpleDateFormat format;
 
     public LogDataAdapter(ArrayList<LogEntry> logEntries) {
         this.logEntries = logEntries;
+        format = new SimpleDateFormat("dd-MM-YYYY");
         Log.e("gøgl", String.valueOf(logEntries.size()));
     }
+
+
 
     @NonNull
     @Override
@@ -35,6 +40,7 @@ public class LogDataAdapter extends RecyclerView.Adapter<LogDataViewHolder> {
         sh.logData_time = view.findViewById(R.id.dataTime);
         sh.logData_failures = view.findViewById(R.id.dataFailures);
         sh.logTableRow = view.findViewById(R.id.LogTableRow);
+        sh.logData_instructor = view.findViewById(R.id.dataInstructor);
         return sh;
     }
 
@@ -44,9 +50,10 @@ public class LogDataAdapter extends RecyclerView.Adapter<LogDataViewHolder> {
         logDataViewHolder.logTableRow.setId(i);
         logDataViewHolder.logData_name.setText(logEntry.getName());
         logDataViewHolder.logData_scenarioName.setText(logEntry.getScenarioName());
-        logDataViewHolder.logData_date.setText(logEntry.getDate().toString());
+        logDataViewHolder.logData_date.setText(format.format(logEntry.getDate()));
         logDataViewHolder.logData_time.setText(String.valueOf(logEntry.getTime()));
         logDataViewHolder.logData_failures.setText(String.valueOf(logEntry.getFailures()));
+        logDataViewHolder.logData_instructor.setText(String.valueOf(logEntry.getInstructor()));
     }
 
 

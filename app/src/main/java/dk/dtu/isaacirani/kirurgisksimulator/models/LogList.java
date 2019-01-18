@@ -9,9 +9,9 @@ public class LogList {
 
     public LogList() {
         ArrayList<LogEntry> logEntries = new ArrayList<LogEntry>();
-        logEntries.add(new LogEntry("tess", "test", new Date(System.currentTimeMillis()),20,1));
-        logEntries.add(new LogEntry("tess", "test", new Date(System.currentTimeMillis()),4,1));
-        logEntries.add(new LogEntry("tess", "test", new Date(System.currentTimeMillis()),9,1));
+        logEntries.add(new LogEntry("tess", "Yoss","test", new Date(System.currentTimeMillis()),20,1));
+        logEntries.add(new LogEntry("tess", "Frederik","test", new Date(System.currentTimeMillis()),4,1));
+        logEntries.add(new LogEntry("tess","Mads", "test", new Date(System.currentTimeMillis()),9,1));
         this.logEntries = logEntries;
 
     }
