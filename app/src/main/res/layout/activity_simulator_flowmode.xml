@@ -124,7 +124,7 @@
             app:srcCompat="@drawable/icon1" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingminus1"
+            android:id="@+id/floatingminus2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -147,7 +147,7 @@
 
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingplus1"
+            android:id="@+id/floatingplus2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

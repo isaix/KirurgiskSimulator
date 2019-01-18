@@ -8,31 +8,32 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
-        android:layout_height="380dp"
+        android:layout_height="395dp"
         app:layout_constraintBottom_toTopOf="@+id/switchbutton"
         app:layout_constraintTop_toTopOf="@+id/switchbutton"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="0.658"
+        tools:layout_editor_absoluteX="16dp">
 
         <Switch
             android:id="@+id/switchbutton"
             android:layout_width="94dp"
-            android:layout_height="29dp"
+            android:layout_height="24dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:soundEffectsEnabled="false"
             android:backgroundTint="@color/off"
-            android:thumbTint="@color/foreground_off"
+            android:soundEffectsEnabled="false"
             android:text="Off/On"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             android:textStyle="bold"
+            android:thumbTint="@color/foreground_off"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.554" />
+            app:layout_constraintVertical_bias="0.735" />
 
         <ProgressBar
             android:id="@+id/airBar"
@@ -48,10 +49,10 @@
             android:progressDrawable="@drawable/progress_iconframe"
             app:layout_constraintBottom_toTopOf="@+id/switchbutton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.666" />
 
         <ImageView
             android:id="@+id/bottleanimated"
@@ -63,10 +64,10 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintHorizontal_bias="0.888"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.287" />
+            app:layout_constraintVertical_bias="0.283" />
 
         <ImageView
             android:id="@+id/imageView15"

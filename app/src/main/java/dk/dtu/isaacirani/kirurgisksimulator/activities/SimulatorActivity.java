@@ -92,12 +92,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
 
         //setter onclick på knapperne
-        /*
+
         floatingplus1.setOnClickListener(this);
         floatingminus1.setOnClickListener(this);
         floatingminus2.setOnClickListener(this);
         floatingplus2.setOnClickListener(this);
-        */
+
 
         floatingplus1.setElevation(0);
         floatingminus1.setElevation(0);
@@ -110,10 +110,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         floatingminus2.setEnabled(false);
 
 
+        /*
         pressure.setOnClickListener(this);
         rate.setOnClickListener(this);
         volume.setOnClickListener(this);
         switchbutton.setOnCheckedChangeListener(this);
+        */
         //tror det er den her i skal bruge for den røde, hilsen Yoss
         //progressbar1.setBackgroundColor(R.drawable.progressdetails_red);
 

@@ -164,12 +164,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 finish();
                 startActivity(intent);
                 break; */
-            
-            case R.id.scenarios:
-                intent = new Intent(this, InstructorActivity.class);
-                finish();
-                startActivity(intent);
-                break;
+
 
         }
         drawer.closeDrawer(GravityCompat.START);

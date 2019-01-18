@@ -12,16 +12,18 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="593dp"
-        android:layout_height="352dp"
+        android:layout_height="318dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <include
             android:id="@+id/frame1"
             layout="@layout/activity_simulator_icon"
-            android:layout_width="125dp"
+            android:layout_width="145dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:soundEffectsEnabled="false" />
@@ -29,7 +31,7 @@
         <include
             android:id="@+id/frame2"
             layout="@layout/activity_simulator_indicator"
-            android:layout_width="135dp"
+            android:layout_width="146dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:soundEffectsEnabled="false" />
@@ -37,8 +39,8 @@
         <include
             android:id="@+id/frame3"
             layout="@layout/activity_simulator_flowmode"
-            android:layout_width="134dp"
-            android:layout_height="wrap_content"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="0"
             android:soundEffectsEnabled="false" />
@@ -56,23 +58,36 @@
 
     <TextView
         android:id="@+id/labelname"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
+        android:layout_width="178dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:soundEffectsEnabled="false"
-        android:text="Thermoflater"
+        android:text="Insulfator"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#D5D5C3"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Save Scenario"
-        tools:layout_editor_absoluteX="537dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <!-- nyt -->
