@@ -2,16 +2,15 @@
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LogTableRow"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:padding="0dp">
+    android:gravity="center">
 
     <TextView
         android:id="@+id/dataName"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_weight="2"
+        android:layout_weight="4"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
         android:padding="4dp"
@@ -20,12 +19,24 @@
         android:textColor="#000"
         android:textSize="19sp" />
 
+    <TextView
+        android:id="@+id/dataInstructor"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="4"
+        android:background="@drawable/recyclerview_details_noborder"
+        android:gravity="center"
+        android:text="Instructor"
+        android:textAlignment="center"
+        android:textColor="#585858"
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/dataScenarioName"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_weight="10"
+        android:layout_weight="8"
         android:autoSizeTextType="uniform"
         android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
@@ -39,7 +50,7 @@
         android:id="@+id/dataDate"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_weight="3"
+        android:layout_weight="5"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
         android:padding="4dp"
@@ -67,14 +78,13 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_weight="8"
-        android:background="@drawable/recyclerview_details_noborder"
+        android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="19sp" />
-
 
 
 </TableRow>

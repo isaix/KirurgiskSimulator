@@ -14,6 +14,7 @@ public class LogDataViewHolder extends RecyclerView.ViewHolder {
     public TextView logData_date;
     public TextView logData_time;
     public TextView logData_failures;
+    public TextView logData_instructor;
     public android.widget.TableRow logTableRow;
 
     public LogDataViewHolder(View itemView) {
