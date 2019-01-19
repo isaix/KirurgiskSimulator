@@ -1,10 +1,7 @@
 package dk.dtu.isaacirani.kirurgisksimulator.repositories
 
 import android.util.Log
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
@@ -47,7 +44,7 @@ public class GroupRepository {
     fun loadGroup(groupId: String, callback: (Group) -> Unit) {
         mDatabase.child("Groups").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val instructor: Instructor = dataSnapshot.child(groupId).child("instructor").getValue(Instructor::class.java)!!
+                val instructor: Instructor = dataSnapshot.child(groupId).child("Instructor").getValue(Instructor::class.java)!!
                 var students: HashMap<String, Student> = hashMapOf()
                 Log.e("what's in here?", dataSnapshot.key)
 
@@ -69,39 +66,47 @@ public class GroupRepository {
         })
     }
 
-
-    fun createGroupWithStudents(group: Group) : String {
-        val id = groupsRef.push().key!!
-        groupsRef.child(id).setValue(group)
-        return id
+    fun deleteGroup(groupId: String){
+        groupsRef.child(groupId).removeValue()
     }
 
-    fun createGroupWithoutStudents(instructor: Instructor): String {
+
+//    fun createGroupWithStudents(group: Group) : String {
+//        val id = groupsRef.push().key!!
+//        groupsRef.child(id).setValue(group)
+//        return id
+//    }
+
+    fun createGroupWithoutStudents(instructor: Instructor, callback: (String) -> Unit){
         val id = groupsRef.push().key!!
         groupsRef.child(id).child("Instructor").setValue(instructor)
-        return id
+                .addOnSuccessListener { callback(id) }
+
+
     }
 
-    fun addStudentToGroup(groupId: String, student: Student): String {
+
+    fun addStudentToGroup(groupId: String, student: Student, callback: (String) -> Unit) {
         val id = groupsRef.child("Students").push().key!!
         groupsRef.child(groupId).child("Students").child(id).setValue(student)
-        return id
+                .addOnSuccessListener { callback(id) }
     }
 
-    fun loadStudent(studentId: String, callback: (Student) -> Unit) {
-        mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-
-                //callback(Student)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("ERROR", "Failed to read value.", error.toException())
-            }
-        })
-    }
+//    fun loadStudent(studentId: String, callback: (Student) -> Unit) {
+//        mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//
+//
+//                //callback(Student)
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                // Failed to read value
+//                Log.w("ERROR", "Failed to read value.", error.toException())
+//            }
+//        })
+//    }
 
 
 }
