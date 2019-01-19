@@ -25,6 +25,7 @@
             android:backgroundTint="@color/off"
             android:soundEffectsEnabled="false"
             android:text="Off/On"
+            android:theme="@style/Switch"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             android:textStyle="bold"
             android:thumbTint="@color/foreground_off"
