@@ -47,7 +47,12 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        startActivity(Intent(this, InstructorActivity::class.java).putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq"))
+
+        if (plain_text_input.text.isEmpty()){
+            Snackbar.make(activity_instructor_login, "You must fill out a name", Snackbar.LENGTH_LONG).show()
+        } else {
+            startActivity(Intent(this, InstructorActivity::class.java).putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq"))
+        }
     }
 
     private fun registerReceiver() {

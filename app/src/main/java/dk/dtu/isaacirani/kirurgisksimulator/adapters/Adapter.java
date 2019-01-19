@@ -1,4 +1,4 @@
-package dk.dtu.isaacirani.kirurgisksimulator;
+package dk.dtu.isaacirani.kirurgisksimulator.adapters;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import dk.dtu.isaacirani.kirurgisksimulator.R;
+import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
@@ -38,6 +40,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     public Adapter(HashMap<String, Student> students){
         this.students = students;
+        logEntries = new SparseArray<>();
+        startTimes = new SparseArray<>();
+        finishTimes = new SparseArray<>();
+        Log.e("hvor", "mange gange");
     }
     @NonNull
     @Override
@@ -62,9 +68,6 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         studentList = new ArrayList<>();
         studentList.addAll(students.entrySet());
 
-        logEntries = new SparseArray<>();
-        startTimes = new SparseArray<>();
-        finishTimes = new SparseArray<>();
 
         defaultScenario = new Scenario("standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false);
         return  vh;
@@ -93,7 +96,6 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                     logEntries.get(i).setScenarioName(studentList.get(i).getValue().getScenario().getName());
                     logEntries.get(i).setFailures(0);
                     logEntries.get(i).setDate(new Date(System.currentTimeMillis()));
-                    Log.e("HAJJ", logEntries.get(i).getName() + "  " +  i);
                     startTimes.put(i, System.currentTimeMillis());
                     visibility = View.VISIBLE;
 

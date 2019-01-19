@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;

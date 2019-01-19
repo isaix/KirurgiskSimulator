@@ -53,8 +53,6 @@ public class LogDataActivity extends AppCompatActivity  {
         //nyt slut
         recyclerViewLogData = findViewById(R.id.recyclerViewLogData);
 
-
-
     }
 
     public void loadLogs(ArrayList<LogEntry> logs){
