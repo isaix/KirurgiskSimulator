@@ -5,16 +5,17 @@
     android:id="@+id/activity_instructor_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/details_login"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:layout_editor_absoluteY="81dp">
     android:theme="@style/AppTheme.NoActionBar">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-
         app:title="Create Group" />
 
     <LinearLayout
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -44,6 +46,8 @@
     <Button
         android:id="@+id/enterSurgeonLogin"
         style="@android:style/Widget.DeviceDefault.Button"
+        android:layout_width="231dp"
+        android:layout_height="76dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/details_login_buttons"
@@ -55,6 +59,8 @@
         android:text="Create"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="345dp" />
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,23 +90,35 @@
         android:id="@+id/imageView7"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cames" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Press enter to start"
         android:labelFor="@+id/name_input"
         android:text="Enter name"
         android:textColor="@color/colorPrimary"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/plain_text_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="132dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>
