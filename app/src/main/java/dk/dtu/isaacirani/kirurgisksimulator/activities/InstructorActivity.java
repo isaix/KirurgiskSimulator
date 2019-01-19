@@ -29,14 +29,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
+import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 
 public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout l;
@@ -47,6 +50,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     ScenarioPickerAdapter spAdapter;
     TextView scenariosavaliable;
     String scenariosavailableString;
+    ScenarioRepository scenarios;
 
     View view;
     Snackbar snackbarnotconnected;
@@ -60,13 +64,16 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
         recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new Adapter(new HashMap<String, Student>()));
         setSupportActionBar(findViewById(R.id.toolbar));
 
 
 
         GroupRepository groupRepository = new GroupRepository();
+        scenarios = new ScenarioRepository();
 
         groupRepository.loadGroup(getIntent().getStringExtra("instructorID") ,group -> {createAdapter(group); return null;});
+        scenarios.loadScenarios(scenarios -> {loadRec(scenarios); return null;});
 
         airPreview = findViewById(R.id.airPreview);
         ratePreview = findViewById(R.id.ratePreview);
@@ -103,7 +110,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
 
 
-
+/*
         FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
 
 
@@ -123,6 +130,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
             }
         });
+        */
 
 
 
@@ -173,8 +181,9 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
-    public void loadRec(){
+    public void loadRec(ArrayList<Scenario> scenarios){
         scenarioPicker = findViewById(R.id.scenarioPicker);
+        spAdapter = new ScenarioPickerAdapter(scenarios);
         scenarioPicker.setAdapter(spAdapter);
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
