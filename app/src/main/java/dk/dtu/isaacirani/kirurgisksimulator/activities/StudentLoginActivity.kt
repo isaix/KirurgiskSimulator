@@ -27,6 +27,8 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_login)
+        setSupportActionBar(findViewById(R.id.toolbar))
+
 
         enterStudentLogin = findViewById(R.id.enterStudentLogin)
         enterStudentLogin.setOnClickListener(this)
