@@ -230,20 +230,52 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
 
-            <TextView
-                android:id="@+id/scenariosavaliable"
+            </android.support.v7.widget.RecyclerView>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/recyclerview_details_avaliable"
-                android:fontFamily="@font/asapregular"
-                android:gravity="center"
-                android:text="Scenarios avaliable"
-                android:textColor="#fff"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/recyclerview_details_avaliable_borderleft"
+                    android:gravity="left|center"
+                    android:text="⇦"
+                    android:textColor="#fff"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/scenariosavaliable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
+                    android:gravity="center"
+                    android:text="Scenarios avaliable"
+                    android:textColor="#fff"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/recyclerview_details_avaliable_borderright"
+                    android:gravity="right|center"
+                    android:text="⇨"
+                    android:textColor="#fff"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
+            </TableRow>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/scenarioPicker"

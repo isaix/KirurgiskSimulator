@@ -81,7 +81,7 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         loadingIcon = findViewById(R.id.instructorLoadingIcon);
 
         scenariosavaliable = findViewById(R.id.scenariosavaliable);
-        scenariosavailableString = "⇦ Avaliable Scenarios ⇨";
+        scenariosavailableString = "  Avaliable Scenarios  ";
         SpannableString spannableString = new SpannableString(scenariosavailableString);
         spannableString.setSpan(new RelativeSizeSpan(2f), 0, 1, 0);
         spannableString.setSpan(new RelativeSizeSpan(2f), scenariosavailableString.length()-1, scenariosavailableString.length()-0, 0);
