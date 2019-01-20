@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +34,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
-import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
 
 public class InstructorActivity extends AppCompatActivity {
     LinearLayout l;
@@ -55,7 +54,7 @@ public class InstructorActivity extends AppCompatActivity {
 
 
     public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
-    GroupRepository groupRepository = new GroupRepository();
+    GroupsRepository groupRepository = new GroupsRepository();
 
 
     @Override
@@ -65,11 +64,11 @@ public class InstructorActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        Log.e("Instructor NAme", getIntent().getStringExtra("instructorName"));
+        Log.e("Instructor Name", getIntent().getStringExtra("instructorName"));
 
         groupRepository.createGroupWithoutStudents(new Instructor(getIntent().getStringExtra("instructorName")), (String groupId) -> {
+            groupID = groupId;
             groupRepository.loadGroup(groupId, group -> {
-                groupID = groupId;
                 createAdapter(group);
                 return null;
             });
@@ -157,15 +156,9 @@ public class InstructorActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        /**
-         *
-         * VIGTIGT by isaac, skal implementeres senere
-         *
-         **/
-
-//        if(!groupID.isEmpty()){
-//            groupRepository.deleteGroup(groupID);
-//        }
+        if (!groupID.isEmpty()) {
+            groupRepository.deleteGroup(groupID);
+        }
 
         try {
             unregisterReceiver(networkChangeReceiver);

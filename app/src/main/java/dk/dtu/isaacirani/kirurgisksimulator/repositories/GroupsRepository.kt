@@ -7,28 +7,20 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 
 
-public class GroupRepository {
+public class GroupsRepository {
 
     var mDatabase = FirebaseDatabase.getInstance().reference
     val groupsRef = mDatabase.child("Groups")
 
 
-    fun loadGroups(callback: (HashMap<String, Group>) -> Unit) {
+    fun loadGroups(callback: (ArrayList<Group>) -> Unit) {
         groupsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                var groups: HashMap<String, Group> = HashMap()
+                var groups: ArrayList<Group> = arrayListOf()
 
                 for(itemSnapshot: DataSnapshot in dataSnapshot.children){
-                    Log.e("STATUS", "Reading Group")
-                    val instructor = itemSnapshot.child("Instructor").getValue(Instructor::class.java)!!
-                    var students: HashMap<String, Student> = hashMapOf()
-
-                    for(subItemSnapshot: DataSnapshot in itemSnapshot.child("Students").children){
-                        Log.e("STATUS", "Reading Students")
-                        students[subItemSnapshot.key!!] = subItemSnapshot.getValue(Student::class.java)!!
-                    }
-                    groups[itemSnapshot.key!!] = itemSnapshot.getValue(Group::class.java)!!
+                    groups.add(itemSnapshot.getValue(Group::class.java)!!)
                 }
 
                 callback(groups)
@@ -41,22 +33,31 @@ public class GroupRepository {
         })
     }
 
-    fun loadGroup(groupId: String, callback: (Group) -> Unit) {
-        mDatabase.child("Groups").addValueEventListener(object : ValueEventListener {
+    fun loadGroup(groupId: String, callback: (Group?) -> Unit) {
+        mDatabase.child("Groups").child(groupId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val instructor: Instructor = dataSnapshot.child(groupId).child("Instructor").getValue(Instructor::class.java)!!
-                var students: HashMap<String, Student> = hashMapOf()
-                Log.e("what's in here?", dataSnapshot.key)
-
-                Log.e("Instructor", instructor.name)
-                for (itemSnapshot: DataSnapshot in dataSnapshot.child(groupId).child("Students").children) {
-                    Log.e("what's in here part 2?", itemSnapshot.key)
-                    students[itemSnapshot.key!!] = itemSnapshot.getValue(Student::class.java)!!
+                if (dataSnapshot == null) {
+                    callback(dataSnapshot.getValue(Group::class.java))
                 }
-                val activeGroup = Group(instructor, students)
-                Log.e("Group", activeGroup.instructor.name)
 
-                callback(activeGroup)
+//                if (dataSnapshot == null){
+//                    val instructor: Instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!
+//                    var students: HashMap<String, Student> = hashMapOf()
+//                    Log.e("what's in here?", dataSnapshot.key)
+//
+//                    Log.e("Instructor", instructor.name)
+//                    for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {
+//                        Log.e("what's in here part 2?", itemSnapshot.key)
+//                        students[itemSnapshot.key!!] = itemSnapshot.getValue(Student::class.java)!!
+//                    }
+//                    val activeGroup = Group(instructor, students)
+//                    Log.e("Group", activeGroup.instructor.name)
+//
+//                    callback(activeGroup)
+//                } else {
+//                    callback(null)
+//                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -79,7 +80,8 @@ public class GroupRepository {
 
     fun createGroupWithoutStudents(instructor: Instructor, callback: (String) -> Unit){
         val id = groupsRef.push().key!!
-        groupsRef.child(id).child("Instructor").setValue(instructor)
+        val group = Group(id, instructor)
+        groupsRef.child(id).setValue(group)
                 .addOnSuccessListener { callback(id) }
 
 
@@ -88,6 +90,7 @@ public class GroupRepository {
 
     fun addStudentToGroup(groupId: String, student: Student, callback: (String) -> Unit) {
         val id = groupsRef.child("Students").push().key!!
+        student.id = id
         groupsRef.child(groupId).child("Students").child(id).setValue(student)
                 .addOnSuccessListener { callback(id) }
     }
