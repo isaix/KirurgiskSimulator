@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.group_item.view.*
 class GroupsAdapter( var groups : ArrayList<Group>, var context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
 
-    // Gets the number of animals in the list
+    // Gets the number of groups in the list
     override fun getItemCount(): Int {
         return groups.size
     }
@@ -23,7 +23,7 @@ class GroupsAdapter( var groups : ArrayList<Group>, var context: Context) : Recy
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.group_item, parent, false))
     }
 
-    // Binds each animal in the ArrayList to a view
+    // Binds each group in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.title.text = groups[position].instructor.name
         holder.view.sub_title.text = "${groups[position].students.size} Students connected"

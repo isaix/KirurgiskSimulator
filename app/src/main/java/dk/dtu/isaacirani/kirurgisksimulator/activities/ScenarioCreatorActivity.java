@@ -2,6 +2,8 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -61,6 +63,11 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator_container);
         presenter = new SimulatorPresenter(this);
+
+        int currentOrientation = this.getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         //laver View @namepåframe = (ImageView) find...(R.id.@navnetpåframe)
         View frame1 = findViewById(R.id.frame1);

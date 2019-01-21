@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,6 +37,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 
 public class InstructorActivity extends AppCompatActivity {
     LinearLayout l;
@@ -46,6 +49,7 @@ public class InstructorActivity extends AppCompatActivity {
     TextView scenariosavaliable;
     String scenariosavailableString;
     String groupID;
+    TextView noStudents;
 
     View view;
     Snackbar snackbarnotconnected;
@@ -55,6 +59,7 @@ public class InstructorActivity extends AppCompatActivity {
 
     public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
     GroupsRepository groupRepository = new GroupsRepository();
+    ScenarioRepository scenarioRepository = new ScenarioRepository();
 
 
     @Override
@@ -63,6 +68,11 @@ public class InstructorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructor);
         recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(findViewById(R.id.toolbar));
+
+        int currentOrientation = this.getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         Log.e("Instructor Name", getIntent().getStringExtra("instructorName"));
 
@@ -75,6 +85,8 @@ public class InstructorActivity extends AppCompatActivity {
             return null;
         });
 
+        scenarioRepository.loadScenarios(scenarios -> {loadRec(scenarios); return null;});
+
 
         airPreview = findViewById(R.id.airPreview);
         ratePreview = findViewById(R.id.ratePreview);
@@ -86,7 +98,10 @@ public class InstructorActivity extends AppCompatActivity {
         ratePreview1 = findViewById(R.id.rateBar1Preview);
         ratePreview2 = findViewById(R.id.rateBar2Preview);
 
-//        loadingIcon = findViewById(R.id.instructorLoadingIcon);
+        noStudents = findViewById(R.id.nostudents);
+
+
+        loadingIcon = findViewById(R.id.instructorLoadingIcon);
 
         scenariosavaliable = findViewById(R.id.scenariosavaliable);
         scenariosavailableString = "  Avaliable Scenarios  ";
@@ -108,35 +123,16 @@ public class InstructorActivity extends AppCompatActivity {
         textView.setTextColor(Color.RED);
 
 
-        /**
-         * Den her skal ikke være her, flyttes til scenarioRepository
-         */
-        FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                scenarioList.clear();
-                for (DataSnapshot scenario : dataSnapshot.getChildren()) {
-                    scenarioList.add(scenario.getValue(Scenario.class));
-
-                }
-                spAdapter = new ScenarioPickerAdapter(scenarioList);
-                loadRec();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
 
-    public void loadRec() {
+    public void loadRec(ArrayList<Scenario> scenarios) {
         scenarioPicker = findViewById(R.id.scenarioPicker);
+        spAdapter = new ScenarioPickerAdapter(scenarios);
         scenarioPicker.setAdapter(spAdapter);
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        loadingIcon.setVisibility(View.GONE);
+        loadingIcon.setVisibility(View.GONE);
         Log.e("tæst", scenarioList.size() + "");
     }
 
@@ -171,6 +167,9 @@ public class InstructorActivity extends AppCompatActivity {
 
     void createAdapter(Group group) {
         adapter = new Adapter(group.getStudents());
+        if(adapter.getItemCount() > 0){
+            noStudents.setVisibility(View.INVISIBLE);
+        }
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
