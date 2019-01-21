@@ -87,9 +87,9 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
-        pressure = (TextView) frame2.findViewById(R.id.rate);
-        pressureBar1 = frame2.findViewById(R.id.rateBar1);
-        pressureBar2 = frame2.findViewById(R.id.rateBar2);
+        pressure = (TextView) frame2.findViewById(R.id.pressure);
+        pressureBar1 = frame2.findViewById(R.id.progressBar1);
+        pressureBar2 = frame2.findViewById(R.id.progressBar2);
 
         floatingplus2 = frame3.findViewById(R.id.floatingminus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
@@ -152,7 +152,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         super.onWindowFocusChanged(hasFocus);
         bottleanimation.start();
     }
-    
+
 
     private void animateFloatingButton(final FloatingActionButton floatingActionButton) {
         floatingActionButton.animate().scaleX(0.9f).scaleY(0.9f).setDuration(10).withEndAction(new Runnable() {

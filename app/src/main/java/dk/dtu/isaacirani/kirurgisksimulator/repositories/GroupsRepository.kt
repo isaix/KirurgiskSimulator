@@ -82,8 +82,10 @@ public class GroupsRepository {
                 .addOnSuccessListener { callback(id) }
     }
 
-    fun loadStudentScenario(groupId: String, studentId: String, callback: (Scenario) -> Unit){
-        groupsRef.child(groupId).child(studentId).child("Scenario").addValueEventListener(object : ValueEventListener {
+    fun loadStudentScenario(studentId: String, groupId: String, callback: (Scenario) -> Unit){
+        Log.e("GroupID", groupId)
+        Log.e("StudentID", studentId)
+        groupsRef.child(groupId).child("Students").child(studentId).child("scenario").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot != null) {
                     callback(dataSnapshot.getValue(Scenario::class.java)!!)
