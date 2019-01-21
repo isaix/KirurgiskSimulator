@@ -8,40 +8,41 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import android.view.View
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
 import dk.dtu.isaacirani.kirurgisksimulator.R
-import dk.dtu.isaacirani.kirurgisksimulator.R.layout.activity_student_login
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.GroupsAdapter
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
-import kotlinx.android.synthetic.main.activity_instructor_login.*
+import kotlinx.android.synthetic.main.activity_join_group.*
 import kotlinx.android.synthetic.main.activity_student_login.*
 
-class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
+class JoinGroupActivity : AppCompatActivity() {
 
+    private val groupRepository = GroupsRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student_login)
+        setContentView(R.layout.activity_join_group)
         setSupportActionBar(findViewById(R.id.toolbar))
 
 
-        enterStudentLogin.setOnClickListener(this)
+        groupRepository.loadGroups { groups -> loadRec(groups)}
 
 
         registerReceiver()
 
+
     }
 
-    override fun onClick(v: View) {
-        Log.e("Clicked", "Button has been clicked")
-        if (student_text_input.text.isEmpty()){
-            Snackbar.make(student_login_activity, "You must fill out a name", Snackbar.LENGTH_LONG).show()
-        } else {
-            startActivity(Intent(this, JoinGroupActivity::class.java).putExtra("studentName", student_text_input.text.toString()))
-        }
+    private fun joinGroup(groupId: String){
+        startActivity(Intent(this, SimulatorActivity::class.java)
+                .putExtra("studentName", intent.getStringExtra("studentName"))
+                .putExtra("groupId", groupId))
+    }
+
+    private fun loadRec(groups: ArrayList<Group>){
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = GroupsAdapter(groups, this){ string -> joinGroup(string)}
     }
 
 
@@ -70,11 +71,7 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         super.onDestroy()
-
-
     }
-
-
 
 
     internal var networkChangeReceiver = InternalNetworkChangeReceiver()
@@ -86,7 +83,7 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
             val snackbar = Snackbar.make(findViewById(android.R.id.content), "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE)
 
             if (!i.getBooleanExtra("networkstatus", false)) {
-                 snackbar.show()
+                snackbar.show()
 
             } else {
                 if (snackbar.isShown) {

@@ -2,13 +2,14 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_login_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/details_login"
-    tools:context=".activities.StudentLoginActivity"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    >
+    tools:context=".activities.StudentLoginActivity"
+    tools:layout_editor_absoluteY="89dp">
 
 
     <android.support.v7.widget.Toolbar
@@ -21,24 +22,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back_icon_white"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Join Group" />
+        app:title="Student" />
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fadeScrollbars="false"
-        style="@style/scrollbar_style"
+    <Button
+        android:id="@+id/enterStudentLogin"
+        style="@android:style/Widget.DeviceDefault.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/details_login_buttons"
+        android:padding="24dp"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="-1"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:text="See Groups"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_text_input" />
 
-
-    </android.support.v7.widget.RecyclerView>
-
-
-
-
+    <EditText
+        android:id="@+id/student_text_input"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/apptheme"
+        android:hint="Name"
+        android:inputType="text"
+        android:shadowColor="@color/apptheme"
+        android:textColor="@color/colorPrimary"
+        android:textColorHighlight="@color/apptheme"
+        android:textColorHint="@color/apptheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
