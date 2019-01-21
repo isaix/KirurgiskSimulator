@@ -36,7 +36,7 @@ class GroupsAdapter( var groups : ArrayList<Group>, var context: Context, val ca
         holder.view.title.text = groups[position].instructor.name
         holder.view.sub_title.text = "${groups[position].students.size} Students connected"
         holder.view.setOnClickListener {
-            
+
             callback(groups[position].id)
         }
     }

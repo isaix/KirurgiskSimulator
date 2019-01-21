@@ -25,6 +25,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
 
 public class SimulatorActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SimulatorPresenter.View {
 
@@ -50,6 +51,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     //nyt test animation
     AnimationDrawable bottleanimation;
 
+    GroupsRepository groupsRepository = new GroupsRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,10 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_simulator_container);
 
 
-
+        groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), (Scenario scenario) -> {
+                    changeDisplayValues(scenario);
+                    return null;
+                });
 
 
         int currentOrientation = this.getResources().getConfiguration().orientation;
@@ -147,6 +152,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         super.onWindowFocusChanged(hasFocus);
         bottleanimation.start();
     }
+    
 
     private void animateFloatingButton(final FloatingActionButton floatingActionButton) {
         floatingActionButton.animate().scaleX(0.9f).scaleY(0.9f).setDuration(10).withEndAction(new Runnable() {

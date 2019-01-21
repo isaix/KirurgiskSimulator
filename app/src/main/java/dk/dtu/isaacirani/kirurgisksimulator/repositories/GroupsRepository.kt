@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.database.*
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
+import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 
 
@@ -36,7 +37,7 @@ public class GroupsRepository {
     fun loadGroup(groupId: String, callback: (Group?) -> Unit) {
         mDatabase.child("Groups").child(groupId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot == null) {
+                if (dataSnapshot != null) {
                     callback(dataSnapshot.getValue(Group::class.java))
                 }
 
@@ -79,6 +80,26 @@ public class GroupsRepository {
         student.id = id
         groupsRef.child(groupId).child("Students").child(id).setValue(student)
                 .addOnSuccessListener { callback(id) }
+    }
+
+    fun loadStudentScenario(groupId: String, studentId: String, callback: (Scenario) -> Unit){
+        groupsRef.child(groupId).child(studentId).child("Scenario").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot != null) {
+                    callback(dataSnapshot.getValue(Scenario::class.java)!!)
+                }
+
+//                } else {
+//                    callback(null)
+//                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ERROR", "Failed to read value.", error.toException())
+            }
+        })
     }
 
 

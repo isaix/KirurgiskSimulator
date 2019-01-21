@@ -12,6 +12,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.GroupsAdapter
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
+import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import kotlinx.android.synthetic.main.activity_join_group.*
 import kotlinx.android.synthetic.main.activity_student_login.*
@@ -35,9 +36,13 @@ class JoinGroupActivity : AppCompatActivity() {
     }
 
     private fun joinGroup(groupId: String){
-        startActivity(Intent(this, SimulatorActivity::class.java)
-                .putExtra("studentName", intent.getStringExtra("studentName"))
-                .putExtra("groupId", groupId))
+        groupRepository.addStudentToGroup(groupId, Student(name = intent.getStringExtra("studentName"))){studentId ->
+            startActivity(Intent(this, SimulatorActivity::class.java)
+                    .putExtra("studentId", studentId)
+                    .putExtra("groupId", groupId))
+
+        }
+
     }
 
     private fun loadRec(groups: ArrayList<Group>){
