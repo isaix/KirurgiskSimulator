@@ -42,7 +42,6 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         textView = view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
         textView.setTextColor(Color.RED)
 
-        instructor.name = "tobias"
     }
 
     override fun onClick(v: View) {

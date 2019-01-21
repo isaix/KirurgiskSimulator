@@ -108,6 +108,7 @@ public class GroupsRepository {
             }
         })
     }
-
-
+    fun updateStudent(studentId: String, groupId: String, scenario: Scenario) {
+        groupsRef.child(groupId).child("Students").child(studentId).child("scenario").setValue(scenario)
+    }
 }

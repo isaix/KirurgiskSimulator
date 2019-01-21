@@ -48,7 +48,7 @@ public class InstructorActivity extends AppCompatActivity {
     ScenarioPickerAdapter spAdapter;
     TextView scenariosavaliable;
     String scenariosavailableString;
-    String groupID;
+    public static String groupID;
     TextView noStudents;
 
     View view;

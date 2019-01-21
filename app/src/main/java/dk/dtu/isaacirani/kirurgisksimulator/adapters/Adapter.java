@@ -14,15 +14,19 @@ import java.util.Map;
 
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.ViewHolder;
+import dk.dtu.isaacirani.kirurgisksimulator.activities.InstructorActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
 import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     ArrayList<Student> students;
     LogRepository logs;
+    GroupsRepository groupsRepository;
     Date date;
     int chosenStudent = -1;
     int backGroundNoBorder;
@@ -64,6 +68,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         vh.checkButton = view.findViewById(R.id.checkButton);
         vh.crossButton = view.findViewById(R.id.crossButton);
         logs = new LogRepository();
+        groupsRepository = new GroupsRepository();
+
 
 
         defaultScenario = new Scenario("standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false);
@@ -77,6 +83,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             public void onClick(View v) {
                 if(ScenarioPickerAdapter.chosenScenario != null) {
                     students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
+                    groupsRepository.updateStudent(students.get(i).getId(), InstructorActivity.groupID, ScenarioPickerAdapter.chosenScenario);
                     notifyItemChanged(i);
                     chosenStudent = i;
                     backGroundNoBorder = R.drawable.recyclerview_details_noborder_red;

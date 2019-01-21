@@ -37,6 +37,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private TextView rate;
     private Switch switchbutton;
     MediaPlayer turnOn;
+    GroupsRepository groupsRepository;
 
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
@@ -51,19 +52,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     //nyt test animation
     AnimationDrawable bottleanimation;
 
-    GroupsRepository groupsRepository = new GroupsRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator_container);
-
-
-        groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), (Scenario scenario) -> {
-                    changeDisplayValues(scenario);
-                    return null;
-                });
 
 
         int currentOrientation = this.getResources().getConfiguration().orientation;
@@ -145,6 +139,12 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         ImageView bottleanimated = frame1.findViewById(R.id.bottleanimated);
         bottleanimated.setBackgroundResource(R.drawable.bottleanimation);
         bottleanimation = (AnimationDrawable) bottleanimated.getBackground();
+
+
+        //henter fra firebasen
+        groupsRepository = new GroupsRepository();
+        groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), scenario -> {changeDisplayValues(scenario); return null;});
+
     }
 
     @Override
