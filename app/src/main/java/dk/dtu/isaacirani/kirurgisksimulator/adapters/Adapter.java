@@ -21,8 +21,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
-    HashMap<String, Student> students;
-    ArrayList<Map.Entry<String,Student>>  studentList;
+    ArrayList<Student> students;
     LogRepository logs;
     Date date;
     int chosenStudent = -1;
@@ -38,7 +37,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     int visibility = View.INVISIBLE;
 
 
-    public Adapter(HashMap<String, Student> students){
+    public Adapter(ArrayList<Student> students){
         this.students = students;
         logEntries = new SparseArray<>();
         startTimes = new SparseArray<>();
@@ -65,8 +64,6 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         vh.checkButton = view.findViewById(R.id.checkButton);
         vh.crossButton = view.findViewById(R.id.crossButton);
         logs = new LogRepository();
-        studentList = new ArrayList<>();
-        studentList.addAll(students.entrySet());
 
 
         defaultScenario = new Scenario("standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false);
@@ -79,7 +76,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 if(ScenarioPickerAdapter.chosenScenario != null) {
-                    studentList.get(i).getValue().setScenario(ScenarioPickerAdapter.chosenScenario);
+                    students.get(i).setScenario(ScenarioPickerAdapter.chosenScenario);
                     notifyItemChanged(i);
                     chosenStudent = i;
                     backGroundNoBorder = R.drawable.recyclerview_details_noborder_red;
@@ -92,8 +89,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                     }
                     logEntries.put(i, new LogEntry());
 
-                    logEntries.get(i).setName(studentList.get(i).getValue().getName());
-                    logEntries.get(i).setScenarioName(studentList.get(i).getValue().getScenario().getName());
+                    logEntries.get(i).setName(students.get(i).getName());
+                    logEntries.get(i).setScenarioName(students.get(i).getScenario().getName());
                     logEntries.get(i).setFailures(0);
                     logEntries.get(i).setDate(new Date(System.currentTimeMillis()));
                     startTimes.put(i, System.currentTimeMillis());
@@ -112,7 +109,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                     logs.addLog(logEntries.get(i));
                 }
                 logEntries.put(i, null);
-                studentList.get(i).getValue().setScenario(defaultScenario);
+                students.get(i).setScenario(defaultScenario);
                 notifyItemChanged(i);
                 backGroundNoBorder = R.drawable.recyclerview_details_noborder;
                 backGroundLeftBorder = R.drawable.recyclerview_details_borderleft;
@@ -126,7 +123,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
             @Override
             public void onClick(View v) {
-                Log.e(studentList.get(i).getValue().getName(), logEntries.get(i).getFailures() + "");
+                Log.e(students.get(i).getName(), logEntries.get(i).getFailures() + "");
                 if(logEntries.get(i) != null) {
                     logEntries.get(i).setFailures(logEntries.get(i).getFailures() + 1);
 
@@ -148,7 +145,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             viewHolder.Nozzle.setBackgroundResource(backGroundRightBorder);
         }
 
-        Student student = studentList.get(i).getValue();
+        Student student = students.get(i);
         viewHolder.TableRow.setId(i);
         viewHolder.ID.setText(String.valueOf(i+1));
         viewHolder.Name.setText(student.getName());

@@ -78,7 +78,10 @@ public class InstructorActivity extends AppCompatActivity {
 
         groupRepository.createGroupWithoutStudents(new Instructor(getIntent().getStringExtra("instructorName")), (String groupId) -> {
             groupID = groupId;
+            Log.e("ID", groupId);
             groupRepository.loadGroup(groupId, group -> {
+                Log.e("ID2", group.getId());
+                Log.e("Students", group.getStudents().size() + "");
                 createAdapter(group);
                 return null;
             });
@@ -166,7 +169,9 @@ public class InstructorActivity extends AppCompatActivity {
 
 
     void createAdapter(Group group) {
+
         adapter = new Adapter(group.getStudents());
+        Log.e("rip", adapter.getItemCount() + "");
         if(adapter.getItemCount() > 0){
             noStudents.setVisibility(View.INVISIBLE);
         }
