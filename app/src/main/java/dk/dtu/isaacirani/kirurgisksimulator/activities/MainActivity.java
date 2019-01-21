@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
@@ -109,6 +111,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, InstructorLoginActivity.class));
         }
     }
-
-
 }

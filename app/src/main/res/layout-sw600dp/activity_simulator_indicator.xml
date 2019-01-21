@@ -20,7 +20,7 @@
             android:id="@+id/pressure"
             android:layout_width="0dp"
             android:layout_height="72dp"
-            android:layout_marginStart="144dp"
+            android:layout_marginStart="142dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/black"
             android:fontFamily="@font/digital7"
@@ -78,14 +78,14 @@
             android:id="@+id/valuebar3"
             android:layout_width="23dp"
             android:layout_height="249dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:text="50- \n 30- \n   20-\n\n\n -- \n \n \n10- \n \n 0-"
             android:textAlignment="viewStart"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/rateBar1"
+            app:layout_constraintEnd_toStartOf="@+id/progressBar1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.092" />
 
@@ -101,10 +101,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.877"
+            app:layout_constraintHorizontal_bias="0.849"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rate"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/pressure"
+            app:layout_constraintVertical_bias="0.1" />
 
         <ImageView
             android:id="@+id/imageView10"

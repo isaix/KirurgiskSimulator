@@ -38,6 +38,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private Switch switchbutton;
     MediaPlayer turnOn;
     GroupsRepository groupsRepository;
+    MediaPlayer mediaPlayer;
 
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
@@ -77,6 +78,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
+        switchbutton.setEnabled(true);
         airBar = frame1.findViewById(R.id.airBar);
 
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
@@ -85,7 +87,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         pressureBar1 = frame2.findViewById(R.id.progressBar1);
         pressureBar2 = frame2.findViewById(R.id.progressBar2);
 
-        floatingplus2 = frame3.findViewById(R.id.floatingminus2);
+        floatingplus2 = frame3.findViewById(R.id.floatingplus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
         rate = (TextView) frame3.findViewById(R.id.rate);
         rateBar1 = frame3.findViewById(R.id.rateBar1);
@@ -104,13 +106,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         floatingplus1.setElevation(0);
         floatingminus1.setElevation(0);
-        floatingplus1.setElevation(0);
+        floatingminus2.setElevation(0);
         floatingplus2.setElevation(0);
 
         floatingplus1.setEnabled(false);
         floatingminus1.setEnabled(false);
         floatingplus2.setEnabled(false);
         floatingminus2.setEnabled(false);
+
 
 
         /*
@@ -180,14 +183,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         turnOn = MediaPlayer.create(this, R.raw.turnon);
         turnOn.start();
         Scenario scenario = new Scenario();
-        scenario.setAir(50);
-        scenario.setPressure(25);
-        scenario.setPressureBar1(10);
-        scenario.setPressureBar2(20);
-        scenario.setRate(10);
-        scenario.setRateBar1(25);
-        scenario.setRateBar2(60);
-        scenario.setVolume(20.6);
+        scenario.setAir(0);
+        scenario.setPressure(0);
+        scenario.setPressureBar1(00);
+        scenario.setPressureBar2(00);
+        scenario.setRate(00);
+        scenario.setRateBar1(00);
+        scenario.setRateBar2(00);
+        scenario.setVolume(00.0);
 
 
         isOn = isChecked;
@@ -203,6 +206,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void changeDisplayValues(Scenario scenario) {
+        mediaPlayer = MediaPlayer.create(this, R.raw.turnon);
+        mediaPlayer.start();
         airBar.setProgress(scenario.getAir());
 
         pressureBar1.setProgress(scenario.getPressureBar1());
@@ -210,6 +215,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         rateBar1.setProgress(scenario.getRateBar1());
         rateBar2.setProgress(scenario.getRateBar2());
         String newVolume = String.valueOf(scenario.getVolume());
+        volume.setText(newVolume);
+
 
         if(scenario.getPressure() < 10 ){
             pressure.setText("0" + scenario.getPressure());
@@ -223,15 +230,13 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
             rate.setText(String.valueOf(scenario.getRate()));
         }
 
-        if (newVolume.length() > 4) {
-            newVolume = newVolume.substring(0, 3);
-        }
+        if (newVolume.length() <= 3) {
+            newVolume = "0" + newVolume;
+        } else { newVolume = newVolume.substring(0,4);
 
-        volume.setText(newVolume);
+        }  volume.setText(newVolume);
     }
 
-
-    //nyt BR
 
     private void registerReceiver() {
 

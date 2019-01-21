@@ -68,6 +68,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_simulator_container);
         presenter = new SimulatorPresenter(this);
 
+
         int currentOrientation = this.getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -85,6 +86,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
+        switchbutton.setChecked(true);
         airBar = frame1.findViewById(R.id.airBar);
 
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
@@ -94,8 +96,8 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         pressureBar2 = frame2.findViewById(R.id.progressBar2);
         nozzleButton = frame4.findViewById(R.id.nozzle);
 
-        floatingplus2 = frame3.findViewById(R.id.floatingminus2);
-        floatingminus2 = frame3.findViewById(R.id.floatingminus2);
+        floatingplus2 = frame3.findViewById(R.id.floatingplus2);
+        floatingminus2 = frame3.findViewById(R.id.floatingplus2);
         rate = (TextView) frame3.findViewById(R.id.rate);
         rateBar1 = frame3.findViewById(R.id.rateBar1);
         rateBar2 = frame3.findViewById(R.id.rateBar2);
@@ -243,7 +245,17 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     pressureBar1Value = Integer.parseInt(input.getText().toString());
                     scenario.setPressureBar1(pressureBar1Value);
                     pressureBar1.setProgress(pressureBar1Value);
+
+                    if (pressureBar1Value <= 10) {
+                        pressureBar1.setMax(50);
+                    } else if (pressureBar1Value <= 30) {
+                        pressureBar1.setMax(30);
+                    } else if (pressureBar1Value < 50) {
+                        pressureBar1.setMax(50);
+                        pressureBar1.setProgress(45);
+                    }
                 }
+
             });
             alertDialogBuilder.show();
 
@@ -265,7 +277,17 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     pressureBar2Value = Integer.parseInt(input.getText().toString());
                     scenario.setPressureBar2(pressureBar2Value);
                     pressureBar2.setProgress(pressureBar2Value);
+
+                    if (pressureBar2Value <= 10) {
+                        pressureBar2.setMax(50);
+                    } else if (pressureBar2Value <= 30) {
+                        pressureBar2.setMax(30);
+                    } else if (pressureBar2Value < 50) {
+                        pressureBar2.setMax(50);
+                        pressureBar2.setProgress(45);
+                    }
                 }
+
             });
             alertDialogBuilder.show();
         }
@@ -288,6 +310,14 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     rateBar1Value = Integer.parseInt(input.getText().toString());
                     scenario.setRateBar1(rateBar1Value);
                     rateBar1.setProgress(rateBar1Value);
+
+                    if (rateBar1Value <= 10) {
+                        rateBar1.setMax(20);
+                    } else if (rateBar1Value <= 20){
+                        rateBar1.setMax(27);
+                    } else {
+                        rateBar1.setMax(30);
+                    }
                 }
             });
             alertDialogBuilder.show();
@@ -309,6 +339,14 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     rateBar2Value = Integer.parseInt(input.getText().toString());
                     scenario.setRateBar2(rateBar2Value);
                     rateBar2.setProgress(rateBar2Value);
+
+                    if (rateBar2Value <= 10) {
+                        rateBar2.setMax(20);
+                    } else if (rateBar2Value <= 20){
+                        rateBar2.setMax(27);
+                    } else {
+                        rateBar2.setMax(30);
+                    }
                 }
             });
             alertDialogBuilder.show();

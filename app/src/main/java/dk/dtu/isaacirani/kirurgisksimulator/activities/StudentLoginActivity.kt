@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities
 
+import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import dk.dtu.isaacirani.kirurgisksimulator.R.layout.activity_student_login
@@ -28,6 +30,7 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(findViewById(R.id.toolbar))
 
 
+        noSoftKeyBoard()
         enterStudentLogin.setOnClickListener(this)
 
 
@@ -95,6 +98,15 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    fun noSoftKeyBoard() {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var v = currentFocus
+        if (v == null) {
+            v = View(this)
+        }
+        inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
     }
 }
 

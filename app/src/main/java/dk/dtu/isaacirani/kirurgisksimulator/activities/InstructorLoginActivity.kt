@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities
 
+import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
@@ -32,7 +34,7 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         enterSurgeonLogin.setOnClickListener(this)
-
+        noSoftKeyBoard()
         registerReceiver()
 
         view = findViewById(android.R.id.content)
@@ -45,7 +47,7 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        if (plain_text_input.text.isEmpty()){
+        if (plain_text_input.text.isEmpty()) {
             Snackbar.make(activity_instructor_login, "You must fill out a name", Snackbar.LENGTH_LONG).show()
         } else {
             startActivity(Intent(this, InstructorActivity::class.java).putExtra("instructorName", plain_text_input.text.toString()))
@@ -90,6 +92,15 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    fun noSoftKeyBoard() {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var v = currentFocus
+        if (v == null) {
+            v = View(this)
+        }
+        inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
     }
 }
 
