@@ -91,7 +91,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
         pressure = (TextView) frame2.findViewById(R.id.pressure);
         pressureBar1 = frame2.findViewById(R.id.progressBar1);
-        pressureBar2 = frame2.findViewById(R.id.progressbar2);
+        pressureBar2 = frame2.findViewById(R.id.progressBar2);
         nozzleButton = frame4.findViewById(R.id.nozzle);
 
         floatingplus2 = frame3.findViewById(R.id.floatingminus2);
