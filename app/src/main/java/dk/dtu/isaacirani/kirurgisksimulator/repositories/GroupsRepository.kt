@@ -42,7 +42,8 @@ public class GroupsRepository {
                     for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children){
                         students.add(itemSnapshot.getValue(Student::class.java)!!)
                     }
-                    val group: Group = Group(instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!, students = students)
+                    val group: Group = Group(instructor = dataSnapshot.child("instructor").getValue(Instructor::class.java)!!, students = students)
+
                     callback(group)
                 }
 
@@ -95,10 +96,6 @@ public class GroupsRepository {
                 if (dataSnapshot != null) {
                     callback(dataSnapshot.getValue(Scenario::class.java)!!)
                 }
-
-//                } else {
-//                    callback(null)
-//                }
 
             }
 
