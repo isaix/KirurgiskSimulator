@@ -39,14 +39,15 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     private int rateBar1Value = 0;
     private int rateBar2Value = 0;
     private double volumeValue = 0.0;
-    private Boolean nozzle = false;
+    private Boolean nozzle = true;
     private boolean isOn;
     private TextView volume;
     private TextView pressure;
     private TextView rate;
     private Switch switchbutton;
-    private Button save;
     private ImageView animationBottle;
+    private Button saveButton;
+    private ImageView nozzleButton;
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
     private FloatingActionButton floatingplus1, floatingminus1, floatingplus2, floatingminus2;
@@ -56,6 +57,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     View view;
     private int i = 0;
     private int j = 0;
+    private String volumeShow;
+    private Toast Toast1;
+    private Toast Toast2;
 
 
     @Override
@@ -75,11 +79,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         View frame3 = findViewById(R.id.frame3);
         View frame4 = findViewById(R.id.frame4);
 
-        Button saveButton = new Button(this);
+        saveButton = new Button(this);
         saveButton.setText("SAVE SCENARIO");
         this.addContentView(saveButton, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
@@ -87,9 +89,10 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
-        pressure = (TextView) frame2.findViewById(R.id.rate);
-        pressureBar1 = frame2.findViewById(R.id.rateBar1);
-        pressureBar2 = frame2.findViewById(R.id.rateBar2);
+        pressure = (TextView) frame2.findViewById(R.id.pressure);
+        pressureBar1 = frame2.findViewById(R.id.progressBar1);
+        pressureBar2 = frame2.findViewById(R.id.progressbar2);
+        nozzleButton = frame4.findViewById(R.id.nozzle);
 
         floatingplus2 = frame3.findViewById(R.id.floatingminus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
@@ -108,6 +111,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         floatingminus2.setOnClickListener(this);
         floatingplus2.setOnClickListener(this);
 
+        nozzleButton.setOnClickListener(this);
         pressure.setOnClickListener(this);
         pressureBar1.setOnClickListener(this);
         pressureBar2.setOnClickListener(this);
@@ -138,24 +142,36 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         if (view == floatingplus1) {
             animateFloatingButton(floatingplus1);
             i++;
+            if(i>50){
+                i=50;
+            }
             scenario.setPressure(i);
             pressure.setText(String.valueOf(i));
         }
         if (view == floatingminus1) {
             animateFloatingButton(floatingminus1);
             i--;
+            if(i<0){
+                i=0;
+            }
             scenario.setPressure(i);
             pressure.setText(String.valueOf(i));
         }
         if (view == floatingplus2) {
             animateFloatingButton(floatingplus2);
             j++;
+            if(j>30){
+                j=30;
+            }
             scenario.setRate(j);
             rate.setText(String.valueOf(j));
         }
         if (view == floatingminus2) {
             animateFloatingButton(floatingminus2);
             j--;
+            if(j<0){
+                j=0;
+            }
             scenario.setRate(j);
             rate.setText(String.valueOf(j));
         }
@@ -166,19 +182,18 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setRate(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) < 0 || Integer.parseInt(input.getText().toString()) > 31) {
-                    Toast.makeText(getApplicationContext(), "Inflation Rate not between 0 and 30", Toast.LENGTH_LONG).show();
+
                 } else {
                     inflationRate = Integer.parseInt(input.getText().toString());
-                    if(inflationRate<10){
-                        input.setText("0" + input.getText());
-                    }
                     scenario.setRate(inflationRate);
                     j = inflationRate;
                     rate.setText(input.getText());
+                    rate.setWidth(105);
                 }
             });
             alertDialogBuilder.show();
@@ -190,19 +205,18 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setPressure(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) <= 0 || Integer.parseInt(input.getText().toString()) > 51) {
                     Toast.makeText(getApplicationContext(), "Pressure not between 0 and 50", Toast.LENGTH_LONG).show();
                 } else {
                     pressureValue = Integer.parseInt(input.getText().toString());
-                    if (Integer.parseInt(input.getText().toString()) < 10) {
-                        input.setText("0" + input.getText());
-                    }
                     i = pressureValue;
                     scenario.setPressure(pressureValue);
                     pressure.setText(input.getText());
+                    pressure.setWidth(pressure.getWidth());
                 }
             });
             alertDialogBuilder.show();
@@ -218,8 +232,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setPressureBar1(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) <= 0 || Integer.parseInt(input.getText().toString()) > 51) {
                     Toast.makeText(getApplicationContext(), "Pressure not between 0 and 50", Toast.LENGTH_LONG).show();
@@ -239,8 +254,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setPressureBar2(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) <= 0 || Integer.parseInt(input.getText().toString()) > 51) {
                     Toast.makeText(getApplicationContext(), "Pressure not between 0 and 50", Toast.LENGTH_LONG).show();
@@ -261,8 +277,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setRateBar1(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) <= 0 || Integer.parseInt(input.getText().toString()) > 31) {
                     Toast.makeText(getApplicationContext(), "Pressure not between 0 and 30", Toast.LENGTH_LONG).show();
@@ -281,8 +298,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setRateBar2(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) <= 0 || Integer.parseInt(input.getText().toString()) > 31) {
                     Toast.makeText(getApplicationContext(), "Pressure not between 0 and 30", Toast.LENGTH_LONG).show();
@@ -301,30 +319,44 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("1");
+                    scenario.setVolume(1);
                 }
                 if (Double.parseDouble(input.getText().toString()) <= 0.0 || Double.parseDouble(input.getText().toString()) > 100.0) {
                     Toast.makeText(getApplicationContext(), "Volume not between 0 and 100", Toast.LENGTH_LONG).show();
-                } else {
+                }
+                else {
                     volumeValue = Double.parseDouble(input.getText().toString());
-                    scenario.setVolume(volumeValue);
-                    volume.setText(input.getText());
+                    volumeShow = String.valueOf(volumeValue);
+                    if(input.getText().length()<4){
+                        volume.setText(input.getText());
+                        volume.setWidth(volume.getWidth());
+                        scenario.setVolume(Double.parseDouble(input.getText().toString()));
+                    }
+                    else {
+                        volume.setText(volumeShow.substring(0,4));
+                        volume.setWidth(volume.getWidth());
+                        scenario.setVolume(Double.parseDouble(volumeShow.substring(0,4)));
+                    }
+
                 }
             });
             alertDialogBuilder.show();
         }
-        if (view.getId() == save.getId()) {
+        if (view.getId() == saveButton.getId()) {
             AlertDialog alertDialogBuilder = new AlertDialog.Builder(this).create();
             alertDialogBuilder.setTitle("Type In Scenario Name");
             final EditText input = new EditText(this);
             alertDialogBuilder.setView(input);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("DefaultScenarioName");
+                    scenario.setName("DefaultScenarioName");
                 } else {
                     name = input.getText().toString();
                     scenario.setName(name);
+                    scenario.setNozzle(nozzle);
                     scenarioAdapter.createScenario(scenario);
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
@@ -339,8 +371,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             alertDialogBuilder.setView(input);
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             alertDialogBuilder.setButton("Confirm", (dialog, which) -> {
-                if (input.getText() == null) {
+                if (input.getText().toString().length() == 0) {
                     input.setText("0");
+                    scenario.setAir(0);
                 }
                 if(Integer.parseInt(input.getText().toString())>100 || Integer.parseInt(input.getText().toString())<0){
                     Toast.makeText(getApplicationContext(),"Air not between 0 and 100", Toast.LENGTH_LONG).show();
@@ -353,6 +386,25 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             });
             alertDialogBuilder.show();
         }
+        if(view.getId()==nozzleButton.getId()) {
+            nozzle = !nozzle;
+            if (nozzle == false) {
+                nozzleButton.setImageResource(R.drawable.nozzle);
+                Toast1 = Toast.makeText(getApplicationContext(), "Nozzle off", Toast.LENGTH_SHORT);
+                if(Toast2!=null){
+                    Toast2.cancel();
+                }
+                Toast1.show();
+            } else if(nozzle ==true){
+                nozzleButton.setImageResource(R.drawable.nozzlehose);
+                Toast2 = Toast.makeText(getApplicationContext(),"Nozzle On",Toast.LENGTH_SHORT);
+                if(Toast1!=null){
+                    Toast1.cancel();
+                }
+                Toast2.show();
+            }
+        }
+
     }
 
         @Override
