@@ -207,13 +207,22 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         pressureBar1.setProgress(scenario.getPressureBar1());
         pressureBar2.setProgress(scenario.getPressureBar2());
-        pressure.setText(String.valueOf(scenario.getPressure()));
-        Log.e("PRESSURE", String.valueOf(scenario.getPressure()));
-
         rateBar1.setProgress(scenario.getRateBar1());
         rateBar2.setProgress(scenario.getRateBar2());
-        rate.setText(String.valueOf(scenario.getRate()));
         String newVolume = String.valueOf(scenario.getVolume());
+
+        if(scenario.getPressure() < 10 ){
+            pressure.setText("0" + scenario.getPressure());
+        } else {
+            pressure.setText(String.valueOf(scenario.getPressure()));
+        }
+
+        if(scenario.getRate() < 10 ){
+            rate.setText("0" + scenario.getRate());
+        } else {
+            rate.setText(String.valueOf(scenario.getRate()));
+        }
+
         if (newVolume.length() > 4) {
             newVolume = newVolume.substring(0, 3);
         }
