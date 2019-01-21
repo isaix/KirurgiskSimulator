@@ -7,13 +7,13 @@ import android.support.v4.view.GravityCompat
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import android.support.design.widget.NavigationView
 import android.util.Log
-import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupRepository
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 
 class SettingsActivity : AppCompatActivity(){
     private lateinit var nv: NavigationView
-    var groupRepository = GroupRepository()
+    var groupRepository = GroupsRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

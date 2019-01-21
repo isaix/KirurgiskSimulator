@@ -4,66 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/details_login"
     tools:context=".activities.StudentLoginActivity"
     tools:layout_editor_absoluteY="89dp"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/details_login"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="40dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cames" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="270dp"
-        android:text="Press enter to start"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/enterStudentLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:navigationIcon="@drawable/back_icon_white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Join Group" />
 
 
-
-    <Button
-        android:id="@+id/enterStudentLogin"
-        style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="231dp"
-        android:layout_height="84dp"
-        android:layout_marginBottom="96dp"
-        android:background="@drawable/details_login_buttons"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="-1"
-        android:shadowDy="1"
-        android:shadowRadius="5"
-        android:text="Enter"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fadeScrollbars="false"
+        style="@style/scrollbar_style"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
 </android.support.constraint.ConstraintLayout>

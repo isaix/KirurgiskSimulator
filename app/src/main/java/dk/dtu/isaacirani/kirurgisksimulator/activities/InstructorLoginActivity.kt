@@ -10,7 +10,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
-import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupRepository
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
@@ -23,7 +23,7 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var snackbarnotconnected: Snackbar
     lateinit var textView: TextView
 
-    var group: GroupRepository = GroupRepository()
+    var group: GroupsRepository = GroupsRepository()
     var instructor: Instructor = Instructor()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +47,10 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-
         if (plain_text_input.text.isEmpty()){
             Snackbar.make(activity_instructor_login, "You must fill out a name", Snackbar.LENGTH_LONG).show()
         } else {
-            startActivity(Intent(this, InstructorActivity::class.java).putExtra("instructorID", "-LWQO2j41v1ZhlUOx-xq"))
+            startActivity(Intent(this, InstructorActivity::class.java).putExtra("instructorName", plain_text_input.text.toString()))
         }
     }
 

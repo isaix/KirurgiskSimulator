@@ -6,33 +6,39 @@
     android:layout_height="match_parent"
     android:background="@drawable/details_login"
     tools:context=".activities.StudentLoginActivity"
-    tools:layout_editor_absoluteY="89dp"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    >
+
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:id="@+id/toolbar"
-        app:title="Join Group"
-        app:navigationIcon="@drawable/back_icon_white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:elevation="40dp"
-        />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cames" />
+        app:navigationIcon="@drawable/back_icon_white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Join Group" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fadeScrollbars="false"
+        style="@style/scrollbar_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+    </android.support.v7.widget.RecyclerView>
 
 
 
-    
+
+
+
 </android.support.constraint.ConstraintLayout>
