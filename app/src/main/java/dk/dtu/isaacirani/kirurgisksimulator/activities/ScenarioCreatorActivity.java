@@ -187,6 +187,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     scenario.setRate(1);
                 }
                 if (Integer.parseInt(input.getText().toString()) < 0 || Integer.parseInt(input.getText().toString()) > 31) {
+                    Toast.makeText(getApplicationContext(),"Rate not between 0 and 30",Toast.LENGTH_LONG).show();
 
                 } else {
                     inflationRate = Integer.parseInt(input.getText().toString());
