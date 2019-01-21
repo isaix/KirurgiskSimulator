@@ -44,8 +44,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     private TextView pressure;
     private TextView rate;
     private Switch switchbutton;
-    private Button save;
     private ImageView animationBottle;
+    private Button saveButton;
+    private ImageView nozzleButton;
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
     private FloatingActionButton floatingplus1, floatingminus1, floatingplus2, floatingminus2;
@@ -69,11 +70,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         View frame3 = findViewById(R.id.frame3);
         View frame4 = findViewById(R.id.frame4);
 
-        Button saveButton = new Button(this);
+        saveButton = new Button(this);
         saveButton.setText("SAVE SCENARIO");
         this.addContentView(saveButton, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
@@ -84,6 +83,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         pressure = (TextView) frame2.findViewById(R.id.pressure);
         pressureBar1 = frame2.findViewById(R.id.progressBar1);
         pressureBar2 = frame2.findViewById(R.id.progressbar2);
+        nozzleButton = frame4.findViewById(R.id.nozzle);
 
         floatingplus2 = frame3.findViewById(R.id.floatingplus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
@@ -102,6 +102,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         floatingminus2.setOnClickListener(this);
         floatingplus2.setOnClickListener(this);
 
+        nozzleButton.setOnClickListener(this);
         pressure.setOnClickListener(this);
         pressureBar1.setOnClickListener(this);
         pressureBar2.setOnClickListener(this);
@@ -308,7 +309,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             });
             alertDialogBuilder.show();
         }
-        if (view.getId() == save.getId()) {
+        if (view.getId() == saveButton.getId()) {
             AlertDialog alertDialogBuilder = new AlertDialog.Builder(this).create();
             alertDialogBuilder.setTitle("Type In Scenario Name");
             final EditText input = new EditText(this);
@@ -346,6 +347,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                 }
             });
             alertDialogBuilder.show();
+        }
+        if(view.getId()==nozzleButton.getId()){
+            Toast.makeText(getApplicationContext(),"hej",Toast.LENGTH_LONG).show();
         }
     }
 
