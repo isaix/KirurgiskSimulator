@@ -31,7 +31,6 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_instructor_login)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-
         enterSurgeonLogin.setOnClickListener(this)
 
         registerReceiver()

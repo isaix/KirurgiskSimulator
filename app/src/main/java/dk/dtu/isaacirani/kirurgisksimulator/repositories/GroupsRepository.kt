@@ -40,20 +40,6 @@ public class GroupsRepository {
                     callback(dataSnapshot.getValue(Group::class.java))
                 }
 
-//                if (dataSnapshot == null){
-//                    val instructor: Instructor = dataSnapshot.child("Instructor").getValue(Instructor::class.java)!!
-//                    var students: HashMap<String, Student> = hashMapOf()
-//                    Log.e("what's in here?", dataSnapshot.key)
-//
-//                    Log.e("Instructor", instructor.name)
-//                    for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {
-//                        Log.e("what's in here part 2?", itemSnapshot.key)
-//                        students[itemSnapshot.key!!] = itemSnapshot.getValue(Student::class.java)!!
-//                    }
-//                    val activeGroup = Group(instructor, students)
-//                    Log.e("Group", activeGroup.instructor.name)
-//
-//                    callback(activeGroup)
 //                } else {
 //                    callback(null)
 //                }
@@ -94,22 +80,6 @@ public class GroupsRepository {
         groupsRef.child(groupId).child("Students").child(id).setValue(student)
                 .addOnSuccessListener { callback(id) }
     }
-
-
-//    fun loadStudent(studentId: String, callback: (Student) -> Unit) {
-//        mDatabase.child("Group").addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//
-//                //callback(Student)
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                // Failed to read value
-//                Log.w("ERROR", "Failed to read value.", error.toException())
-//            }
-//        })
-//    }
 
 
 }
