@@ -66,11 +66,11 @@
             app:srcCompat="@drawable/icon3" />
 
         <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="74dp"
-            android:layout_height="78dp"
+            android:id="@+id/nozzle"
+            android:layout_width="51dp"
+            android:layout_height="47dp"
             app:srcCompat="@drawable/nozzle"
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="279dp" />
+            tools:layout_editor_absoluteX="35dp"
+            tools:layout_editor_absoluteY="256dp" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

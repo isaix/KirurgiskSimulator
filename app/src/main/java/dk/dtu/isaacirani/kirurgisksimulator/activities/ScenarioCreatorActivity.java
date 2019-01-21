@@ -1,7 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.FloatingActionButton;
@@ -81,11 +80,11 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
-        pressure = (TextView) frame2.findViewById(R.id.pressure);
-        pressureBar1 = frame2.findViewById(R.id.progressBar1);
-        pressureBar2 = frame2.findViewById(R.id.progressbar2);
+        pressure = (TextView) frame2.findViewById(R.id.rate);
+        pressureBar1 = frame2.findViewById(R.id.rateBar1);
+        pressureBar2 = frame2.findViewById(R.id.rateBar2);
 
-        floatingplus2 = frame3.findViewById(R.id.floatingplus2);
+        floatingplus2 = frame3.findViewById(R.id.floatingminus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
         rate = (TextView) frame3.findViewById(R.id.rate);
         rateBar1 = frame3.findViewById(R.id.rateBar1);
