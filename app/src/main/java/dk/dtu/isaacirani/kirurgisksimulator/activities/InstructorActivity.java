@@ -17,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -35,6 +36,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.adapters.Adapter;
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
+import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
@@ -50,6 +52,10 @@ public class InstructorActivity extends AppCompatActivity {
     String scenariosavailableString;
     public static String groupID;
     TextView noStudents;
+
+    SparseArray<LogEntry> logEntries;
+    SparseArray<Long> startTimes;
+    SparseArray<Long> finishTimes;
 
     View view;
     Snackbar snackbarnotconnected;

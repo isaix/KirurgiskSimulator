@@ -34,9 +34,7 @@ class Adapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<
     internal var backGroundRightBorder: Int = 0
     var defaultScenario = Scenario()
 
-    internal var logEntries: SparseArray<LogEntry>
-    internal var startTimes: SparseArray<Long>
-    internal var finishTimes: SparseArray<Long>
+
 
     internal var visibility = View.INVISIBLE
 
