@@ -155,25 +155,4 @@ class Adapter(internal var students: ArrayList<Student>, context: Context) : Rec
     override fun getItemCount(): Int {
         return students.size
     }
-
-/*
-    fun registerStartTime(i: Int, callback: (LogEntry, Int, Long) -> Unit){
-        var startTime: Long = System.currentTimeMillis()
-        var logEntry = LogEntry()
-        logEntry.name = students.get(i).name
-        logEntry.scenarioName = students.get(i).scenario.name
-        logEntry.failures = 0
-        logEntry.date = Date(System.currentTimeMillis())
-        callback(logEntry, i, startTime)
-    }
-
-    fun registerFinishTime(i: Int, callback: (Int, Long) -> Unit){
-        var finishTime: Long = System.currentTimeMillis()
-        callback(i, finishTime)
-    }
-
-    fun incrementFailures(i: Int, callback: (Int) -> Unit){
-        callback(i)
-    }
-*/
 }
