@@ -88,13 +88,15 @@ public class GroupsRepository {
                 .addOnSuccessListener { callback(id) }
     }
 
-    fun loadStudentScenario(studentId: String, groupId: String, callback: (Scenario) -> Unit){
+    fun loadStudentScenario(studentId: String, groupId: String, callback: (Scenario?) -> Unit){
         Log.e("GroupID", groupId)
         Log.e("StudentID", studentId)
         groupsRef.child(groupId).child("Students").child(studentId).child("scenario").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot != null) {
+                if (dataSnapshot.child("name").value != null) {
                     callback(dataSnapshot.getValue(Scenario::class.java)!!)
+                } else {
+                    callback(null)
                 }
 
             }

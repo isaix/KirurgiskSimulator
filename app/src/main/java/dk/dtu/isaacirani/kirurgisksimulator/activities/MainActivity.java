@@ -2,6 +2,7 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.MediaController;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     Intent studentLogin, surgeonLogin;
     Button student, surgeon;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

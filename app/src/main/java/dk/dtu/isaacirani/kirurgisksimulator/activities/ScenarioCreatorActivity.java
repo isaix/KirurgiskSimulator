@@ -97,7 +97,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         nozzleButton = frame4.findViewById(R.id.nozzle);
 
         floatingplus2 = frame3.findViewById(R.id.floatingplus2);
-        floatingminus2 = frame3.findViewById(R.id.floatingplus2);
+        floatingminus2 = frame3.findViewById(R.id.floatingminus2);
         rate = (TextView) frame3.findViewById(R.id.rate);
         rateBar1 = frame3.findViewById(R.id.rateBar1);
         rateBar2 = frame3.findViewById(R.id.rateBar2);
@@ -128,7 +128,11 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
 
         view = findViewById(android.R.id.content);
         bottleanimation.start();
-
+        rateBar1.setProgress(30);
+        rateBar2.setProgress(30);
+        airBar.setProgress(100);
+        pressureBar1.setProgress(50);
+        pressureBar2.setProgress(50);
     }
 
 
@@ -195,8 +199,8 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     inflationRate = Integer.parseInt(input.getText().toString());
                     scenario.setRate(inflationRate);
                     j = inflationRate;
+                    rate.setWidth(rate.getWidth());
                     rate.setText(input.getText());
-                    rate.setWidth(105);
                 }
             });
             alertDialogBuilder.show();
@@ -217,9 +221,9 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                 } else {
                     pressureValue = Integer.parseInt(input.getText().toString());
                     i = pressureValue;
+                    pressure.setWidth(pressure.getWidth());
                     scenario.setPressure(pressureValue);
                     pressure.setText(input.getText());
-                    pressure.setWidth(pressure.getWidth());
                 }
             });
             alertDialogBuilder.show();
