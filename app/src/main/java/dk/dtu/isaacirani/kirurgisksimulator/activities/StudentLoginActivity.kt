@@ -5,13 +5,16 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import dk.dtu.isaacirani.kirurgisksimulator.R.layout.activity_student_login
@@ -23,6 +26,10 @@ import kotlinx.android.synthetic.main.activity_student_login.*
 
 class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
 
+    lateinit var view: View
+    lateinit var snackbarisconnected: Snackbar
+    lateinit var snackbarnotconnected: Snackbar
+    lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +42,13 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
         registerReceiver()
+
+        view = findViewById(android.R.id.content)
+        snackbarnotconnected = Snackbar.make(view, "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE)
+        snackbarisconnected = Snackbar.make(view, "Device is connected to internet", Snackbar.LENGTH_SHORT)
+        view = snackbarnotconnected.view
+        textView = view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
+        textView.setTextColor(Color.RED)
 
     }
 
@@ -86,16 +100,18 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
         override fun onReceive(c: Context, i: Intent) {
-            val snackbar = Snackbar.make(findViewById(android.R.id.content), "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE)
-
+            //val snackbar = Snackbar.make(findViewById(android.R.id.content), "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE)
             if (!i.getBooleanExtra("networkstatus", false)) {
-                 snackbar.show()
+                snackbarnotconnected.show()
+                enterStudentLogin.isEnabled = false
 
             } else {
-                if (snackbar.isShown) {
-                    snackbar.dismiss()
-                    Snackbar.make(findViewById(android.R.id.content), "Device is connected to internet", Snackbar.LENGTH_SHORT).show()
-                }
+               // if (snackbar.isShown) {
+                    snackbarisconnected.dismiss()
+                    snackbarisconnected.show()
+                    enterStudentLogin.isEnabled = true
+                  //  Snackbar.make(findViewById(android.R.id.content), "Device is connected to internet", Snackbar.LENGTH_SHORT).show()
+                //}
             }
         }
     }
