@@ -23,6 +23,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository
+import kotlin.math.log
 
 class Adapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<ViewHolder>() {
     internal var logs = LogRepository()
@@ -34,15 +35,10 @@ class Adapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<
     internal var backGroundRightBorder: Int = 0
     var defaultScenario = Scenario()
 
-
-
     internal var visibility = View.INVISIBLE
 
 
     init {
-        logEntries = SparseArray()
-        startTimes = SparseArray()
-        finishTimes = SparseArray()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -78,41 +74,23 @@ class Adapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<
                 chosenStudent = i
 
 
-                if (logEntries.get(i) != null) {
-                    logEntries.get(i).time = -1
-                    logs.addLog(logEntries.get(i))
-                }
-                logEntries.put(i, LogEntry())
-
-                logEntries.get(i).name = students[i].name
-                logEntries.get(i).scenarioName = students[i].scenario.name
-                logEntries.get(i).failures = 0
-                logEntries.get(i).date = Date(System.currentTimeMillis())
-                startTimes.put(i, System.currentTimeMillis())
 
             }
         }
         viewHolder.checkButton.setOnClickListener {
             chosenStudent = i
-            if (logEntries.get(i) != null) {
-                finishTimes.put(i, System.currentTimeMillis())
-                logEntries.get(i).time = ((finishTimes.get(i) - startTimes.get(i)) / 1000).toInt()
-                logs.addLog(logEntries.get(i))
-            }
-            logEntries.put(i, null)
             students[i].scenario = defaultScenario
+            groupsRepository.updateStudent(students[i].id, InstructorActivity.groupID, defaultScenario)
             notifyItemChanged(i)
+
 
 
         }
 
         viewHolder.crossButton.setOnClickListener {
-            Log.e(students[i].name, logEntries.get(i).failures.toString() + "")
-            if (logEntries.get(i) != null) {
-                logEntries.get(i).failures = logEntries.get(i).failures + 1
 
-            }
         }
+
 
 
         if(students.get(i).scenario.equals(defaultScenario)){
@@ -165,5 +143,27 @@ class Adapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<
     override fun getItemCount(): Int {
         return students.size
     }
+
+
+    fun registerStartTime(i: Int, callback: (LogEntry, Int, Long) -> Unit){
+        var startTime: Long = System.currentTimeMillis()
+        var logEntry = LogEntry()
+        logEntry.name = students.get(i).name
+        logEntry.scenarioName = students.get(i).scenario.name
+        logEntry.failures = 0
+        logEntry.date = Date(System.currentTimeMillis())
+        callback(logEntry, i, startTime)
+    }
+
+    fun registerFinishTime(i: Int, callback: (Int, Long) -> Unit){
+        var finishTime: Long = System.currentTimeMillis()
+        callback(i, finishTime)
+    }
+
+    fun incrementFailures(i: Int, callback: (Int) -> Unit){
+        callback(i)
+    }
+
+
 
 }
