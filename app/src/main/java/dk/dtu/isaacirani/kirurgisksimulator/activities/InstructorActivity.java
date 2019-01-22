@@ -155,9 +155,9 @@ public class InstructorActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (!groupID.isEmpty()) {
-            groupRepository.deleteGroup(groupID);
-        }
+    if(!(groupID == null)) {
+        groupRepository.deleteGroup(groupID);
+    }
 
         try {
             unregisterReceiver(networkChangeReceiver);
