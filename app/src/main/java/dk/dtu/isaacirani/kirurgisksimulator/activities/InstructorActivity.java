@@ -8,7 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,16 +22,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.adapters.Adapter;
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.StudentAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
@@ -45,7 +39,7 @@ public class InstructorActivity extends AppCompatActivity {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
-    Adapter adapter;
+    StudentAdapter adapter;
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
     TextView scenariosavaliable;
@@ -176,7 +170,7 @@ public class InstructorActivity extends AppCompatActivity {
 
     void createAdapter(Group group) {
 
-        adapter = new Adapter(group.getStudents());
+        adapter = new StudentAdapter(group.getStudents());
         Log.e("rip", adapter.getItemCount() + "");
         if(adapter.getItemCount() > 0){
             noStudents.setVisibility(View.INVISIBLE);

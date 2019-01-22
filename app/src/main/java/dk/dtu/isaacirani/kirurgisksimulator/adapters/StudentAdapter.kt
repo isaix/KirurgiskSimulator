@@ -24,7 +24,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository
 
-class Adapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<ViewHolder>() {
+class StudentAdapter(internal var students: ArrayList<Student>) : RecyclerView.Adapter<ViewHolder>() {
     internal var logs = LogRepository()
     internal var groupsRepository = GroupsRepository()
     internal var date: Date? = null
