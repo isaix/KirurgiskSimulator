@@ -83,6 +83,10 @@ public class InstructorActivity extends AppCompatActivity {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
+        logEntries = new SparseArray<>();
+        startTimes = new SparseArray<>();
+        finishTimes = new SparseArray<>();
+
         Log.e("Instructor Name", getIntent().getStringExtra("instructorName"));
 
         groupRepository.createGroupWithoutStudents(new Instructor(getIntent().getStringExtra("instructorName")), (String groupId) -> {
@@ -180,7 +184,7 @@ public class InstructorActivity extends AppCompatActivity {
 
     void createAdapter(Group group) {
 
-        adapter = new Adapter(group.getStudents());
+        adapter = new Adapter(group.getStudents(), this);
         Log.e("rip", adapter.getItemCount() + "");
         if(adapter.getItemCount() > 0){
             noStudents.setVisibility(View.INVISIBLE);
@@ -191,7 +195,7 @@ public class InstructorActivity extends AppCompatActivity {
 
     }
 
-    void registerStartTime(LogEntry newEntry, int i, Long startTime){
+    public void registerStartTime(LogEntry newEntry, int i, Long startTime){
         if(logEntries.get(i) != null){
             logEntries.get(i).setTime(-1);
             logRepository.addLog(logEntries.get(i));
@@ -200,7 +204,7 @@ public class InstructorActivity extends AppCompatActivity {
         startTimes.put(i, startTime);
     }
 
-    void registerFinishTime(int i, Long finishTime){
+    public void registerFinishTime(int i, Long finishTime){
         if(logEntries.get(i) != null){
             finishTimes.put(i, finishTime);
             logEntries.get(i).setTime((int) (finishTime / startTimes.get(i))/1000);
@@ -209,7 +213,7 @@ public class InstructorActivity extends AppCompatActivity {
         logEntries.put(i, null);
     }
 
-    void incrementFailures(int i){
+    public void incrementFailures(int i){
         if(logEntries.get(i) != null){
             logEntries.get(i).setFailures(logEntries.get(i).getFailures() + 1);
         }
