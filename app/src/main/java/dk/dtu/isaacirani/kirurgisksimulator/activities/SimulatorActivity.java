@@ -4,13 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -19,8 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
+
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
@@ -146,6 +147,17 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         //henter fra firebasen
         groupsRepository = new GroupsRepository();
+        groupsRepository.loadStudentScenario(
+                getIntent().getStringExtra("studentId"),
+                getIntent().getStringExtra("groupId"),
+                scenario -> {
+                    if(scenario == null){
+//                        this.finish();
+                    }else {
+                        changeDisplayValues(scenario);
+                    }
+                    return null;
+                });
         groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), scenario -> {changeDisplayValues(scenario); return null;});
 
     }
