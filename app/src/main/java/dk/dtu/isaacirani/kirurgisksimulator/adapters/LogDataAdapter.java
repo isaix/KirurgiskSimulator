@@ -53,7 +53,13 @@ public class LogDataAdapter extends RecyclerView.Adapter<LogDataViewHolder> {
         logDataViewHolder.logData_name.setText(logEntry.getName());
         logDataViewHolder.logData_scenarioName.setText(logEntry.getScenarioName());
         logDataViewHolder.logData_date.setText(format.format(logEntry.getDate()));
-        logDataViewHolder.logData_time.setText(String.valueOf(logEntry.getTime()));
+        if(logEntry.getTime()==-1){
+            logDataViewHolder.logData_time.setText("Not Finished");
+        }
+        else {
+            logDataViewHolder.logData_time.setText(String.valueOf(logEntry.getTime()));
+        }
+        //logDataViewHolder.logData_time.setText(String.valueOf(logEntry.getTime()));
         logDataViewHolder.logData_failures.setText(String.valueOf(logEntry.getFailures()));
         //logDataViewHolder.logData_instructor.setText(String.valueOf(logEntry.getInstructor()));
     }

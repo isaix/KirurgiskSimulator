@@ -3,7 +3,6 @@ package dk.dtu.isaacirani.kirurgisksimulator;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-
 import dk.dtu.isaacirani.kirurgisksimulator.models.LogList;
 
 public class LogDataViewHolder extends RecyclerView.ViewHolder {
