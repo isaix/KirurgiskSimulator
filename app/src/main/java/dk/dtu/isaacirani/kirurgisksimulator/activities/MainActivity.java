@@ -56,9 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         student.setOnClickListener(this);
         surgeon.setOnClickListener(this);
-
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.sound);
-        mediaPlayer.start();
     }
 
 
