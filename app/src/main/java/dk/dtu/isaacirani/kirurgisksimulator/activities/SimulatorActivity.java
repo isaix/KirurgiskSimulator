@@ -235,6 +235,41 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         } else { newVolume = newVolume.substring(0,4);
 
         }  volume.setText(newVolume);
+
+
+        if (scenario.getPressureBar1() <= 10) {
+            pressureBar1.setMax(50);
+        } else if (scenario.getPressureBar1() <= 30) {
+            pressureBar1.setMax(30);
+        } else if (scenario.getPressureBar1() < 50) {
+            pressureBar1.setMax(50);
+            pressureBar1.setProgress(45);
+        }
+
+        if (scenario.getPressureBar2() <= 10) {
+            pressureBar2.setMax(50);
+        } else if (scenario.getPressureBar2()<= 30) {
+            pressureBar2.setMax(30);
+        } else if (scenario.getPressureBar2() < 50) {
+            pressureBar2.setMax(50);
+            pressureBar2.setProgress(45);
+        }
+
+        if (scenario.getRateBar1() <= 10) {
+            rateBar1.setMax(20);
+        } else if (scenario.getRateBar1() <= 20){
+            rateBar1.setMax(27);
+        } else {
+            rateBar1.setMax(30);
+        }
+
+        if (scenario.getRateBar2() <= 10) {
+            rateBar2.setMax(20);
+        } else if (scenario.getRateBar2() <= 20){
+            rateBar2.setMax(27);
+        } else {
+            rateBar2.setMax(30);
+        }
     }
 
 
