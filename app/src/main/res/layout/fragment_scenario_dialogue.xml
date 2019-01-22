@@ -1,51 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/fragment_scenario_dialogue"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:minWidth="800dp"
+    android:minHeight="165dp"
+    android:orientation="vertical"
     tools:context=".fragments.ScenarioDialogueFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/scenarioPicker"
-        style="@style/scrollbar_style"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:fadeScrollbars="false"
-        android:gravity="center"
         android:paddingBottom="15dp"
-        android:scrollbars="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tableRow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scrollbars="horizontal" />
 
     <TableRow
-        android:id="@+id/tableRow"
-        android:layout_width="0dp"
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:gravity="center"
         android:paddingTop="4sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/air"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:background="@drawable/recyclerview_details_avaliable_borderleft"
             android:fontFamily="@font/asapregular"
@@ -56,8 +48,8 @@
 
         <TextView
             android:id="@+id/pressure2"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="8"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
             android:fontFamily="@font/asapregular"
@@ -68,7 +60,7 @@
 
         <TextView
             android:id="@+id/pressurebar"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="12"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
@@ -80,8 +72,8 @@
 
         <TextView
             android:id="@+id/pressurebar2"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="12"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
             android:fontFamily="@font/asapregular"
@@ -92,7 +84,7 @@
 
         <TextView
             android:id="@+id/rate2"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
@@ -104,8 +96,8 @@
 
         <TextView
             android:id="@+id/ratebar"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="8"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
             android:fontFamily="@font/asapregular"
@@ -116,8 +108,8 @@
 
         <TextView
             android:id="@+id/ratebar2"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="8"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
             android:fontFamily="@font/asapregular"
@@ -128,8 +120,8 @@
 
         <TextView
             android:id="@+id/volume"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="8"
             android:background="@drawable/recyclerview_details_avaliable_noborder"
             android:fontFamily="@font/asapregular"
@@ -140,7 +132,7 @@
 
         <TextView
             android:id="@+id/nozzle"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:background="@drawable/recyclerview_details_avaliable_borderright"
@@ -151,4 +143,101 @@
             android:textSize="19sp" />
     </TableRow>
 
-</android.support.constraint.ConstraintLayout>
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/airPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/recyclerview_details_avaliable_borderleft"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/pressurePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/pressureBar1Preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="12"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/pressureBar2Preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="12"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/ratePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/rateBar1Preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/rateBar2Preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/volumePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:background="@drawable/recyclerview_details_avaliable_noborder"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/nozzlePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:background="@drawable/recyclerview_details_avaliable_borderright"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="19sp" />
+    </TableRow>
+</LinearLayout>

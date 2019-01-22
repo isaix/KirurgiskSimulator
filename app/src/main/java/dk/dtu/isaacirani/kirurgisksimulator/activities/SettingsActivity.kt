@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import android.support.design.widget.NavigationView
 import android.util.Log
+import dk.dtu.isaacirani.kirurgisksimulator.fragments.ScenarioDialogueFragment
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
@@ -18,10 +19,15 @@ class SettingsActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
 
         var scenarioAdapter = ScenarioRepository()
+
+        val fm = supportFragmentManager
+        val scenarioDialogue = ScenarioDialogueFragment()
+
+        scenarioDialogue.show(fm, "Scenario Dialogue")
 
 
 //        scenarioAdapter.createScenario(Scenario("Edmund",4, 5, 2, 1))
@@ -58,13 +64,6 @@ class SettingsActivity : AppCompatActivity(){
     }
 
 
-    override fun onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
 
     fun testFun(group: Group){
         Log.e("SUCCESS", "this time in a callback")
