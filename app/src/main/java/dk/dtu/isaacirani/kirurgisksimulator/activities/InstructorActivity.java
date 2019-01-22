@@ -33,6 +33,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
 import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 
 public class InstructorActivity extends AppCompatActivity {
@@ -51,6 +52,7 @@ public class InstructorActivity extends AppCompatActivity {
     SparseArray<Long> startTimes;
     SparseArray<Long> finishTimes;
 
+
     View view;
     Snackbar snackbarnotconnected;
     Snackbar snackbarisconnected;
@@ -60,6 +62,7 @@ public class InstructorActivity extends AppCompatActivity {
     public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
     GroupsRepository groupRepository = new GroupsRepository();
     ScenarioRepository scenarioRepository = new ScenarioRepository();
+    LogRepository logRepository = new LogRepository();
 
 
     @Override
@@ -115,6 +118,7 @@ public class InstructorActivity extends AppCompatActivity {
 
 
         l = findViewById(R.id.lin);
+
 
         //nyt BR
         registerReceiver();
@@ -181,10 +185,33 @@ public class InstructorActivity extends AppCompatActivity {
 
     }
 
+    void registerStartTime(LogEntry newEntry, int i, Long startTime){
+        if(logEntries.get(i) != null){
+            logEntries.get(i).setTime(-1);
+            logRepository.addLog(logEntries.get(i));
+        }
+        logEntries.put(i, newEntry);
+        startTimes.put(i, startTime);
+    }
+
+    void registerFinishTime(int i, Long finishTime){
+        if(logEntries.get(i) != null){
+            finishTimes.put(i, finishTime);
+            logEntries.get(i).setTime((int) (finishTime / startTimes.get(i))/1000);
+            logRepository.addLog(logEntries.get(i));
+        }
+        logEntries.put(i, null);
+    }
+
+    void incrementFailures(int i){
+        if(logEntries.get(i) != null){
+            logEntries.get(i).setFailures(logEntries.get(i).getFailures() + 1);
+        }
+    }
+
     InternalNetworkChangeReceiver networkChangeReceiver = new InternalNetworkChangeReceiver();
 
     class InternalNetworkChangeReceiver extends BroadcastReceiver {
-
 
         @Override
         public void onReceive(Context c, Intent i) {
@@ -201,4 +228,6 @@ public class InstructorActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
