@@ -62,7 +62,7 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -70,8 +70,8 @@
 
                 <TextView
                     android:id="@+id/ID"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:background="@drawable/recyclerview_details_borderleft"
                     android:fontFamily="@font/asapregular"
@@ -79,13 +79,13 @@
                     android:text="ID"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Name"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="10"
                     android:background="@drawable/recyclerview_details_borderright"
                     android:fontFamily="@font/asapregular"
@@ -93,13 +93,13 @@
                     android:text="Name"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Air"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:background="@drawable/recyclerview_details_borderleft"
                     android:fontFamily="@font/asapregular"
@@ -107,13 +107,13 @@
                     android:text="Air"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Pressure"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:fontFamily="@font/asapregular"
@@ -121,13 +121,13 @@
                     android:text="Pressure"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Pressurebar1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:fontFamily="@font/asapregular"
@@ -135,13 +135,13 @@
                     android:text="Pressure\nBar 1"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Pressurebar2"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:fontFamily="@font/asapregular"
@@ -149,12 +149,12 @@
                     android:text="Pressure\nBar 2"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Rate"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@drawable/recyclerview_details_noborder"
@@ -163,13 +163,13 @@
                     android:text="Rate"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Ratebar1"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:fontFamily="@font/asapregular"
@@ -177,13 +177,13 @@
                     android:text="Rate\nBar 1"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Ratebar2"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:fontFamily="@font/asapregular"
@@ -191,13 +191,13 @@
                     android:text="Rate\nBar 2"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Volume"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
                     android:fontFamily="@font/asapregular"
@@ -205,12 +205,12 @@
                     android:text="Volume"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Nozzle"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_borderright"
@@ -219,32 +219,36 @@
                     android:text="Nozzle"
                     android:textAlignment="center"
                     android:textColor="#585858"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/checkButton2"
-                    android:layout_width="0dp"
+                    android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:background="#00ff00"
                     android:enabled="false"
-                    android:text="\u2713" />
+                    android:text="\u2713"
+                    android:textColor="#fff"
+                    android:textSize="12sp" />
 
                 <Button
-                    android:layout_width="0dp"
+                    android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:background="#ff0000"
                     android:enabled="false"
-                    android:text="X" />
+                    android:text="X"
+                    android:textColor="#fff"
+                    android:textSize="12sp" />
 
             </TableRow>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="269dp"
+                android:layout_height="193dp"
                 android:layout_gravity="center"
                 android:layout_weight="2"
                 android:gravity="center"
@@ -256,21 +260,21 @@
             <TextView
                 android:id="@+id/scenariosavaliable"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/recyclerview_details_avaliable"
                 android:fontFamily="@font/asapregular"
                 android:gravity="center"
                 android:text="Scenarios avaliable"
                 android:textColor="#fff"
-                android:textSize="22sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/scenarioPicker"
                 style="@style/scrollbar_style"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
+                android:layout_height="21dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:fadeScrollbars="false"
@@ -415,7 +419,7 @@
                     android:fontFamily="@font/asapregular"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/pressurePreview"
@@ -426,7 +430,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/pressureBar1Preview"
@@ -437,7 +441,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/pressureBar2Preview"
@@ -448,7 +452,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ratePreview"
@@ -459,7 +463,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/rateBar1Preview"
@@ -470,7 +474,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/rateBar2Preview"
@@ -481,7 +485,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/volumePreview"
@@ -492,7 +496,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/nozzlePreview"
@@ -503,7 +507,7 @@
                     android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:textColor="#fff"
-                    android:textSize="19sp" />
+                    android:textSize="14sp" />
             </TableRow>
 
         </LinearLayout>

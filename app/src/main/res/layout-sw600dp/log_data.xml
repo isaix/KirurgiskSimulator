@@ -9,16 +9,16 @@
     <TextView
         android:id="@+id/dataName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_weight="4"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp" />
-    <!--
+        android:textSize="19sp" />
+<!--
     <TextView
         android:id="@+id/dataInstructor"
         android:layout_width="0dp"
@@ -36,56 +36,56 @@
     <TextView
         android:id="@+id/dataScenarioName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_weight="8"
         android:autoSizeTextType="uniform"
         android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/dataDate"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_weight="5"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
 
     <TextView
         android:id="@+id/dataTime"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_weight="8"
         android:background="@drawable/recyclerview_details_noborder"
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/dataFailures"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_weight="8"
         android:background="@drawable/recyclerview_details_borderright"
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
 
 </TableRow>
