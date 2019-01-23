@@ -23,7 +23,7 @@
             android:background="@android:color/black"
             android:fontFamily="@font/digital7"
             android:text="00"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="80sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -154,9 +154,10 @@
             android:layout_marginTop="52dp"
             app:layout_constraintBottom_toTopOf="@+id/rate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintHorizontal_bias="0.881"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
             app:srcCompat="@drawable/icon2" />
 
     </android.support.constraint.ConstraintLayout>
