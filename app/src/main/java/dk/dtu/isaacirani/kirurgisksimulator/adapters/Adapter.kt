@@ -28,7 +28,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository
 import kotlin.math.log
 
-class Adapter(internal var students: ArrayList<Student>, context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class Adapter(internal var students: ArrayList<Student>,internal var context: Context) : RecyclerView.Adapter<ViewHolder>() {
     internal var logs = LogRepository()
     internal var groupsRepository = GroupsRepository()
     internal var date: Date? = null
@@ -37,7 +37,6 @@ class Adapter(internal var students: ArrayList<Student>, context: Context) : Rec
     internal var backGroundLeftBorder: Int = 0
     internal var backGroundRightBorder: Int = 0
     var defaultScenario = Scenario()
-    var context: Context = context
 
     internal var visibility = View.INVISIBLE
 
