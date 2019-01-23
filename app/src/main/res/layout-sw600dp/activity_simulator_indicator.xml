@@ -65,7 +65,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:max="50"
-            android:progress="10"
+            android:progress="0"
             android:progressDrawable="@drawable/progressbardetails"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
