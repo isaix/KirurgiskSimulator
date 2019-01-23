@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
     private ImageView animationBottle;
     private Button saveButton;
     private ImageView nozzleButton;
+    DisplayMetrics display;
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
     private FloatingActionButton floatingplus1, floatingminus1, floatingplus2, floatingminus2;
@@ -68,6 +70,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_simulator_container);
         presenter = new SimulatorPresenter(this);
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         int currentOrientation = this.getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){

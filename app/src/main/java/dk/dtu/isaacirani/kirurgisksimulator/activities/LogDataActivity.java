@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class LogDataActivity extends AppCompatActivity  {
     LogList logList = new LogList();
     ArrayList<LogEntry> logs = new ArrayList<LogEntry>();
     LogRepository logRepo;
+    DisplayMetrics display;
 
     //nyt til BR
     View view;
@@ -35,6 +37,10 @@ public class LogDataActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
         setSupportActionBar(findViewById(R.id.toolbar));
+
+        display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+
 
         logRepo = new LogRepository();
         logRepo.loadLogs(logs -> {loadLogs(logs); return null;});
