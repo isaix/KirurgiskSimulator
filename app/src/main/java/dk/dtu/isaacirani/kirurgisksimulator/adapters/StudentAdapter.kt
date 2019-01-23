@@ -1,11 +1,14 @@
 package dk.dtu.isaacirani.kirurgisksimulator.adapters
 
+import android.content.Context
+import android.support.constraint.R.id.parent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableRow
 
 import java.util.ArrayList
 import java.util.Date
@@ -34,6 +37,7 @@ class StudentAdapter(internal var students: ArrayList<Student>) : RecyclerView.A
     internal var backGroundLeftBorder: Int = 0
     internal var backGroundRightBorder: Int = 0
     var defaultScenario = Scenario()
+    var context: Context = context
 
     internal var visibility = View.INVISIBLE
 
@@ -73,7 +77,12 @@ class StudentAdapter(internal var students: ArrayList<Student>) : RecyclerView.A
                 notifyItemChanged(i)
                 chosenStudent = i
 
+                var newEntry = LogEntry();
+                newEntry.name = students.get(i).name
+                newEntry.scenarioName = students.get(i).scenario.name
+                newEntry.date = Date(System.currentTimeMillis())
 
+                (context as InstructorActivity).registerStartTime(newEntry, i, System.currentTimeMillis())
 
             }
         }
@@ -83,11 +92,12 @@ class StudentAdapter(internal var students: ArrayList<Student>) : RecyclerView.A
             groupsRepository.updateStudent(students[i].id, InstructorActivity.groupID, defaultScenario)
             notifyItemChanged(i)
 
-
+            (context as InstructorActivity).registerFinishTime(i, System.currentTimeMillis())
 
         }
 
         viewHolder.crossButton.setOnClickListener {
+            (context as InstructorActivity).incrementFailures(i);
 
         }
 
@@ -118,6 +128,8 @@ class StudentAdapter(internal var students: ArrayList<Student>) : RecyclerView.A
         viewHolder.checkButton.visibility = visibility;
         viewHolder.crossButton.visibility = visibility;
 
+
+
         val (_, name, scenario) = students[i]
         viewHolder.TableRow.id = i
         viewHolder.ID.text = (i + 1).toString()
@@ -143,27 +155,4 @@ class StudentAdapter(internal var students: ArrayList<Student>) : RecyclerView.A
     override fun getItemCount(): Int {
         return students.size
     }
-
-
-    fun registerStartTime(i: Int, callback: (LogEntry, Int, Long) -> Unit){
-        var startTime: Long = System.currentTimeMillis()
-        var logEntry = LogEntry()
-        logEntry.name = students.get(i).name
-        logEntry.scenarioName = students.get(i).scenario.name
-        logEntry.failures = 0
-        logEntry.date = Date(System.currentTimeMillis())
-        callback(logEntry, i, startTime)
-    }
-
-    fun registerFinishTime(i: Int, callback: (Int, Long) -> Unit){
-        var finishTime: Long = System.currentTimeMillis()
-        callback(i, finishTime)
-    }
-
-    fun incrementFailures(i: Int, callback: (Int) -> Unit){
-        callback(i)
-    }
-
-
-
 }
