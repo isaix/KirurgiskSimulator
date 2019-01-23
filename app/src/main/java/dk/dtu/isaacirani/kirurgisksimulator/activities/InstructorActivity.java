@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
@@ -47,6 +48,7 @@ public class InstructorActivity extends AppCompatActivity {
     String scenariosavailableString;
     public static String groupID;
     TextView noStudents;
+    MediaPlayer mediaPlayer;
 
     SparseArray<LogEntry> logEntries;
     SparseArray<Long> startTimes;
@@ -71,6 +73,8 @@ public class InstructorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructor);
         recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(findViewById(R.id.toolbar));
+        mediaPlayer = MediaPlayer.create(this, R.raw.turnon);
+        mediaPlayer.start();
 
         int currentOrientation = this.getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
