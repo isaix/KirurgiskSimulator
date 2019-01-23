@@ -59,8 +59,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:max="0"
-            android:progress="10"
+            android:max="50"
+            android:progress="0"
             android:progressDrawable="@drawable/progressbardetails"
             app:layout_constraintBottom_toTopOf="@+id/floatingplus2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/progressbar"
+            app:layout_constraintEnd_toStartOf="@+id/rateBar1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.131" />
 
