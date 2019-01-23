@@ -5,11 +5,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.app.AppCompatActivity
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
@@ -25,6 +27,9 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var snackbarisconnected: Snackbar
     lateinit var snackbarnotconnected: Snackbar
     lateinit var textView: TextView
+    lateinit var display: DisplayMetrics
+    internal var width: Int = 0
+    internal var scale: Float = 0.toFloat()
 
     var group: GroupsRepository = GroupsRepository()
     var instructor: Instructor = Instructor()
@@ -33,6 +38,21 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instructor_login)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        val widthscreen: Float
+
+        display = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(display)
+        width = display.widthPixels
+        scale = display.density
+        widthscreen = width / scale
+
+        if (widthscreen <= 600) {
+            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        } else {
+            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
 
         enterSurgeonLogin.setOnClickListener(this)
         noSoftKeyBoard()

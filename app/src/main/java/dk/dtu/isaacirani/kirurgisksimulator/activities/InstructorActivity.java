@@ -16,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
@@ -59,6 +60,7 @@ public class InstructorActivity extends AppCompatActivity {
     Snackbar snackbarnotconnected;
     Snackbar snackbarisconnected;
     ProgressBar loadingIcon;
+    DisplayMetrics display;
 
 
     public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
@@ -71,6 +73,12 @@ public class InstructorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
+
+        display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(findViewById(R.id.toolbar));
         mediaPlayer = MediaPlayer.create(this, R.raw.turnon);

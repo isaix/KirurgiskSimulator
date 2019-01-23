@@ -2,6 +2,7 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -28,12 +30,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Intent studentLogin, surgeonLogin;
     Button student, surgeon;
     MediaPlayer mediaPlayer;
+    DisplayMetrics display;
+    int width;
+    float scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
+
+        float widthscreen;
+        display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+        width = display.widthPixels;
+        scale = display.density;
+        widthscreen = width / scale;
+
+        if (widthscreen <= 600){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
