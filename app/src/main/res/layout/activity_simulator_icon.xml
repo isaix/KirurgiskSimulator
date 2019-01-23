@@ -22,13 +22,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/off"
-            android:soundEffectsEnabled="false"
             android:text="Off/On"
             android:theme="@style/Switch"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             android:textStyle="bold"
-            android:thumbTint="@color/foreground_off"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,17 +54,14 @@
         <ImageView
             android:id="@+id/bottleanimated"
             android:layout_width="13dp"
-            android:layout_height="46dp"
+            android:layout_height="36dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.94"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.36" />
+            app:layout_constraintVertical_bias="0.364" />
 
         <ImageView
             android:id="@+id/imageView15"

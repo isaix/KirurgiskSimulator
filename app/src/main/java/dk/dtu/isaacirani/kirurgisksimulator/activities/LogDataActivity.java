@@ -1,5 +1,6 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
+import android.content.pm.ActivityInfo;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class LogDataActivity extends AppCompatActivity  {
 
         display = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(display);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
 
         logRepo = new LogRepository();

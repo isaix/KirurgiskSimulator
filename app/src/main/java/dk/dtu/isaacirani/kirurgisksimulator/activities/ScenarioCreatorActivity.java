@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -77,7 +78,6 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
-        //laver View @namepåframe = (ImageView) find...(R.id.@navnetpåframe)
         View frame1 = findViewById(R.id.frame1);
         View frame2 = findViewById(R.id.frame2);
         View frame3 = findViewById(R.id.frame3);
