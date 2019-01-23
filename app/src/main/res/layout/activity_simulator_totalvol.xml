@@ -10,7 +10,6 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="121dp"
         android:layout_height="373dp"
-        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,34 +29,33 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.358" />
+            app:layout_constraintVertical_bias="0.317" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="Liter"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/totalvalue"
-            app:layout_constraintVertical_bias="0.045" />
+            app:layout_constraintVertical_bias="0.005" />
 
         <ImageView
             android:id="@+id/imageView13"
             android:layout_width="21dp"
             android:layout_height="20dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/totalvalue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +67,14 @@
             android:id="@+id/nozzle"
             android:layout_width="51dp"
             android:layout_height="47dp"
-            app:srcCompat="@drawable/nozzle"
-            tools:layout_editor_absoluteX="35dp"
-            tools:layout_editor_absoluteY="256dp" />
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="69dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:srcCompat="@drawable/nozzle" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
