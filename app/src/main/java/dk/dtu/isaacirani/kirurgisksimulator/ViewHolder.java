@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView ID, Name, Pressure, Rate, Volume, Nozzle, PressureBar1, PressureBar2, RateBar1, RateBar2, Air;
-    public Button checkButton;
+    public Button checkButton, crossButton;
     public TableRow TableRow;
 
     public static int chosenStudent;

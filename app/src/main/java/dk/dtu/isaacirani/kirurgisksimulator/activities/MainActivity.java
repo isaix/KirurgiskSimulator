@@ -1,7 +1,8 @@
 package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,20 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.MediaController;
 
 import com.crashlytics.android.Crashlytics;
 
-import dk.dtu.isaacirani.kirurgisksimulator.InstructorLoginActivity;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.StudentLoginActivity;
-import dk.dtu.isaacirani.kirurgisksimulator.activities.SettingsActivity;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private DrawerLayout drawer;
     Intent studentLogin, surgeonLogin;
     Button student, surgeon;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(this,SettingsActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.scenario_data:
+            case R.id.saved_data:
                 intent = new Intent(this,LogDataActivity.class);
                 startActivity(intent);
         }
@@ -108,11 +109,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View v) {
         if(v == student){
-            startActivity(studentLogin);
+            startActivity(new Intent(this, StudentLoginActivity.class));
         } else if(v == surgeon){
-            startActivity(surgeonLogin);
+            startActivity(new Intent(this, InstructorLoginActivity.class));
         }
     }
-
-
 }

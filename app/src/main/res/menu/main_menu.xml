@@ -10,7 +10,7 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/scenario_data"
+        android:id="@+id/saved_data"
         android:icon="@drawable/storage_icon"
         android:title="Saved data"
         app:showAsAction="ifRoom"/>

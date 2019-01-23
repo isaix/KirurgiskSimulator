@@ -4,13 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -19,12 +21,12 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
+
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
 import dk.dtu.isaacirani.kirurgisksimulator.SimulatorPresenter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
 
 public class SimulatorActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SimulatorPresenter.View {
 
@@ -36,6 +38,8 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
     private TextView rate;
     private Switch switchbutton;
     MediaPlayer turnOn;
+    GroupsRepository groupsRepository;
+    MediaPlayer mediaPlayer;
 
     //nyt
     private ProgressBar pressureBar1, pressureBar2, rateBar1, rateBar2, airBar;
@@ -57,6 +61,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator_container);
 
+
         int currentOrientation = this.getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -74,13 +79,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         //refererer til alle IV, IB og TV
         switchbutton = (Switch) frame1.findViewById(R.id.switchbutton);
+        switchbutton.setEnabled(true);
         airBar = frame1.findViewById(R.id.airBar);
 
         floatingplus1 = frame2.findViewById(R.id.floatingplus1);
         floatingminus1 = frame2.findViewById(R.id.floatingminus1);
         pressure = (TextView) frame2.findViewById(R.id.pressure);
         pressureBar1 = frame2.findViewById(R.id.progressBar1);
-        pressureBar2 = frame2.findViewById(R.id.progressbar2);
+        pressureBar2 = frame2.findViewById(R.id.progressBar2);
 
         floatingplus2 = frame3.findViewById(R.id.floatingplus2);
         floatingminus2 = frame3.findViewById(R.id.floatingminus2);
@@ -101,13 +107,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
         floatingplus1.setElevation(0);
         floatingminus1.setElevation(0);
-        floatingplus1.setElevation(0);
+        floatingminus2.setElevation(0);
         floatingplus2.setElevation(0);
 
         floatingplus1.setEnabled(false);
         floatingminus1.setEnabled(false);
         floatingplus2.setEnabled(false);
         floatingminus2.setEnabled(false);
+
 
 
         /*
@@ -136,6 +143,23 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         ImageView bottleanimated = frame1.findViewById(R.id.bottleanimated);
         bottleanimated.setBackgroundResource(R.drawable.bottleanimation);
         bottleanimation = (AnimationDrawable) bottleanimated.getBackground();
+
+
+        //henter fra firebasen
+        groupsRepository = new GroupsRepository();
+        groupsRepository.loadStudentScenario(
+                getIntent().getStringExtra("studentId"),
+                getIntent().getStringExtra("groupId"),
+                scenario -> {
+                    if(scenario == null){
+//                        this.finish();
+                    }else {
+                        changeDisplayValues(scenario);
+                    }
+                    return null;
+                });
+        groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), scenario -> {changeDisplayValues(scenario); return null;});
+
     }
 
     @Override
@@ -143,6 +167,7 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         super.onWindowFocusChanged(hasFocus);
         bottleanimation.start();
     }
+
 
     private void animateFloatingButton(final FloatingActionButton floatingActionButton) {
         floatingActionButton.animate().scaleX(0.9f).scaleY(0.9f).setDuration(10).withEndAction(new Runnable() {
@@ -170,14 +195,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
         turnOn = MediaPlayer.create(this, R.raw.turnon);
         turnOn.start();
         Scenario scenario = new Scenario();
-        scenario.setAir(50);
-        scenario.setPressure(25);
-        scenario.setPressureBar1(10);
-        scenario.setPressureBar2(20);
-        scenario.setRate(10);
-        scenario.setRateBar1(25);
-        scenario.setRateBar2(60);
-        scenario.setVolume(20.6);
+        scenario.setAir(0);
+        scenario.setPressure(0);
+        scenario.setPressureBar1(00);
+        scenario.setPressureBar2(00);
+        scenario.setRate(00);
+        scenario.setRateBar1(00);
+        scenario.setRateBar2(00);
+        scenario.setVolume(00.0);
 
 
         isOn = isChecked;
@@ -193,26 +218,72 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void changeDisplayValues(Scenario scenario) {
+        mediaPlayer = MediaPlayer.create(this, R.raw.turnon);
+        mediaPlayer.start();
         airBar.setProgress(scenario.getAir());
 
         pressureBar1.setProgress(scenario.getPressureBar1());
         pressureBar2.setProgress(scenario.getPressureBar2());
-        pressure.setText(String.valueOf(scenario.getPressure()));
-        Log.e("PRESSURE", String.valueOf(scenario.getPressure()));
-
         rateBar1.setProgress(scenario.getRateBar1());
         rateBar2.setProgress(scenario.getRateBar2());
-        rate.setText(String.valueOf(scenario.getRate()));
         String newVolume = String.valueOf(scenario.getVolume());
-        if (newVolume.length() > 4) {
-            newVolume = newVolume.substring(0, 3);
+        volume.setText(newVolume);
+
+
+        if(scenario.getPressure() < 10 ){
+            pressure.setText("0" + scenario.getPressure());
+        } else {
+            pressure.setText(String.valueOf(scenario.getPressure()));
         }
 
-        volume.setText(newVolume);
+        if(scenario.getRate() < 10 ){
+            rate.setText("0" + scenario.getRate());
+        } else {
+            rate.setText(String.valueOf(scenario.getRate()));
+        }
+
+        if (newVolume.length() <= 3) {
+            newVolume = "0" + newVolume;
+        } else { newVolume = newVolume.substring(0,4);
+
+        }  volume.setText(newVolume);
+
+
+        if (scenario.getPressureBar1() <= 10) {
+            pressureBar1.setMax(50);
+        } else if (scenario.getPressureBar1() <= 30) {
+            pressureBar1.setMax(30);
+        } else if (scenario.getPressureBar1() < 50) {
+            pressureBar1.setMax(50);
+            pressureBar1.setProgress(45);
+        }
+
+        if (scenario.getPressureBar2() <= 10) {
+            pressureBar2.setMax(50);
+        } else if (scenario.getPressureBar2()<= 30) {
+            pressureBar2.setMax(30);
+        } else if (scenario.getPressureBar2() < 50) {
+            pressureBar2.setMax(50);
+            pressureBar2.setProgress(45);
+        }
+
+        if (scenario.getRateBar1() <= 10) {
+            rateBar1.setMax(20);
+        } else if (scenario.getRateBar1() <= 20){
+            rateBar1.setMax(27);
+        } else {
+            rateBar1.setMax(30);
+        }
+
+        if (scenario.getRateBar2() <= 10) {
+            rateBar2.setMax(20);
+        } else if (scenario.getRateBar2() <= 20){
+            rateBar2.setMax(27);
+        } else {
+            rateBar2.setMax(30);
+        }
     }
 
-
-    //nyt BR
 
     private void registerReceiver() {
 
@@ -249,11 +320,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
 
             if (i.getBooleanExtra("networkstatus", false) == false) {
                 snackbarnotconnected.show();
+                switchbutton.setEnabled(false);
+
 
             } else {
                 if (snackbarnotconnected.isShown()){
                     snackbarnotconnected.dismiss();
                     snackbarisconnected.show();
+                    switchbutton.setEnabled(true);
 
                 }
             }

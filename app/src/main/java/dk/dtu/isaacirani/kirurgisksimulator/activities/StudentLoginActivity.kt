@@ -1,39 +1,45 @@
-package dk.dtu.isaacirani.kirurgisksimulator
+package dk.dtu.isaacirani.kirurgisksimulator.activities
 
+import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
-import android.hardware.input.InputManager
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat.getSystemService
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
-import android.widget.Button
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-
-import dk.dtu.isaacirani.kirurgisksimulator.activities.SimulatorActivity
+import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
+import dk.dtu.isaacirani.kirurgisksimulator.R
+import dk.dtu.isaacirani.kirurgisksimulator.R.layout.activity_student_login
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.GroupsAdapter
+import dk.dtu.isaacirani.kirurgisksimulator.models.Group
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
+import kotlinx.android.synthetic.main.activity_instructor_login.*
 import kotlinx.android.synthetic.main.activity_student_login.*
 
 class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
-    lateinit var simulator: Intent
-    lateinit var enterStudentLogin: Button
 
     lateinit var view: View
     lateinit var snackbarisconnected: Snackbar
     lateinit var snackbarnotconnected: Snackbar
     lateinit var textView: TextView
-    lateinit var textInputLayout: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_login)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
-        enterStudentLogin = findViewById(R.id.enterStudentLogin)
+
+        noSoftKeyBoard()
         enterStudentLogin.setOnClickListener(this)
 
-        simulator = Intent(this, SimulatorActivity::class.java)
 
         registerReceiver()
 
@@ -47,8 +53,14 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        startActivity(simulator)
+        Log.e("Clicked", "Button has been clicked")
+        if (student_text_input.text.isEmpty()){
+            Snackbar.make(student_login_activity, "You must fill out a name", Snackbar.LENGTH_LONG).show()
+        } else {
+            startActivity(Intent(this, JoinGroupActivity::class.java).putExtra("studentName", student_text_input.text.toString()))
+        }
     }
+
 
     private fun registerReceiver() {
 
@@ -75,7 +87,10 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         super.onDestroy()
+
+
     }
+
 
 
 
@@ -85,18 +100,29 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
         override fun onReceive(c: Context, i: Intent) {
-
-
-            if (i.getBooleanExtra("networkstatus", false) == false) {
+            //val snackbar = Snackbar.make(findViewById(android.R.id.content), "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE)
+            if (!i.getBooleanExtra("networkstatus", false)) {
                 snackbarnotconnected.show()
+                enterStudentLogin.isEnabled = false
 
             } else {
-                if (snackbarnotconnected.isShown) {
-                    snackbarnotconnected.dismiss()
+               // if (snackbar.isShown) {
+                    snackbarisconnected.dismiss()
                     snackbarisconnected.show()
-                }
+                    enterStudentLogin.isEnabled = true
+                  //  Snackbar.make(findViewById(android.R.id.content), "Device is connected to internet", Snackbar.LENGTH_SHORT).show()
+                //}
             }
         }
+    }
+
+    fun noSoftKeyBoard() {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var v = currentFocus
+        if (v == null) {
+            v = View(this)
+        }
+        inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
     }
 }
 

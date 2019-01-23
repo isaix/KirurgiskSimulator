@@ -18,13 +18,16 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        app:title="Instructor"
+        app:navigationIcon="@drawable/back_icon_white"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:elevation="40dp"
+        />
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -32,7 +35,7 @@
             android:layout_height="fill_parent">
 
             <fragment
-                android:name="dk.dtu.isaacirani.kirurgisksimulator.InstructorFragment"
+                android:name="dk.dtu.isaacirani.kirurgisksimulator.fragments.InstructorFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

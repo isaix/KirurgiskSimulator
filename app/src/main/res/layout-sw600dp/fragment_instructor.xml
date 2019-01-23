@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InstructorFragment">
+    tools:context=".fragments.InstructorFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,6 +13,29 @@
         tools:context=".activities.InstructorActivity"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
+
+        <ProgressBar
+            android:id="@+id/instructorLoadingIcon"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nostudents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No students connected"
+            android:textColor="#000"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -40,6 +62,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="2"
                     android:background="@drawable/recyclerview_details_borderleft"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="ID"
                     android:textAlignment="center"
@@ -53,6 +76,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="10"
                     android:background="@drawable/recyclerview_details_borderright"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Name"
                     android:textAlignment="center"
@@ -66,6 +90,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
                     android:background="@drawable/recyclerview_details_borderleft"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Air"
                     android:textAlignment="center"
@@ -77,8 +102,9 @@
                     android:id="@+id/Pressure"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Pressure"
                     android:textAlignment="center"
@@ -92,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Pressure\nBar 1"
                     android:textAlignment="center"
@@ -105,6 +132,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Pressure\nBar 2"
                     android:textAlignment="center"
@@ -118,6 +146,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Rate"
                     android:textAlignment="center"
@@ -131,6 +160,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Rate\nBar 1"
                     android:textAlignment="center"
@@ -144,6 +174,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Rate\nBar 2"
                     android:textAlignment="center"
@@ -157,6 +188,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Volume"
                     android:textAlignment="center"
@@ -170,6 +202,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_borderright"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Nozzle"
                     android:textAlignment="center"
@@ -177,19 +210,25 @@
                     android:textSize="19sp"
                     android:textStyle="bold" />
 
-                <FrameLayout
+                <Button
+                    android:id="@+id/checkButton3"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/buttondetailsgreen"
+                    android:enabled="false"
+                    android:text="\u2713"
+                    android:textColor="#fff" />
 
-                </FrameLayout>
-
-                <FrameLayout
+                <Button
+                    android:id="@+id/button"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-
-                </FrameLayout>
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/buttondetails"
+                    android:enabled="false"
+                    android:text="X"
+                    android:textColor="#fff" />
 
             </TableRow>
 
@@ -203,27 +242,65 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
 
-            <TextView
-                android:id="@+id/scenariosavaliable"
+            </android.support.v7.widget.RecyclerView>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/recyclerview_details_avaliable"
-                android:gravity="center"
-                android:text="Scenarios avaliable"
-                android:textColor="#000"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/recyclerview_details_avaliable_borderleft"
+                    android:gravity="left|center"
+                    android:text="⇦"
+                    android:textColor="#fff"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/scenariosavaliable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
+                    android:gravity="center"
+                    android:text="Scenarios avaliable"
+                    android:textColor="#fff"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/recyclerview_details_avaliable_borderright"
+                    android:gravity="right|center"
+                    android:text="⇨"
+                    android:textColor="#fff"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
+            </TableRow>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/scenarioPicker"
+                style="@style/scrollbar_style"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
+                android:fadeScrollbars="false"
                 android:gravity="center"
+                android:paddingBottom="15dp"
+                android:scrollbars="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -243,9 +320,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="3"
                     android:background="@drawable/recyclerview_details_avaliable_borderleft"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Air"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -254,9 +332,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Pressure"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -265,9 +344,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Pressure Bar 1"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -276,9 +356,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="12"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Pressure Bar 2"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -287,9 +368,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Rate"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -298,9 +380,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Rate Bar 1"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -309,9 +392,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Rate Bar 2"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -320,9 +404,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Volume"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -331,9 +416,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_avaliable_borderright"
+                    android:fontFamily="@font/asapregular"
                     android:gravity="center"
                     android:text="Nozzle"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
             </TableRow>
 
@@ -350,7 +436,7 @@
                     android:layout_weight="3"
                     android:background="@drawable/recyclerview_details_avaliable_borderleft"
                     android:textAlignment="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -360,7 +446,7 @@
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -370,7 +456,7 @@
                     android:layout_weight="12"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -380,7 +466,7 @@
                     android:layout_weight="12"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -390,7 +476,7 @@
                     android:layout_weight="4"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -400,7 +486,7 @@
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -410,7 +496,7 @@
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -420,7 +506,7 @@
                     android:layout_weight="8"
                     android:background="@drawable/recyclerview_details_avaliable_noborder"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
 
                 <TextView
@@ -430,11 +516,12 @@
                     android:layout_weight="6"
                     android:background="@drawable/recyclerview_details_avaliable_borderright"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="19sp" />
             </TableRow>
 
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
+
 </FrameLayout>

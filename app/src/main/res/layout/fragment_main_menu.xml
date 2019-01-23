@@ -4,9 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenuFragment">
+    tools:context=".fragments.MainMenuFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="962dp"
+        android:layout_height="544dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/details_login"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" >
+
+    </LinearLayout>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,38 +31,39 @@
 
             android:layout_width="350dp"
             android:layout_height="60dp"
-            android:layout_marginStart="280dp"
+            android:layout_marginBottom="199dp"
 
             android:layout_marginEnd="280dp"
-            android:layout_marginBottom="199dp"
+            android:layout_marginStart="280dp"
             android:background="@drawable/details_login_buttons"
             android:shadowColor="#A8A8A8"
             android:shadowDx="-1"
             android:shadowDy="1"
             android:shadowRadius="5"
             android:text="Log In as student"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
         <Button
             android:id="@+id/Intructor"
             android:layout_width="350dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="140dp"
+            android:layout_marginEnd="280dp"
             android:layout_marginStart="280dp"
             android:layout_marginTop="70dp"
-            android:layout_marginEnd="280dp"
-            android:layout_marginBottom="140dp"
             android:background="@drawable/details_login_buttons"
             android:shadowColor="#A8A8A8"
             android:shadowDx="-1"
             android:shadowDy="1"
             android:shadowRadius="5"
             android:text="Log In as Instructor"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,15 +72,19 @@
             app:layout_constraintTop_toBottomOf="@+id/student" />
 
         <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="189dp"
-            android:src="@drawable/camestextdescription"
+            android:id="@+id/imageView3"
+            android:layout_width="318dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/cameslogo_collected"
             app:layout_constraintBottom_toTopOf="@+id/student"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.714" />
 
 
     </android.support.constraint.ConstraintLayout>

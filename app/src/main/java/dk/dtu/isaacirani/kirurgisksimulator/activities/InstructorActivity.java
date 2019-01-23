@@ -2,26 +2,25 @@ package dk.dtu.isaacirani.kirurgisksimulator.activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,18 +30,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import dk.dtu.isaacirani.kirurgisksimulator.Adapter;
-import dk.dtu.isaacirani.kirurgisksimulator.GroupRepository;
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver;
 import dk.dtu.isaacirani.kirurgisksimulator.R;
-import dk.dtu.isaacirani.kirurgisksimulator.ScenarioPickerAdapter;
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.Adapter;
+import dk.dtu.isaacirani.kirurgisksimulator.adapters.ScenarioPickerAdapter;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockData;
-import dk.dtu.isaacirani.kirurgisksimulator.models.MockScenarioList;
+import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor;
+import dk.dtu.isaacirani.kirurgisksimulator.models.LogEntry;
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
-import dk.dtu.isaacirani.kirurgisksimulator.models.Student;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.LogRepository;
+import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 
-public class InstructorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class InstructorActivity extends AppCompatActivity {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
     private DrawerLayout drawer;
@@ -51,23 +51,57 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
     ScenarioPickerAdapter spAdapter;
     TextView scenariosavaliable;
     String scenariosavailableString;
+    public static String groupID;
+    TextView noStudents;
+
+    SparseArray<LogEntry> logEntries;
+    SparseArray<Long> startTimes;
+    SparseArray<Long> finishTimes;
+
 
     View view;
     Snackbar snackbarnotconnected;
     Snackbar snackbarisconnected;
+    ProgressBar loadingIcon;
+
 
     public static TextView ratePreview, pressurePreview, volumePreview, nozzlePreview, airPreview, pressurePreview1, pressurePreview2, ratePreview1, ratePreview2;
+    GroupsRepository groupRepository = new GroupsRepository();
+    ScenarioRepository scenarioRepository = new ScenarioRepository();
+    LogRepository logRepository = new LogRepository();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
+        recyclerView = findViewById(R.id.recyclerView);
+        setSupportActionBar(findViewById(R.id.toolbar));
 
-        GroupRepository groupRepository = new GroupRepository();
+        int currentOrientation = this.getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
-        groupRepository.loadGroup(getIntent().getStringExtra("instructorID") ,group -> {createAdapter(group); return null;});
+        logEntries = new SparseArray<>();
+        startTimes = new SparseArray<>();
+        finishTimes = new SparseArray<>();
 
+        Log.e("Instructor Name", getIntent().getStringExtra("instructorName"));
 
+        groupRepository.createGroupWithoutStudents(new Instructor(getIntent().getStringExtra("instructorName")), (String groupId) -> {
+            groupID = groupId;
+            Log.e("ID", groupId);
+            groupRepository.loadGroup(groupId, group -> {
+                Log.e("ID2", group.getId());
+                Log.e("Students", group.getStudents().size() + "");
+                createAdapter(group);
+                return null;
+            });
+            return null;
+        });
+
+        scenarioRepository.loadScenarios(scenarios -> {loadRec(scenarios); return null;});
 
 
         airPreview = findViewById(R.id.airPreview);
@@ -80,17 +114,21 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         ratePreview1 = findViewById(R.id.rateBar1Preview);
         ratePreview2 = findViewById(R.id.rateBar2Preview);
 
+        noStudents = findViewById(R.id.nostudents);
+
+
+        loadingIcon = findViewById(R.id.instructorLoadingIcon);
+
         scenariosavaliable = findViewById(R.id.scenariosavaliable);
-        scenariosavailableString = "⇦ Avaliable Scenarios ⇨";
+        scenariosavailableString = "  Avaliable Scenarios  ";
         SpannableString spannableString = new SpannableString(scenariosavailableString);
         spannableString.setSpan(new RelativeSizeSpan(2f), 0, 1, 0);
-        spannableString.setSpan(new RelativeSizeSpan(2f), scenariosavailableString.length()-1, scenariosavailableString.length()-0, 0);
+        spannableString.setSpan(new RelativeSizeSpan(2f), scenariosavailableString.length() - 1, scenariosavailableString.length() - 0, 0);
         scenariosavaliable.setText(spannableString);
 
 
-
-
         l = findViewById(R.id.lin);
+
 
         //nyt BR
         registerReceiver();
@@ -102,88 +140,18 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
         textView.setTextColor(Color.RED);
 
 
-
-        recyclerView = findViewById(R.id.recyclerView);
-       // adapter = new Adapter(mockData.getStudents());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseDatabase.getInstance().getReference().child("Scenarios").addValueEventListener(new ValueEventListener() {
-
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                scenarioList.clear();
-                for (DataSnapshot scenario : dataSnapshot.getChildren()){
-                    scenarioList.add(scenario.getValue(Scenario.class));
-
-                }
-                spAdapter = new ScenarioPickerAdapter(scenarioList);
-                loadRec();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        drawer = findViewById(R.id.drawer);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-           /* case R.id.settings:
-                intent = new Intent(this, SettingsActivity.class);
-                finish();
-                startActivity(intent);
-                break; */
-            case R.id.about:
-                intent = new Intent(this, SimulatorActivity.class);
-                finish();
-                startActivity(intent);
-                break;
-           /* case R.id.scenarios:
-                intent = new Intent(this, InstructorActivity.class);
-                finish();
-                startActivity(intent);
-                break; */
-            
-            case R.id.scenario_data:
-                intent = new Intent(this, InstructorActivity.class);
-                finish();
-                startActivity(intent);
-                break;
 
-        }
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    public void loadRec(){
+    public void loadRec(ArrayList<Scenario> scenarios) {
         scenarioPicker = findViewById(R.id.scenarioPicker);
+        spAdapter = new ScenarioPickerAdapter(scenarios);
         scenarioPicker.setAdapter(spAdapter);
         scenarioPicker.setHasFixedSize(false);
         scenarioPicker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        loadingIcon.setVisibility(View.GONE);
         Log.e("tæst", scenarioList.size() + "");
     }
-
 
 
     private void registerReceiver() {
@@ -201,27 +169,59 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
 
     @Override
     protected void onDestroy() {
+    if(!(groupID == null)) {
+        groupRepository.deleteGroup(groupID);
+    }
 
         try {
             unregisterReceiver(networkChangeReceiver);
         } catch (Exception e) {
             e.printStackTrace();
-        } super.onDestroy();
+        }
+        super.onDestroy();
     }
 
 
-    void createAdapter(Group group){
-        adapter = new Adapter(group.getStudents());
-        Log.e("IDINTENT", getIntent().getStringExtra("instructorID"));
+    void createAdapter(Group group) {
+
+        adapter = new Adapter(group.getStudents(), this);
+        Log.e("rip", adapter.getItemCount() + "");
+        if(adapter.getItemCount() > 0){
+            noStudents.setVisibility(View.INVISIBLE);
+        }
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
-    InternalNetworkChangeReceiver networkChangeReceiver = new InternalNetworkChangeReceiver();
-    class InternalNetworkChangeReceiver extends BroadcastReceiver {
+    public void registerStartTime(LogEntry newEntry, int i, Long startTime){
+        if(logEntries.get(i) != null){
+            logEntries.get(i).setTime(-1);
+            logRepository.addLog(logEntries.get(i));
+        }
+        logEntries.put(i, newEntry);
+        startTimes.put(i, startTime);
+    }
 
+    public void registerFinishTime(int i, Long finishTime){
+        if(logEntries.get(i) != null){
+            finishTimes.put(i, finishTime);
+            logEntries.get(i).setTime((int) (finishTime / startTimes.get(i))/1000);
+            logRepository.addLog(logEntries.get(i));
+        }
+        logEntries.put(i, null);
+    }
+
+    public void incrementFailures(int i){
+        if(logEntries.get(i) != null){
+            logEntries.get(i).setFailures(logEntries.get(i).getFailures() + 1);
+        }
+    }
+
+    InternalNetworkChangeReceiver networkChangeReceiver = new InternalNetworkChangeReceiver();
+
+    class InternalNetworkChangeReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context c, Intent i) {
@@ -231,11 +231,13 @@ public class InstructorActivity extends AppCompatActivity implements NavigationV
                 snackbarnotconnected.show();
 
             } else {
-                if (snackbarnotconnected.isShown()){
+                if (snackbarnotconnected.isShown()) {
                     snackbarnotconnected.dismiss();
                     snackbarisconnected.show();
                 }
             }
         }
     }
+
+
 }
