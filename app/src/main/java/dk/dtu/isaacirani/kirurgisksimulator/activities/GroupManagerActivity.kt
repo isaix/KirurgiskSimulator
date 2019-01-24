@@ -20,6 +20,7 @@ class GroupManagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_manager)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
 
         groupRepository.loadGroups { groups -> loadRec(groups)}

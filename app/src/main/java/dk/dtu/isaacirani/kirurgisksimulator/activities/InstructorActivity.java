@@ -107,7 +107,12 @@ public class InstructorActivity extends AppCompatActivity {
             return null;
         });
 
-        scenarioRepository.loadScenarios(scenarios -> {loadRec(scenarios); return null;});
+        scenarioRepository.loadScenarios(scenarios -> {
+            if (!(scenarios == null)){
+                loadRec(scenarios);
+            }
+            return null;
+        });
 
 
         airPreview = findViewById(R.id.airPreview);
