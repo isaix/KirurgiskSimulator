@@ -152,13 +152,14 @@ public class SimulatorActivity extends AppCompatActivity implements View.OnClick
                 getIntent().getStringExtra("groupId"),
                 scenario -> {
                     if(scenario == null){
-//                        this.finish();
+                        this.finish();
+
                     }else {
                         changeDisplayValues(scenario);
                     }
                     return null;
                 });
-        groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), scenario -> {changeDisplayValues(scenario); return null;});
+       // groupsRepository.loadStudentScenario(getIntent().getStringExtra("studentId"), getIntent().getStringExtra("groupId"), scenario -> {changeDisplayValues(scenario); return null;});
 
     }
 
