@@ -30,5 +30,10 @@
         android:icon="@drawable/scenario_icon_blue"
         android:title="Settings"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/group_manager"
+        android:icon="@drawable/group_icon_blue"
+        android:title="Group Manager"
+        app:showAsAction="ifRoom"/>
 
 </menu>

@@ -7,9 +7,11 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat.getSystemService
+import android.support.v4.net.ConnectivityManagerCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.DisplayMetrics
@@ -66,8 +68,7 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
         textView = view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
         textView.setTextColor(Color.RED)
 
-        if(!intent.getBooleanExtra("networkstatus", false)){
-            Log.e("network", intent.getBooleanExtra("networkstatus", false).toString())
+        if(!checkInternetConnection()){
             snackbarnotconnected.show()
             enterStudentLogin.isEnabled = false
         }
@@ -142,6 +143,12 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
             v = View(this)
         }
         inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    fun checkInternetConnection() : Boolean{
+        val cm: ConnectivityManager =  getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return (cm.activeNetworkInfo != null && cm.activeNetworkInfo.isConnected)
+
     }
 }
 

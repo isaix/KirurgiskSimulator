@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat.getSystemService
@@ -20,6 +21,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
 import dk.dtu.isaacirani.kirurgisksimulator.R
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import kotlinx.android.synthetic.main.activity_instructor_login.*
+import kotlinx.android.synthetic.main.activity_student_login.*
 
 
 class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -67,7 +69,7 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         textView.setTextColor(Color.RED)
 
 
-        if(!intent.getBooleanExtra("networkstatus", false)){
+        if(!checkInternetConnection()){
             snackbarnotconnected.show()
             enterSurgeonLogin.isEnabled = false
         }
@@ -129,6 +131,12 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
             v = View(this)
         }
         inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    fun checkInternetConnection() : Boolean{
+        val cm: ConnectivityManager =  getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return (cm.activeNetworkInfo != null && cm.activeNetworkInfo.isConnected)
+
     }
 }
 

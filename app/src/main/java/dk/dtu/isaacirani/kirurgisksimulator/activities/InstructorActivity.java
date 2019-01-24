@@ -41,7 +41,6 @@ import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 public class InstructorActivity extends AppCompatActivity {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
-    private DrawerLayout drawer;
     StudentAdapter adapter;
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;
@@ -99,15 +98,23 @@ public class InstructorActivity extends AppCompatActivity {
             groupID = groupId;
             Log.e("ID", groupId);
             groupRepository.loadGroup(groupId, group -> {
-                Log.e("ID2", group.getId());
-                Log.e("Students", group.getStudents().size() + "");
-                createAdapter(group);
+                if (!(group == null)){
+                    Log.e("ID2", group.getId());
+                    Log.e("Students", group.getStudents().size() + "");
+                    createAdapter(group);
+                }
+
                 return null;
             });
             return null;
         });
 
-        scenarioRepository.loadScenarios(scenarios -> {loadRec(scenarios); return null;});
+        scenarioRepository.loadScenarios(scenarios -> {
+            if (!(scenarios == null)){
+                loadRec(scenarios);
+            }
+            return null;
+        });
 
 
         airPreview = findViewById(R.id.airPreview);

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -16,6 +17,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.adapters.GroupsAdapter
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.models.Student
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
+import kotlinx.android.synthetic.main.activity_instructor_login.*
 import kotlinx.android.synthetic.main.activity_join_group.*
 import kotlinx.android.synthetic.main.activity_student_login.*
 
@@ -51,6 +53,7 @@ class JoinGroupActivity : AppCompatActivity() {
 
 
         registerReceiver()
+
 
 
     }
