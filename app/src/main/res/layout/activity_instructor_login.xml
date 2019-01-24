@@ -8,12 +8,9 @@
     android:background="@drawable/details_login"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:theme="@style/AppTheme.NoActionBar"
-    tools:layout_editor_absoluteY="81dp"><![CDATA[
-    android:theme="@style/AppTheme.NoActionBar">
+    tools:context=".activities.InstructorLoginActivity"
+    tools:layout_editor_absoluteY="81dp">
 
-
-    ]]>
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

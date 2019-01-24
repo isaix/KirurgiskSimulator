@@ -37,7 +37,7 @@ public class GroupsRepository {
     fun loadGroup(groupId: String, callback: (Group?) -> Unit) {
         mDatabase.child("Groups").child(groupId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot != null) {
+                if (dataSnapshot.child("id").value != null) {
                     var students: ArrayList<Student> = arrayListOf()
                     for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children){
                         students.add(itemSnapshot.getValue(Student::class.java)!!)

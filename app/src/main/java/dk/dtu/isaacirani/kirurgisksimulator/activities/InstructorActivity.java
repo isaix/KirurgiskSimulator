@@ -72,85 +72,89 @@ public class InstructorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
+        if(savedInstanceState == null){
+            // everything else that doesn't update UI
+            display = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(display);
 
-        display = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(display);
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        recyclerView = findViewById(R.id.recyclerView);
-        setSupportActionBar(findViewById(R.id.toolbar));
-        mediaPlayer = MediaPlayer.create(this, R.raw.turnon);
-        mediaPlayer.start();
-
-        int currentOrientation = this.getResources().getConfiguration().orientation;
-        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
 
-        logEntries = new SparseArray<>();
-        startTimes = new SparseArray<>();
-        finishTimes = new SparseArray<>();
+            recyclerView = findViewById(R.id.recyclerView);
+            setSupportActionBar(findViewById(R.id.toolbar));
+            mediaPlayer = MediaPlayer.create(this, R.raw.turnon);
+            mediaPlayer.start();
 
-        Log.e("Instructor Name", getIntent().getStringExtra("instructorName"));
+            int currentOrientation = this.getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_PORTRAIT){
+                this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
 
-        groupRepository.createGroupWithoutStudents(new Instructor(getIntent().getStringExtra("instructorName")), (String groupId) -> {
-            groupID = groupId;
-            Log.e("ID", groupId);
-            groupRepository.loadGroup(groupId, group -> {
-                if (!(group == null)){
-                    Log.e("ID2", group.getId());
-                    Log.e("Students", group.getStudents().size() + "");
-                    createAdapter(group);
-                }
+            logEntries = new SparseArray<>();
+            startTimes = new SparseArray<>();
+            finishTimes = new SparseArray<>();
 
+            Log.e("Instructor Name", getIntent().getStringExtra("instructorName"));
+
+            groupRepository.createGroupWithoutStudents(new Instructor(getIntent().getStringExtra("instructorName")), (String groupId) -> {
+                groupID = groupId;
+                Log.e("ID", groupId);
+                groupRepository.loadGroup(groupId, group -> {
+                    if (!(group == null)){
+                        Log.e("ID2", group.getId());
+                        Log.e("Students", group.getStudents().size() + "");
+                        createAdapter(group);
+                    }
+
+                    return null;
+                });
                 return null;
             });
-            return null;
-        });
 
-        scenarioRepository.loadScenarios(scenarios -> {
-            if (!(scenarios == null)){
-                loadRec(scenarios);
-            }
-            return null;
-        });
+            scenarioRepository.loadScenarios(scenarios -> {
+                if (!(scenarios == null)){
+                    loadRec(scenarios);
+                }
+                return null;
+            });
 
 
-        airPreview = findViewById(R.id.airPreview);
-        ratePreview = findViewById(R.id.ratePreview);
-        pressurePreview = findViewById(R.id.pressurePreview);
-        volumePreview = findViewById(R.id.volumePreview);
-        nozzlePreview = findViewById(R.id.nozzlePreview);
-        pressurePreview1 = findViewById(R.id.pressureBar1Preview);
-        pressurePreview2 = findViewById(R.id.pressureBar2Preview);
-        ratePreview1 = findViewById(R.id.rateBar1Preview);
-        ratePreview2 = findViewById(R.id.rateBar2Preview);
+            airPreview = findViewById(R.id.airPreview);
+            ratePreview = findViewById(R.id.ratePreview);
+            pressurePreview = findViewById(R.id.pressurePreview);
+            volumePreview = findViewById(R.id.volumePreview);
+            nozzlePreview = findViewById(R.id.nozzlePreview);
+            pressurePreview1 = findViewById(R.id.pressureBar1Preview);
+            pressurePreview2 = findViewById(R.id.pressureBar2Preview);
+            ratePreview1 = findViewById(R.id.rateBar1Preview);
+            ratePreview2 = findViewById(R.id.rateBar2Preview);
 
-        noStudents = findViewById(R.id.nostudents);
-
-
-        loadingIcon = findViewById(R.id.instructorLoadingIcon);
-
-        scenariosavaliable = findViewById(R.id.scenariosavaliable);
-        scenariosavailableString = "  Avaliable Scenarios  ";
-        SpannableString spannableString = new SpannableString(scenariosavailableString);
-        spannableString.setSpan(new RelativeSizeSpan(2f), 0, 1, 0);
-        spannableString.setSpan(new RelativeSizeSpan(2f), scenariosavailableString.length() - 1, scenariosavailableString.length() - 0, 0);
-        scenariosavaliable.setText(spannableString);
+            noStudents = findViewById(R.id.nostudents);
 
 
-        l = findViewById(R.id.lin);
+            loadingIcon = findViewById(R.id.instructorLoadingIcon);
+
+            scenariosavaliable = findViewById(R.id.scenariosavaliable);
+            scenariosavailableString = "  Avaliable Scenarios  ";
+            SpannableString spannableString = new SpannableString(scenariosavailableString);
+            spannableString.setSpan(new RelativeSizeSpan(2f), 0, 1, 0);
+            spannableString.setSpan(new RelativeSizeSpan(2f), scenariosavailableString.length() - 1, scenariosavailableString.length() - 0, 0);
+            scenariosavaliable.setText(spannableString);
 
 
-        //nyt BR
-        registerReceiver();
-        view = findViewById(android.R.id.content);
-        snackbarnotconnected = Snackbar.make(view, "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE);
-        snackbarisconnected = Snackbar.make(view, "Device is connected to internet", Snackbar.LENGTH_SHORT);
-        View snacknotconnectedview = snackbarnotconnected.getView();
-        TextView textView = snacknotconnectedview.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.RED);
+            l = findViewById(R.id.lin);
+
+
+            //nyt BR
+            registerReceiver();
+            view = findViewById(android.R.id.content);
+            snackbarnotconnected = Snackbar.make(view, "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE);
+            snackbarisconnected = Snackbar.make(view, "Device is connected to internet", Snackbar.LENGTH_SHORT);
+            View snacknotconnectedview = snackbarnotconnected.getView();
+            TextView textView = snacknotconnectedview.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.RED);
+
+        }
+
 
 
     }
