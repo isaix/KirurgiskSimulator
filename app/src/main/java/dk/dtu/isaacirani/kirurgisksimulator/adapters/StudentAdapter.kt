@@ -64,7 +64,7 @@ class StudentAdapter(internal var students: ArrayList<Student>, internal var con
 
 
 
-        defaultScenario = Scenario("Standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false)
+        defaultScenario = Scenario("Unknown","Standard", 0, 0, 0, 0, 0, 0, 0, 0.0, false)
         return vh
     }
 

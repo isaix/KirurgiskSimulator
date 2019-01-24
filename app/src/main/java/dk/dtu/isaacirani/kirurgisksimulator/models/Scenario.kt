@@ -1,6 +1,7 @@
 package dk.dtu.isaacirani.kirurgisksimulator.models
 
 data class Scenario constructor(
+        var id: String = "Unknown",
         var name: String = "Standard",
         var pressure: Int = 0,
         var rate: Int = 0,

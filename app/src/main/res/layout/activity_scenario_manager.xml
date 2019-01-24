@@ -5,10 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/details_login"
-    tools:context=".activities.JoinGroupActivity"
-    tools:layout_editor_absoluteY="89dp"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+
+    tools:context=".activities.ScenarioManagerActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -20,7 +18,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back_icon_white"
-          app:title="Join Group" />
+        app:title="Scenario Manager" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -37,6 +35,5 @@
 
 
     </android.support.v7.widget.RecyclerView>
-
 
 </android.support.constraint.ConstraintLayout>
