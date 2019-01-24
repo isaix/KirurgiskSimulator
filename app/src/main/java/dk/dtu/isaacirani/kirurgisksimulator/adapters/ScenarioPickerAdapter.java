@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario;
 public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerViewHolder> {
     ArrayList<Scenario> scenarios;
     public static Scenario chosenScenario;
+    int chosen = -1;
 
     public ScenarioPickerAdapter(ArrayList<Scenario> scenarios){
         this.scenarios = scenarios;
@@ -47,6 +49,8 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
                 InstructorActivity.ratePreview1.setText(String.valueOf(scenarios.get(i).getRateBar1()));
                 InstructorActivity.ratePreview2.setText(String.valueOf(scenarios.get(i).getRateBar2()));
                 InstructorActivity.airPreview.setText(String.valueOf(scenarios.get(i).getAir()));
+                chosen = i;
+                notifyDataSetChanged();
 
                 if(scenarios.get(i).isNozzle()) {
                     InstructorActivity.nozzlePreview.setText("In");
@@ -58,6 +62,12 @@ public class ScenarioPickerAdapter extends RecyclerView.Adapter<ScenarioPickerVi
         viewHolder.scenario_name.setId(i);
         Scenario scenario = scenarios.get(i);
         viewHolder.scenario_name.setText(scenario.getName());
+
+        if(chosen == i){
+            viewHolder.scenario_name.setBackgroundColor(Color.parseColor("#add8e6"));
+        } else {
+            viewHolder.scenario_name.setBackgroundResource(R.drawable.recyclerview_details_avaliable);
+        }
 
     }
 
