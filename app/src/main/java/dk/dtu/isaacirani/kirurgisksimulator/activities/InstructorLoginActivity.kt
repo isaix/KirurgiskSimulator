@@ -9,12 +9,14 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.TextView
 import dk.dtu.isaacirani.kirurgisksimulator.repositories.GroupsRepository
 import dk.dtu.isaacirani.kirurgisksimulator.NetworkChangeReceiver
@@ -22,6 +24,8 @@ import dk.dtu.isaacirani.kirurgisksimulator.R
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import kotlinx.android.synthetic.main.activity_instructor_login.*
 import kotlinx.android.synthetic.main.activity_student_login.*
+import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.activity_simulator_icon.view.*
 
 
 class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -41,8 +45,8 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_instructor_login)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        val widthscreen: Float
 
+        val widthscreen: Float
 
         display = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(display)
