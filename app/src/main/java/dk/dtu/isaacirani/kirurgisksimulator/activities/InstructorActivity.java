@@ -98,9 +98,12 @@ public class InstructorActivity extends AppCompatActivity {
             groupID = groupId;
             Log.e("ID", groupId);
             groupRepository.loadGroup(groupId, group -> {
-                Log.e("ID2", group.getId());
-                Log.e("Students", group.getStudents().size() + "");
-                createAdapter(group);
+                if (!(group == null)){
+                    Log.e("ID2", group.getId());
+                    Log.e("Students", group.getStudents().size() + "");
+                    createAdapter(group);
+                }
+
                 return null;
             });
             return null;
