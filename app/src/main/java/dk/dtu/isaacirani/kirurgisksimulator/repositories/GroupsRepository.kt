@@ -1,7 +1,10 @@
 package dk.dtu.isaacirani.kirurgisksimulator.repositories
 
 import android.util.Log
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import dk.dtu.isaacirani.kirurgisksimulator.models.Group
 import dk.dtu.isaacirani.kirurgisksimulator.models.Instructor
 import dk.dtu.isaacirani.kirurgisksimulator.models.Scenario
@@ -20,7 +23,7 @@ public class GroupsRepository {
 
                 var groups: ArrayList<Group> = arrayListOf()
 
-                for(itemSnapshot: DataSnapshot in dataSnapshot.children){
+                for (itemSnapshot: DataSnapshot in dataSnapshot.children) {
                     groups.add(itemSnapshot.getValue(Group::class.java)!!)
                 }
 
@@ -39,17 +42,15 @@ public class GroupsRepository {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.child("id").value != null) {
                     var students: ArrayList<Student> = arrayListOf()
-                    for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children){
+                    for (itemSnapshot: DataSnapshot in dataSnapshot.child("Students").children) {
                         students.add(itemSnapshot.getValue(Student::class.java)!!)
                     }
                     val group: Group = Group(instructor = dataSnapshot.child("instructor").getValue(Instructor::class.java)!!, students = students)
 
                     callback(group)
+                } else {
+                    callback(null)
                 }
-
-//                } else {
-//                    callback(null)
-//                }
 
             }
 
@@ -60,7 +61,7 @@ public class GroupsRepository {
         })
     }
 
-    fun deleteGroup(groupId: String){
+    fun deleteGroup(groupId: String) {
         groupsRef.child(groupId).removeValue()
     }
 
@@ -71,9 +72,10 @@ public class GroupsRepository {
 //        return id
 //    }
 
-    fun createGroupWithoutStudents(instructor: Instructor, callback: (String) -> Unit){
+    fun createGroupWithoutStudents(instructor: Instructor, callback: (String) -> Unit) {
         val id = groupsRef.push().key!!
         val group = Group(id, instructor)
+        Log.e("Lets see", "lets see")
         groupsRef.child(id).setValue(group)
                 .addOnSuccessListener { callback(id) }
 
@@ -88,7 +90,7 @@ public class GroupsRepository {
                 .addOnSuccessListener { callback(id) }
     }
 
-    fun loadStudentScenario(studentId: String, groupId: String, callback: (Scenario?) -> Unit){
+    fun loadStudentScenario(studentId: String, groupId: String, callback: (Scenario?) -> Unit) {
         Log.e("GroupID", groupId)
         Log.e("StudentID", studentId)
         groupsRef.child(groupId).child("Students").child(studentId).child("scenario").addValueEventListener(object : ValueEventListener {
@@ -107,6 +109,7 @@ public class GroupsRepository {
             }
         })
     }
+
     fun updateStudent(studentId: String, groupId: String, scenario: Scenario) {
         groupsRef.child(groupId).child("Students").child(studentId).child("scenario").setValue(scenario)
     }

@@ -119,10 +119,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(this,GroupManagerActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.settings:
-                intent = new Intent(this,SettingsActivity.class);
-                startActivity(intent);
-                break;
             case R.id.saved_data:
                 intent = new Intent(this,LogDataActivity.class);
                 startActivity(intent);
