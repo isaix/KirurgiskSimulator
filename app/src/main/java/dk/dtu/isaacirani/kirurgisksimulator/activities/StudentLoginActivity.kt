@@ -66,6 +66,12 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
         textView = view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
         textView.setTextColor(Color.RED)
 
+        if(!intent.getBooleanExtra("networkstatus", false)){
+            Log.e("network", intent.getBooleanExtra("networkstatus", false).toString())
+            snackbarnotconnected.show()
+            enterStudentLogin.isEnabled = false
+        }
+
     }
 
     override fun onClick(v: View) {
@@ -116,18 +122,15 @@ class StudentLoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
         override fun onReceive(c: Context, i: Intent) {
-            //val snackbar = Snackbar.make(findViewById(android.R.id.content), "Device is not connected to internet", Snackbar.LENGTH_INDEFINITE)
+            Log.e("hej", i.getBooleanExtra("networkstatus", false).toString());
             if (!i.getBooleanExtra("networkstatus", false)) {
                 snackbarnotconnected.show()
                 enterStudentLogin.isEnabled = false
 
             } else {
-               // if (snackbar.isShown) {
                     snackbarisconnected.dismiss()
                     snackbarisconnected.show()
                     enterStudentLogin.isEnabled = true
-                  //  Snackbar.make(findViewById(android.R.id.content), "Device is connected to internet", Snackbar.LENGTH_SHORT).show()
-                //}
             }
         }
     }

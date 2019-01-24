@@ -41,6 +41,7 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
 
         val widthscreen: Float
 
+
         display = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(display)
         width = display.widthPixels
@@ -64,6 +65,12 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
         view = snackbarnotconnected.view
         textView = view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
         textView.setTextColor(Color.RED)
+
+
+        if(!intent.getBooleanExtra("networkstatus", false)){
+            snackbarnotconnected.show()
+            enterSurgeonLogin.isEnabled = false
+        }
 
     }
 
@@ -108,11 +115,9 @@ class InstructorLoginActivity : AppCompatActivity(), View.OnClickListener {
                 snackbarnotconnected.show()
                 enterSurgeonLogin.isEnabled = false
             } else {
-                //if (snackbarnotconnected.isShown) {
                     snackbarnotconnected.dismiss()
                     snackbarisconnected.show()
                     enterSurgeonLogin.isEnabled = true
-               // }
             }
         }
     }

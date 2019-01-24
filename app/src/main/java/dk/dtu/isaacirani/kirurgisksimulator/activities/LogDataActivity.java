@@ -24,12 +24,9 @@ public class LogDataActivity extends AppCompatActivity  {
     RecyclerView recyclerViewLogData;
     private DrawerLayout drawer;
     LogDataAdapter logDataAdapter;
-    LogList logList = new LogList();
     ArrayList<LogEntry> logs = new ArrayList<LogEntry>();
     LogRepository logRepo;
     DisplayMetrics display;
-
-    //nyt til BR
     View view;
     public static TextView logName, logScenarioName, logDate,logTime, logFailures;
 
