@@ -136,6 +136,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
         airBar.setProgress(100);
         pressureBar1.setProgress(50);
         pressureBar2.setProgress(50);
+        nozzleButton.setImageResource(R.drawable.nozzlehose);
     }
 
 
@@ -202,7 +203,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                     inflationRate = Integer.parseInt(input.getText().toString());
                     scenario.setRate(inflationRate);
                     j = inflationRate;
-                    rate.setWidth(rate.getWidth());
+                    rate.setWidth(102);
                     rate.setText(input.getText());
                 }
             });
@@ -224,7 +225,7 @@ public class ScenarioCreatorActivity extends AppCompatActivity implements View.O
                 } else {
                     pressureValue = Integer.parseInt(input.getText().toString());
                     i = pressureValue;
-                    pressure.setWidth(pressure.getWidth());
+                    pressure.setWidth(102);
                     scenario.setPressure(pressureValue);
                     pressure.setText(input.getText());
                 }
