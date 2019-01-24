@@ -99,12 +99,8 @@ public class InstructorActivity extends AppCompatActivity {
                 groupID = groupId;
                 Log.e("ID", groupId);
                 groupRepository.loadGroup(groupId, group -> {
-                    if (!(group == null)){
-                        Log.e("ID2", group.getId());
-                        Log.e("Students", group.getStudents().size() + "");
-                        createAdapter(group);
-                    }
 
+                        createAdapter(group);
                     return null;
                 });
                 return null;
@@ -281,14 +277,20 @@ public class InstructorActivity extends AppCompatActivity {
 
     void createAdapter(Group group) {
 
-        adapter = new StudentAdapter(group.getStudents(), this);
-        Log.e("rip", adapter.getItemCount() + "");
-        if(adapter.getItemCount() > 0){
-            noStudents.setVisibility(View.INVISIBLE);
+        if (!(group == null)){
+            adapter = new StudentAdapter(group.getStudents(), this);
+            Log.e("rip", adapter.getItemCount() + "");
+            if(adapter.getItemCount() > 0){
+                noStudents.setVisibility(View.INVISIBLE);
+            }
+            recyclerView.setAdapter(adapter);
+            recyclerView.setHasFixedSize(false);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }else {
+            this.finish();
         }
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
 
     }
 

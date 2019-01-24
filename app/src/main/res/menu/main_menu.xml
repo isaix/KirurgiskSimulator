@@ -21,14 +21,9 @@
         android:title="Scenario Creator"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/settings"
-        android:icon="@drawable/settings"
-        android:title="Settings"
-        app:showAsAction="ifRoom"/>
-    <item
         android:id="@+id/scenario_manager"
         android:icon="@drawable/scenario_icon_blue"
-        android:title="Settings"
+        android:title="Scenario Manager"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/group_manager"
