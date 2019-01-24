@@ -74,6 +74,7 @@ public class GroupsRepository {
     fun createGroupWithoutStudents(instructor: Instructor, callback: (String) -> Unit){
         val id = groupsRef.push().key!!
         val group = Group(id, instructor)
+        Log.e("Lets see", "lets see")
         groupsRef.child(id).setValue(group)
                 .addOnSuccessListener { callback(id) }
 
