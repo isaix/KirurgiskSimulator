@@ -41,7 +41,6 @@ import dk.dtu.isaacirani.kirurgisksimulator.repositories.ScenarioRepository;
 public class InstructorActivity extends AppCompatActivity {
     LinearLayout l;
     RecyclerView recyclerView, scenarioPicker;
-    private DrawerLayout drawer;
     StudentAdapter adapter;
     ArrayList<Scenario> scenarioList = new ArrayList<>();
     ScenarioPickerAdapter spAdapter;

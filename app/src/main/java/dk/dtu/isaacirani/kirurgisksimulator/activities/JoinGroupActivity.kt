@@ -53,6 +53,7 @@ class JoinGroupActivity : AppCompatActivity() {
         registerReceiver()
 
 
+
     }
 
     private fun joinGroup(groupId: String){
