@@ -13,9 +13,10 @@
         android:layout_weight="4"
         android:background="@drawable/recyclerview_details_borderleft"
         android:gravity="center"
+        android:maxLines="1"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="14sp" />
     <!--
@@ -43,7 +44,7 @@
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="14sp" />
 
@@ -56,7 +57,7 @@
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="14sp" />
 
@@ -70,7 +71,7 @@
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="14sp" />
 
@@ -83,7 +84,7 @@
         android:gravity="center"
         android:padding="4dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="14sp" />
 
