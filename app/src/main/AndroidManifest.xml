@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <receiver android:name=".NetworkChangeReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -26,7 +25,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="5c184a0967c8a67a7694c1c4b91cf73194583ed4" />
-
 
         <activity
             android:name=".activities.MainActivity"
@@ -73,8 +71,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".activities.JoinGroupActivity"
             android:parentActivityName=".activities.StudentLoginActivity"
@@ -82,8 +78,12 @@
         <activity
             android:name=".activities.ScenarioManagerActivity"
             android:parentActivityName=".activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.GroupManagerActivity"
+            android:parentActivityName=".activities.MainActivity"
+
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>
