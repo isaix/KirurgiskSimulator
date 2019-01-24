@@ -111,6 +111,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(this,ScenarioCreatorActivity.class);
                 startActivity(intent);
                 break;
+                case R.id.scenario_manager:
+                intent = new Intent(this,ScenarioManagerActivity.class);
+                startActivity(intent);
+                break;
             case R.id.settings:
                 intent = new Intent(this,SettingsActivity.class);
                 startActivity(intent);

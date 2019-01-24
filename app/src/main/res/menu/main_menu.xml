@@ -25,5 +25,10 @@
         android:icon="@drawable/settings"
         android:title="Settings"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/scenario_manager"
+        android:icon="@drawable/scenario_icon_blue"
+        android:title="Settings"
+        app:showAsAction="ifRoom"/>
 
 </menu>

@@ -34,8 +34,13 @@ public class ScenarioRepository {
 
     fun createScenario(entry: Scenario) : String{
         val id = scenarioRef.push().key!!
+        entry.id = id
         scenarioRef.child(id).setValue(entry)
         return id;
+    }
+
+    fun deleteScenario(scenarioId: String){
+        scenarioRef.child(scenarioId).removeValue()
     }
 
 }
