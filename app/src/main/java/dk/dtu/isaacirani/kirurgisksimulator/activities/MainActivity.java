@@ -29,29 +29,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     Intent studentLogin, surgeonLogin;
     Button student, surgeon;
-    MediaPlayer mediaPlayer;
-    DisplayMetrics display;
-    int width;
-    float scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
-
-        float widthscreen;
-        display = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(display);
-        width = display.widthPixels;
-        scale = display.density;
-        widthscreen = width / scale;
-
-        if (widthscreen <= 600){
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } else {
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

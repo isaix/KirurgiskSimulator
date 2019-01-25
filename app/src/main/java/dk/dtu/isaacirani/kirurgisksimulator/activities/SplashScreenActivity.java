@@ -15,27 +15,11 @@ import dk.dtu.isaacirani.kirurgisksimulator.R;
 public class SplashScreenActivity extends AppCompatActivity implements Runnable {
 
     Handler handler;
-    DisplayMetrics display;
-    int width;
-    float scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        float widthscreen;
-        display = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(display);
-        width = display.widthPixels;
-        scale = display.density;
-        widthscreen = width / scale;
-
-        if (widthscreen <= 600){
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } else {
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
 
         if (savedInstanceState == null) {
             handler = new Handler();

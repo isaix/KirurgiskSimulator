@@ -23,9 +23,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     ImageButton aboutus_phone;
     ImageButton aboutus_pin;
     ImageButton aboutus_mail;
-    DisplayMetrics display;
-    int width;
-    float scale;
+
 
 
     @Override
@@ -34,19 +32,6 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_about);
         setSupportActionBar(findViewById(R.id.toolbar));
-
-        float widthscreen;
-        display = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(display);
-        width = display.widthPixels;
-        scale = display.density;
-        widthscreen = width / scale;
-
-        if (widthscreen <= 600) {
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } else {
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
 
         aboutus_phone = (ImageButton) findViewById(R.id.aboutus_phone);
         aboutus_pin = (ImageButton) findViewById(R.id.aboutus_pin);

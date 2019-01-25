@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 
 public class NetworkChangeReceiver  extends BroadcastReceiver {
@@ -13,7 +14,7 @@ public class NetworkChangeReceiver  extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context c, final Intent i) {
-
+        Log.e("isconnected", String.valueOf(isConnected(c)));
         if (isConnected(c)) {
             broadcastSending(c, true);
 

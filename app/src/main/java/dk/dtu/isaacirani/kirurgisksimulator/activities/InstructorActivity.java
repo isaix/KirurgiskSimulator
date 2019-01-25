@@ -306,7 +306,7 @@ public class InstructorActivity extends AppCompatActivity {
     public void registerFinishTime(int i, Long finishTime){
         if(logEntries.get(i) != null){
             finishTimes.put(i, finishTime);
-            logEntries.get(i).setTime((int) (finishTime / startTimes.get(i))/1000);
+            logEntries.get(i).setTime((int) (finishTime - startTimes.get(i))/1000);
             logRepository.addLog(logEntries.get(i));
         }
         logEntries.put(i, null);

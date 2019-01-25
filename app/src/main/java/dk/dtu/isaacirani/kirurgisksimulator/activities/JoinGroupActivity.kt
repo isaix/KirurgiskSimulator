@@ -23,9 +23,6 @@ import kotlinx.android.synthetic.main.activity_student_login.*
 
 class JoinGroupActivity : AppCompatActivity() {
 
-    lateinit var display: DisplayMetrics
-    internal var width: Int = 0
-    internal var scale: Float = 0.toFloat()
 
     private val groupRepository = GroupsRepository()
 
@@ -33,20 +30,6 @@ class JoinGroupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_group)
         setSupportActionBar(findViewById(R.id.toolbar))
-
-        val widthscreen: Float
-
-        display = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(display)
-        width = display.widthPixels
-        scale = display.density
-        widthscreen = width / scale
-
-        if (widthscreen <= 600) {
-            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        } else {
-            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        }
 
 
         groupRepository.loadGroups { groups -> loadRec(groups)}
